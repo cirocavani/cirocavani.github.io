@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Compilação do Hadoop para CentOS6 / RHEL6 usando Docker &middot; Ciro Cavani</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="http://cirocavani.github.io/img/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="http://cirocavani.github.io/">Ciro Cavani</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/about/"><i class='fa fa-user fa-fw'></i>Sobre Mim</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/cirocavani" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/cirocavani" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://instagram.com/ciro.cavani" target="_blank"><i class="fa fa-instagram fa-fw"></i>Instagram</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/cirocavani" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/cirocavani" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Compilação do Hadoop para CentOS6 / RHEL6 usando Docker</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>31 Aug 2015, 22:45</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tutorial">Tutorial</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/hadoop">Hadoop</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/docker">Docker</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/centos6">CentOS6</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/rhel6">RHEL6</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p>Esse tutorial é sobre a construção do pacote do Hadoop 2.7.1 para o CentOS6 / RHEL6 usando Docker. Esse procedimento é necessário para gerar as bibliotecas nativas compatíveis. O principal objetivo que motivou esse trabalho foi configurar o FairScheduler do YARN usando CGroups rodando no Red Hat Enterprise Linux 6 (RHEL6). O pacote Hadoop distribuído pela Apache tem executável binário que não é compatível com a Glibc que faz parte do CentOS6/RHEL6.</p>
+
+<p>O RHEL6 é o sistema operacional homologado para as máquinas do cluster que usamos na Globo.com e foi necessário criar uma distribuição própria do Hadoop para que pudéssemos fazer uso do <a href="http://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/FairScheduler.html">FairScheduler</a> juntamente com o <a href="http://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/NodeManagerCgroups.html">CGroups</a> para limitar o uso de processamento entre as aplicações rodando nos mesmos NodeManagers.</p>
+
+<p>Esse trabalho de configuração do Hadoop para uso compartilhado será assunto de outro artigo.</p>
+
+<p>Nesse artigo, o foco é um passo a passo de como usar o Docker para gerar um pacote do Hadoop adaptado para o Red Hat Enterprise Linux 6 (RHEL6) usando CentOS6.</p>
+
+<h2 id="pré-requisito">Pré-requisito</h2>
+
+<p>Nesse procedimento, é necessário que o Docker esteja instalado e funcionando; também é necessário acesso à Internet.</p>
+
+<p>Originalmente, esse procedimento foi testado no ArchLinux atualizado até final de Agosto/2015.</p>
+
+<p><a href="https://wiki.archlinux.org/index.php/Docker">https://wiki.archlinux.org/index.php/Docker</a></p>
+
+<pre><code class="language-sh">sudo docker version
+
+&gt; Client:
+&gt;  Version:      1.8.1
+&gt;  API version:  1.20
+&gt;  Go version:   go1.4.2
+&gt;  Git commit:   d12ea79
+&gt;  Built:        Sat Aug 15 17:29:10 UTC 2015
+&gt;  OS/Arch:      linux/amd64
+&gt;
+&gt; Server:
+&gt;  Version:      1.8.1
+&gt;  API version:  1.20
+&gt;  Go version:   go1.4.2
+&gt;  Git commit:   d12ea79
+&gt;  Built:        Sat Aug 15 17:29:10 UTC 2015
+&gt;  OS/Arch:      linux/amd64
+</code></pre>
+
+<h2 id="compilação">Compilação</h2>
+
+<p>Documento com instruções de build do Hadoop <a href="https://github.com/apache/hadoop/blob/release-2.7.1/BUILDING.txt">aqui</a>.</p>
+
+<p>O resultado desse procedimento é um pacote do Hadoop com os executáveis e bibliotecas nativas compilados para o CentOS6 que rodam no RHEL6.</p>
+
+<p><code>/hadoop/hadoop-2.7.1-src/hadoop-dist/target/hadoop-2.7.1.tar.gz</code></p>
+
+<p>&hellip;</p>
+
+<p>Começamos com a criação de um conainer do Docker com a imagem do CentOS6.</p>
+
+<p>Ao executar o comando <code>run</code>, o Docker automaticamente fará o download da imagem e a shell será inicializada dentro de um novo container.</p>
+
+<pre><code class="language-sh">sudo docker run -i -t centos:6 /bin/bash
+
+&gt; Unable to find image 'centos:6' locally
+&gt; 6: Pulling from library/centos
+&gt;
+&gt; f1b10cd84249: Pull complete
+&gt; fb9cc58bde0c: Pull complete
+&gt; a005304e4e74: Already exists
+&gt; library/centos:6: The image you are pulling has been verified. Important: image verification is a tech preview feature and should not be relied on to provide security.
+&gt;
+&gt; Digest: sha256:25d94c55b37cb7a33ad706d5f440e36376fec20f59e57d16fe02c64698b531c1
+&gt; Status: Downloaded newer image for centos:6
+&gt; [root@3cc2bc5e593b /]#
+</code></pre>
+
+<p>Já dentro do container criamos um usuário e local que serão usados na compilação e geração do pacote.</p>
+
+<pre><code class="language-sh">adduser -m -d /hadoop hadoop
+cd hadoop
+</code></pre>
+
+<p>Para a compilação das bibliotecas nativas é necessária a instalação do compilador C e mais alguns pacotes de desenvolvimento (cabeçalhos das bibliotecas usadas pelo Hadoop).</p>
+
+<pre><code class="language-sh">yum install -y tar gzip gcc-c++ cmake zlib zlib-devel openssl openssl-devel fuse fuse-devel bzip2 bzip2-devel snappy snappy-devel
+
+&gt; (...)
+</code></pre>
+
+<p>O Hadoop ainda depende de duas outras bibliotecas que precisam ser instaladas manualmente no CentOS: Google ProtoBuf 2.5 (RPC), Jansson (JSON).</p>
+
+<p>Para instalar o ProtoBuf, é necessário baixar o pacote, configurar para as pastas do CentOS (64 bits) e instalar.</p>
+
+<pre><code class="language-sh">curl -L -O https://github.com/google/protobuf/releases/download/v2.5.0/protobuf-2.5.0.tar.gz
+tar zxf protobuf-2.5.0.tar.gz
+cd protobuf-2.5.0
+./configure --prefix=/usr --libdir=/usr/lib64
+make
+make check
+make install
+
+cd ..
+</code></pre>
+
+<p>Para instalar o Jansson, é necessário baixar o pacote, configurar para as pastas do CentOS (64 bits) e instalar.</p>
+
+<pre><code class="language-sh">curl -O http://www.digip.org/jansson/releases/jansson-2.7.tar.gz
+tar zxf jansson-2.7.tar.gz
+cd jansson-2.7
+./configure --prefix=/usr --libdir=/usr/lib64
+make
+make install
+
+cd ..
+</code></pre>
+
+<p>Para completar o ambiente de compilação, precisamos do JDK e do Maven.</p>
+
+<p>No caso do JDK, usaremos o pacote RPM já disponibilizado pela Oracle.</p>
+
+<pre><code class="language-sh">curl -k -L -H &quot;Cookie: oraclelicense=accept-securebackup-cookie&quot; -O http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.rpm
+rpm -i jdk-8u60-linux-x64.rpm
+</code></pre>
+
+<p>No caso do Maven, usaremos o pacote binário de distribuição da Apache.</p>
+
+<pre><code class="language-sh">curl -O http://archive.apache.org/dist/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.tar.gz
+tar zxf apache-maven-3.3.3-bin.tar.gz
+</code></pre>
+
+<p>O ambiente  de compilação está completo.</p>
+
+<p>Agora estamos pronto para a compilação do Hadoop. Nesse caso, estaremos gerando o pacote de distribuição somente com o binário Java e as bibliotecas nativas.</p>
+
+<pre><code class="language-sh">su - hadoop
+
+export PATH=$PATH:/hadoop/apache-maven-3.3.3/bin
+
+curl -O http://archive.apache.org/dist/hadoop/common/hadoop-2.7.1/hadoop-2.7.1-src.tar.gz
+tar zxf hadoop-2.7.1-src.tar.gz
+cd hadoop-2.7.1-src
+
+mvn clean package -Pdist,native -DskipTests -Drequire.snappy -Drequire.openssl -Dtar
+
+&gt; (...)
+&gt; main:
+&gt;      [exec] $ tar cf hadoop-2.7.1.tar hadoop-2.7.1
+&gt;      [exec] $ gzip -f hadoop-2.7.1.tar
+&gt;      [exec]
+&gt;      [exec] Hadoop dist tar available at: /hadoop/hadoop-2.7.1-src/hadoop-dist/target/hadoop-2.7.1.tar.gz
+&gt;      [exec]
+&gt; [INFO] Executed tasks
+&gt; [INFO]
+&gt; [INFO] --- maven-javadoc-plugin:2.8.1:jar (module-javadocs) @ hadoop-dist ---
+&gt; [INFO] Building jar: /hadoop/hadoop-2.7.1-src/hadoop-dist/target/hadoop-dist-2.7.1-javadoc.jar
+&gt; [INFO] ------------------------------------------------------------------------
+&gt; [INFO] Reactor Summary:
+&gt; [INFO]
+&gt; [INFO] Apache Hadoop Main ................................. SUCCESS [01:56 min]
+&gt; [INFO] Apache Hadoop Project POM .......................... SUCCESS [ 42.134 s]
+&gt; [INFO] Apache Hadoop Annotations .......................... SUCCESS [ 37.761 s]
+&gt; [INFO] Apache Hadoop Assemblies ........................... SUCCESS [  0.125 s]
+&gt; [INFO] Apache Hadoop Project Dist POM ..................... SUCCESS [ 23.183 s]
+&gt; [INFO] Apache Hadoop Maven Plugins ........................ SUCCESS [ 25.962 s]
+&gt; [INFO] Apache Hadoop MiniKDC .............................. SUCCESS [03:23 min]
+&gt; [INFO] Apache Hadoop Auth ................................. SUCCESS [02:11 min]
+&gt; [INFO] Apache Hadoop Auth Examples ........................ SUCCESS [ 10.145 s]
+&gt; [INFO] Apache Hadoop Common ............................... SUCCESS [03:29 min]
+&gt; [INFO] Apache Hadoop NFS .................................. SUCCESS [  4.724 s]
+&gt; [INFO] Apache Hadoop KMS .................................. SUCCESS [02:35 min]
+&gt; [INFO] Apache Hadoop Common Project ....................... SUCCESS [  0.024 s]
+&gt; [INFO] Apache Hadoop HDFS ................................. SUCCESS [02:15 min]
+&gt; [INFO] Apache Hadoop HttpFS ............................... SUCCESS [02:13 min]
+&gt; [INFO] Apache Hadoop HDFS BookKeeper Journal .............. SUCCESS [ 38.598 s]
+&gt; [INFO] Apache Hadoop HDFS-NFS ............................. SUCCESS [  3.213 s]
+&gt; [INFO] Apache Hadoop HDFS Project ......................... SUCCESS [  0.032 s]
+&gt; [INFO] hadoop-yarn ........................................ SUCCESS [  0.030 s]
+&gt; [INFO] hadoop-yarn-api .................................... SUCCESS [ 29.193 s]
+&gt; [INFO] hadoop-yarn-common ................................. SUCCESS [02:02 min]
+&gt; [INFO] hadoop-yarn-server ................................. SUCCESS [  0.040 s]
+&gt; [INFO] hadoop-yarn-server-common .......................... SUCCESS [  8.499 s]
+&gt; [INFO] hadoop-yarn-server-nodemanager ..................... SUCCESS [ 12.283 s]
+&gt; [INFO] hadoop-yarn-server-web-proxy ....................... SUCCESS [  2.359 s]
+&gt; [INFO] hadoop-yarn-server-applicationhistoryservice ....... SUCCESS [  5.298 s]
+&gt; [INFO] hadoop-yarn-server-resourcemanager ................. SUCCESS [ 15.095 s]
+&gt; [INFO] hadoop-yarn-server-tests ........................... SUCCESS [  3.772 s]
+&gt; [INFO] hadoop-yarn-client ................................. SUCCESS [  4.641 s]
+&gt; [INFO] hadoop-yarn-server-sharedcachemanager .............. SUCCESS [  2.433 s]
+&gt; [INFO] hadoop-yarn-applications ........................... SUCCESS [  0.019 s]
+&gt; [INFO] hadoop-yarn-applications-distributedshell .......... SUCCESS [  1.884 s]
+&gt; [INFO] hadoop-yarn-applications-unmanaged-am-launcher ..... SUCCESS [  1.263 s]
+&gt; [INFO] hadoop-yarn-site ................................... SUCCESS [  0.020 s]
+&gt; [INFO] hadoop-yarn-registry ............................... SUCCESS [  3.532 s]
+&gt; [INFO] hadoop-yarn-project ................................ SUCCESS [  3.452 s]
+&gt; [INFO] hadoop-mapreduce-client ............................ SUCCESS [  0.036 s]
+&gt; [INFO] hadoop-mapreduce-client-core ....................... SUCCESS [ 15.195 s]
+&gt; [INFO] hadoop-mapreduce-client-common ..................... SUCCESS [ 12.459 s]
+&gt; [INFO] hadoop-mapreduce-client-shuffle .................... SUCCESS [  2.645 s]
+&gt; [INFO] hadoop-mapreduce-client-app ........................ SUCCESS [  6.342 s]
+&gt; [INFO] hadoop-mapreduce-client-hs ......................... SUCCESS [  3.845 s]
+&gt; [INFO] hadoop-mapreduce-client-jobclient .................. SUCCESS [ 11.295 s]
+&gt; [INFO] hadoop-mapreduce-client-hs-plugins ................. SUCCESS [  1.546 s]
+&gt; [INFO] Apache Hadoop MapReduce Examples ................... SUCCESS [  4.573 s]
+&gt; [INFO] hadoop-mapreduce ................................... SUCCESS [  2.164 s]
+&gt; [INFO] Apache Hadoop MapReduce Streaming .................. SUCCESS [  7.874 s]
+&gt; [INFO] Apache Hadoop Distributed Copy ..................... SUCCESS [ 19.660 s]
+&gt; [INFO] Apache Hadoop Archives ............................. SUCCESS [  2.071 s]
+&gt; [INFO] Apache Hadoop Rumen ................................ SUCCESS [  3.966 s]
+&gt; [INFO] Apache Hadoop Gridmix .............................. SUCCESS [  3.215 s]
+&gt; [INFO] Apache Hadoop Data Join ............................ SUCCESS [  1.818 s]
+&gt; [INFO] Apache Hadoop Ant Tasks ............................ SUCCESS [  1.478 s]
+&gt; [INFO] Apache Hadoop Extras ............................... SUCCESS [  2.037 s]
+&gt; [INFO] Apache Hadoop Pipes ................................ SUCCESS [  5.880 s]
+&gt; [INFO] Apache Hadoop OpenStack support .................... SUCCESS [  3.407 s]
+&gt; [INFO] Apache Hadoop Amazon Web Services support .......... SUCCESS [ 40.013 s]
+&gt; [INFO] Apache Hadoop Azure support ........................ SUCCESS [ 11.557 s]
+&gt; [INFO] Apache Hadoop Client ............................... SUCCESS [  7.659 s]
+&gt; [INFO] Apache Hadoop Mini-Cluster ......................... SUCCESS [  0.042 s]
+&gt; [INFO] Apache Hadoop Scheduler Load Simulator ............. SUCCESS [  3.072 s]
+&gt; [INFO] Apache Hadoop Tools Dist ........................... SUCCESS [  8.519 s]
+&gt; [INFO] Apache Hadoop Tools ................................ SUCCESS [  0.014 s]
+&gt; [INFO] Apache Hadoop Distribution ......................... SUCCESS [ 30.616 s]
+&gt; [INFO] ------------------------------------------------------------------------
+&gt; [INFO] BUILD SUCCESS
+&gt; [INFO] ------------------------------------------------------------------------
+&gt; [INFO] Total time: 29:26 min
+&gt; [INFO] Finished at: 2015-09-01T00:47:31+00:00
+&gt; [INFO] Final Memory: 224M/785M
+&gt; [INFO] ------------------------------------------------------------------------
+</code></pre>
+
+<p>Para completar a compilação, executamos os testes, contudo, alguns deles podem apresentar falhas intermitentes (acontecem algumas vezes, outras não).</p>
+
+<p>Os testes podem levar algumas horas para rodar por completo.</p>
+
+<pre><code class="language-sh">mkdir hadoop-common-project/hadoop-common/target/test-classes/webapps/test
+
+mvn test -Pnative -Drequire.snappy -Drequire.openssl -Dmaven.test.failure.ignore=true -Dsurefire.rerunFailingTestsCount=3
+
+&gt; (...)
+</code></pre>
+
+<p>(alguns testes com falha intermitente)</p>
+
+<ul>
+<li>org.apache.hadoop.ipc.TestDecayRpcScheduler#testAccumulate</li>
+<li>org.apache.hadoop.ipc.TestDecayRpcScheduler#testPriority</li>
+<li>org.apache.hadoop.hdfs.server.datanode.TestDataNodeMetrics#testDataNodeTimeSpend</li>
+<li>org.apache.hadoop.hdfs.shortcircuit.TestShortCircuitCache#testDataXceiverHandlesRequestShortCircuitShmFailure</li>
+</ul>
+
+<p>&hellip;</p>
+
+<p>No final desse procedimento, o pacote do Hadoop estará gerado em:</p>
+
+<p><code>/hadoop/hadoop-2.7.1-src/hadoop-dist/target/hadoop-2.7.1.tar.gz</code></p>
+
+<p>Para copiar do container para a máquina host:
+<br/>(<code>3cc2bc5e593b</code> é o identificador do container no Docker)</p>
+
+<pre><code class="language-sh"># shell na máquina
+sudo docker cp 3cc2bc5e593b:/hadoop/hadoop-2.7.1-src/hadoop-dist/target/hadoop-2.7.1.tar.gz .
+</code></pre>
+
+<h2 id="conclusão">Conclusão</h2>
+
+<p>Esse procedimento mostra como o Hadoop pode ser customizado para necessidades específicas e que não requer um esforço muito grande.</p>
+
+<p>Contudo, ter uma &ldquo;versão&rdquo; própria do Hadoop é uma decisão que deve ser tomada com cautela.</p>
+
+<p>No momento, a gente considera que essa seja a melhor escolha para o nosso trabalho na Globo.com e estamos querendo formar um time para evoluir e dar suporte a essa plataforma. O maior benefício é a liberdade de escolher como configurar e melhorar nossa infraestrutura. O custo é não ter uma empresa especializada &ldquo;cuidando&rdquo; dessa responsabilidade.</p>
+
+<p>No futuro, pode ser que mudemos esse modo de operação e busquemos uma distribuição &ldquo;profissional&rdquo; como Cloudera, Hortonworks ou outra.</p>
+
+<p>Particularmente, eu prefiro manter uma plataforma própria.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://cirocavani.github.io/post/bigdata-na-globocom/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://cirocavani.github.io/post/bigdata-na-globocom/">BigData na Globo.com</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://cirocavani.github.io/post/compilacao-do-spark-15-com-bugfix/">Compilação do Spark 1.5 (com bugfix)</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://cirocavani.github.io/post/compilacao-do-spark-15-com-bugfix/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'cirocavani';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="http://cirocavani.github.io/js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-38960920-4', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
+

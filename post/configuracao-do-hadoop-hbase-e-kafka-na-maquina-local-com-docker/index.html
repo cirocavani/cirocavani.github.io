@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Configuração do Hadoop, HBase e Kafka na Máquina Local com Docker &middot; Ciro Cavani</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="http://cirocavani.github.io/img/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="http://cirocavani.github.io/">Ciro Cavani</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/about/"><i class='fa fa-user fa-fw'></i>Sobre Mim</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/cirocavani" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/cirocavani" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://instagram.com/ciro.cavani" target="_blank"><i class="fa fa-instagram fa-fw"></i>Instagram</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/cirocavani" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/cirocavani" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Configuração do Hadoop, HBase e Kafka na Máquina Local com Docker</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>16 Sep 2015, 23:26</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tutorial">Tutorial</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/hadoop">Hadoop</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/hbase">HBase</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/kafka">Kafka</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/docker">Docker</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p>Esse tutorial é sobre a criação de uma imagem do Docker com a configuração local do Hadoop, HBase e Kafka. Nesse procedimento, o Hadoop é configurado no modo pseudo-distribuído com cada serviço rodando em uma instância própria da JVM, mas todas na mesma máquina. O HBase e o Kafka também rodam em modo &lsquo;distribuído&rsquo; compartilhando uma instância separada do ZooKeeper. Esse procedimento é muito útil para testar funcionalidades desses serviços e aprendizado, mas não é uma solução completa para uso em produção.</p>
+
+<h2 id="pré-requisito">Pré-requisito</h2>
+
+<p>Nesse procedimento, é necessário que o Docker esteja instalado e funcionando; também é necessário acesso à Internet.</p>
+
+<p>Originalmente, esse procedimento foi testado no ArchLinux atualizado até final de Agosto/2015.</p>
+
+<p><a href="https://wiki.archlinux.org/index.php/Docker">https://wiki.archlinux.org/index.php/Docker</a></p>
+
+<pre><code class="language-sh">sudo docker version
+
+&gt; Client:
+&gt;  Version:      1.8.1
+&gt;  API version:  1.20
+&gt;  Go version:   go1.4.2
+&gt;  Git commit:   d12ea79
+&gt;  Built:        Sat Aug 15 17:29:10 UTC 2015
+&gt;  OS/Arch:      linux/amd64
+&gt;
+&gt; Server:
+&gt;  Version:      1.8.1
+&gt;  API version:  1.20
+&gt;  Go version:   go1.4.2
+&gt;  Git commit:   d12ea79
+&gt;  Built:        Sat Aug 15 17:29:10 UTC 2015
+&gt;  OS/Arch:      linux/amd64
+</code></pre>
+
+<h2 id="configuração">Configuração</h2>
+
+<p>Hadoop, ZooKeeper, HBase e Kafka.</p>
+
+<h3 id="container">Container</h3>
+
+<p>Começamos com a criação de um conainer do Docker com a imagem do CentOS6.</p>
+
+<blockquote>
+<p>Importante: para os endereços com <code>grandesdados-hadoop</code> funcionarem fora do container, direto na máquina host, é necessário colocar no <code>/etc/hosts</code> da máquina host o endereço IP do container do Docker para esse nome.</p>
+</blockquote>
+
+<p>Ao executar o comando <code>run</code>, o Docker automaticamente fará o download da imagem e a shell será inicializada dentro de um novo container.</p>
+
+<pre><code class="language-sh">sudo docker run -i -t --name=grandesdados-hadoop --hostname=grandesdados-hadoop centos:6 /bin/bash
+
+&gt; Unable to find image 'centos:6' locally
+&gt; 6: Pulling from library/centos
+&gt;
+&gt; f1b10cd84249: Pull complete
+&gt; fb9cc58bde0c: Pull complete
+&gt; a005304e4e74: Already exists
+&gt; library/centos:6: The image you are pulling has been verified. Important: image verification is a tech preview feature and should not be relied on to provide security.
+&gt;
+&gt; Digest: sha256:25d94c55b37cb7a33ad706d5f440e36376fec20f59e57d16fe02c64698b531c1
+&gt; Status: Downloaded newer image for centos:6
+&gt; [root@grandesdados-hadoop /]#
+</code></pre>
+
+<p>Já dentro do container criamos um usuário e local que serão usados para a instalação e execução dos processos.</p>
+
+<pre><code class="language-sh">adduser -m -d /hadoop hadoop
+cd hadoop
+</code></pre>
+
+<p>A versão usada nesse procedimento é o Java 8, atual versão estável da Oracle.</p>
+
+<pre><code class="language-sh">curl -k -L -H &quot;Cookie: oraclelicense=accept-securebackup-cookie&quot; -O http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.rpm
+rpm -i jdk-8u60-linux-x64.rpm
+
+echo 'export JAVA_HOME=&quot;/usr/java/jdk1.8.0_60&quot;' &gt; /etc/profile.d/java.sh
+source /etc/profile.d/java.sh
+
+echo $JAVA_HOME
+
+&gt; /usr/java/jdk1.8.0_60
+
+java -version
+
+&gt; java version &quot;1.8.0_60&quot;
+&gt; Java(TM) SE Runtime Environment (build 1.8.0_60-b27)
+&gt; Java HotSpot(TM) 64-Bit Server VM (build 25.60-b23, mixed mode)
+</code></pre>
+
+<p>Para completar o ambiente de execução, instalamos os serviços e bibliotecas necessárias.</p>
+
+<pre><code class="language-sh">yum install -y tar openssh-clients openssh-server rsync gzip zlib openssl fuse bzip2 snappy
+
+&gt; (...)
+</code></pre>
+
+<p>(configuração do SSH para acesso sem senha)</p>
+
+<pre><code class="language-sh">service sshd start
+chkconfig sshd on
+
+su - hadoop
+
+ssh-keygen -C hadoop -P '' -f ~/.ssh/id_rsa
+cp ~/.ssh/{id_rsa.pub,authorized_keys}
+
+ssh-keyscan grandesdados-hadoop &gt;&gt;  ~/.ssh/known_hosts
+ssh-keyscan localhost &gt;&gt; ~/.ssh/known_hosts
+ssh-keyscan 127.0.0.1 &gt;&gt; ~/.ssh/known_hosts
+ssh-keyscan 0.0.0.0 &gt;&gt; ~/.ssh/known_hosts
+
+ssh grandesdados-hadoop
+
+&gt; Warning: Permanently added the RSA host key for IP address '172.17.0.12' to the list of known hosts.
+&gt; (nova shell, sem login nem confirmação)
+
+# (sair do shell do ssh)
+exit
+# (sair do shell do su)
+exit
+
+whoami
+
+&gt; root
+</code></pre>
+
+<h3 id="hadoop">Hadoop</h3>
+
+<p>Procedimento para configuração local do Hadoop em modo pseudo-distribuído com uma JVM por serviço.</p>
+
+<p>Esse procedimento é baseado na <a href="http://hadoop.apache.org/docs/r2.7.1/hadoop-project-dist/hadoop-common/SingleCluster.html">documentação do Hadoop</a>.</p>
+
+<p>Serviços:</p>
+
+<ul>
+<li>HDFS: NameNode, SecondaryNameNode, DataNode</li>
+<li>YARN: ResouceManager, NodeManager</li>
+<li>MR: HistoryServer</li>
+</ul>
+
+<p>&hellip;</p>
+
+<p><strong>Instalação</strong></p>
+
+<p>O pacote usado nesse procedimento é o Hadoop 2.7.1 para CentOS6 descrito outro <a href="http://cirocavani.github.io/post/compilacao-do-hadoop-para-centos6-rhel6-usando-docker/">artigo</a>.</p>
+
+<p>Primeiramente, colocamos o pacote dentro do container.</p>
+
+<pre><code class="language-sh"># (shell fora do container)
+sudo docker cp hadoop-2.7.1.tar.gz grandesdados-hadoop:/hadoop
+</code></pre>
+
+<p>De volta ao container como usuário root.</p>
+
+<pre><code class="language-sh">tar zxf hadoop-2.7.1.tar.gz -C /opt
+chown hadoop:hadoop -R /opt/hadoop-2.7.1
+
+echo 'export PATH=$PATH:/opt/hadoop-2.7.1/bin:/opt/hadoop-2.7.1/sbin' &gt; /etc/profile.d/hadoop.sh
+source /etc/profile.d/hadoop.sh
+
+hadoop version
+
+&gt; Hadoop 2.7.1
+&gt; Subversion Unknown -r Unknown
+&gt; Compiled by hadoop on 2015-09-01T00:30Z
+&gt; Compiled with protoc 2.5.0
+&gt; From source with checksum fc0a1a23fc1868e4d5ee7fa2b28a58a
+&gt; This command was run using /opt/hadoop-2.7.1/share/hadoop/common/hadoop-common-2.7.1.jar
+
+mkdir -p /data/hadoop
+chown hadoop:hadoop /data/hadoop
+</code></pre>
+
+<p><strong>Configuração</strong></p>
+
+<p>(para a configuração, deve ser usado o usuário hadoop: <code>su - hadoop</code>)</p>
+
+<p>Editar <code>/opt/hadoop-2.7.1/etc/hadoop/core-site.xml</code>:</p>
+
+<pre><code class="language-xml">&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+        &lt;value&gt;/data/hadoop&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;fs.defaultFS&lt;/name&gt;
+        &lt;value&gt;hdfs://grandesdados-hadoop&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<p>Editar <code>/opt/hadoop-2.7.1/etc/hadoop/hdfs-site.xml</code>:</p>
+
+<pre><code class="language-xml">&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;dfs.replication&lt;/name&gt;
+        &lt;value&gt;1&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;dfs.blocksize&lt;/name&gt;
+        &lt;value&gt;8M&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<p>Editar <code>/opt/hadoop-2.7.1/etc/hadoop/yarn-site.xml</code>:</p>
+
+<pre><code class="language-xml">&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
+        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<p>Editar <code>/opt/hadoop-2.7.1/etc/hadoop/mapred-site.xml</code>:</p>
+
+<pre><code class="language-xml">&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
+        &lt;value&gt;yarn&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;mapreduce.jobtracker.staging.root.dir&lt;/name&gt;
+        &lt;value&gt;/user&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<p>Setup Inicial (antes da primeira inicialização).</p>
+
+<pre><code class="language-sh">hdfs namenode -format
+
+&gt; 15/09/16 02:12:03 INFO namenode.NameNode: STARTUP_MSG:
+&gt; /************************************************************
+&gt; STARTUP_MSG: Starting NameNode
+&gt; STARTUP_MSG:   host = grandesdados-hadoop/172.17.0.12
+&gt; STARTUP_MSG:   args = [-format]
+&gt; STARTUP_MSG:   version = 2.7.1
+&gt; (...)
+&gt; INFO namenode.NameNode: createNameNode [-format]
+&gt; Formatting using clusterid: CID-5daa32a0-3ab6-405e-bfd2-05c0a6e1e7e6
+&gt; (...)
+&gt; INFO common.Storage: Storage directory /data/hadoop/dfs/name has been successfully formatted.
+&gt; (...)
+</code></pre>
+
+<p><strong>HDFS</strong></p>
+
+<p>(como usuário hadoop <code>su - hadoop</code>)</p>
+
+<pre><code class="language-sh">start-dfs.sh
+
+&gt; Starting namenodes on [grandesdados-hadoop]
+&gt; grandesdados-hadoop: starting namenode, logging to /opt/hadoop-2.7.1/logs/hadoop-hadoop-namenode-grandesdados-hadoop.out
+&gt; localhost: starting datanode, logging to /opt/hadoop-2.7.1/logs/hadoop-hadoop-datanode-grandesdados-hadoop.out
+&gt; Starting secondary namenodes [0.0.0.0]
+&gt; 0.0.0.0: starting secondarynamenode, logging to /opt/hadoop-2.7.1/logs/hadoop-hadoop-secondarynamenode-grandesdados-hadoop.out
+
+# criação do diretório do usuário hadoop
+hdfs dfs -mkdir -p /user/hadoop
+</code></pre>
+
+<p>Interface Web do Name Node:</p>
+
+<p><a href="http://grandesdados-hadoop:50070/">http://grandesdados-hadoop:50070/</a></p>
+
+<p>Interface Web do Data Node (vazia):</p>
+
+<p><a href="http://grandesdados-hadoop:50075/">http://grandesdados-hadoop:50075/</a></p>
+
+<p>Interface Web do Secondary Name Node:</p>
+
+<p><a href="http://grandesdados-hadoop:50090/">http://grandesdados-hadoop:50090/</a></p>
+
+<p>Para parar o serviço:</p>
+
+<pre><code class="language-sh">stop-dfs.sh
+</code></pre>
+
+<p><strong>YARN</strong></p>
+
+<p>(como usuário hadoop <code>su - hadoop</code>)</p>
+
+<pre><code class="language-sh">start-yarn.sh
+
+&gt; starting yarn daemons
+&gt; starting resourcemanager, logging to /opt/hadoop-2.7.1/logs/yarn-hadoop-resourcemanager-grandesdados-hadoop.out
+&gt; localhost: starting nodemanager, logging to /opt/hadoop-2.7.1/logs/yarn-hadoop-nodemanager-grandesdados-hadoop.out
+</code></pre>
+
+<p>Interface Web do Resource Manager:</p>
+
+<p><a href="http://grandesdados-hadoop:8088/">http://grandesdados-hadoop:8088/</a></p>
+
+<p>Interface Web do Node Manager:</p>
+
+<p><a href="http://grandesdados-hadoop:8042/">http://grandesdados-hadoop:8042/</a></p>
+
+<p>Para parar o serviço:</p>
+
+<pre><code class="language-sh">stop-yarn.sh
+</code></pre>
+
+<p><strong>History Server</strong></p>
+
+<p>(como usuário hadoop <code>su - hadoop</code>)</p>
+
+<pre><code class="language-sh">mr-jobhistory-daemon.sh start historyserver
+
+&gt; starting historyserver, logging to /opt/hadoop-2.7.1/logs/mapred-hadoop-historyserver-grandesdados-hadoop.out
+</code></pre>
+
+<p>Interface Web do History Server:</p>
+
+<p><a href="http://grandesdados-hadoop:19888/">http://grandesdados-hadoop:19888/</a></p>
+
+<p>Para parar o serviço:</p>
+
+<pre><code class="language-sh">mr-jobhistory-daemon.sh stop historyserver
+</code></pre>
+
+<p><strong>Teste</strong></p>
+
+<p>(para os testes, deve ser usado o usuário hadoop: <code>su - hadoop</code>)</p>
+
+<p>Processos:</p>
+
+<pre><code class="language-sh">ps x
+
+&gt;   PID TTY      STAT   TIME COMMAND
+&gt;  5162 ?        S      0:00 -bash
+&gt;  5327 ?        Sl     0:08 /usr/java/jdk1.8.0_60/bin/java -Dproc_namenode (...)
+&gt;  5423 ?        Sl     0:07 /usr/java/jdk1.8.0_60/bin/java -Dproc_datanode (...)
+&gt;  5612 ?        Sl     0:06 /usr/java/jdk1.8.0_60/bin/java -Dproc_secondarynamenode (...)
+&gt;  5772 ?        Sl     0:08 /usr/java/jdk1.8.0_60/bin/java -Dproc_resourcemanager (...)
+&gt;  5870 ?        Sl     0:07 /usr/java/jdk1.8.0_60/bin/java -Dproc_nodemanager (...)
+&gt;  6189 ?        Sl     0:08 /usr/java/jdk1.8.0_60/bin/java -Dproc_historyserver (...)
+&gt;  6273 ?        R+     0:00 ps x
+</code></pre>
+
+<p>Exemplos de MapReduce:</p>
+
+<pre><code class="language-sh">yarn jar /opt/hadoop-2.7.1/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.1.jar
+
+&gt; An example program must be given as the first argument.
+&gt; Valid program names are:
+&gt;   aggregatewordcount: An Aggregate based map/reduce program that counts the words in the input files.
+&gt;   aggregatewordhist: An Aggregate based map/reduce program that computes the histogram of the words in the input files.
+&gt;   bbp: A map/reduce program that uses Bailey-Borwein-Plouffe to compute exact digits of Pi.
+&gt;   dbcount: An example job that count the pageview counts from a database.
+&gt;   distbbp: A map/reduce program that uses a BBP-type formula to compute exact bits of Pi.
+&gt;   grep: A map/reduce program that counts the matches of a regex in the input.
+&gt;   join: A job that effects a join over sorted, equally partitioned datasets
+&gt;   multifilewc: A job that counts words from several files.
+&gt;   pentomino: A map/reduce tile laying program to find solutions to pentomino problems.
+&gt;   pi: A map/reduce program that estimates Pi using a quasi-Monte Carlo method.
+&gt;   randomtextwriter: A map/reduce program that writes 10GB of random textual data per node.
+&gt;   randomwriter: A map/reduce program that writes 10GB of random data per node.
+&gt;   secondarysort: An example defining a secondary sort to the reduce.
+&gt;   sort: A map/reduce program that sorts the data written by the random writer.
+&gt;   sudoku: A sudoku solver.
+&gt;   teragen: Generate data for the terasort
+&gt;   terasort: Run the terasort
+&gt;   teravalidate: Checking results of terasort
+&gt;   wordcount: A map/reduce program that counts the words in the input files.
+&gt;   wordmean: A map/reduce program that counts the average length of the words in the input files.
+&gt;   wordmedian: A map/reduce program that counts the median length of the words in the input files.
+&gt;   wordstandarddeviation: A map/reduce program that counts the standard deviation of the length of the words in the input files.
+</code></pre>
+
+<p>Rodando o Cálculo do Pi com MapReduce:</p>
+
+<pre><code class="language-sh">yarn jar /opt/hadoop-2.7.1/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.1.jar pi 16 100000
+
+&gt; Number of Maps  = 16
+&gt; Samples per Map = 100000
+&gt; (...)
+&gt; INFO impl.YarnClientImpl: Submitted application application_1442439610364_0001
+&gt; INFO mapreduce.Job: The url to track the job: http://grandesdados-hadoop:8088/proxy/application_1442439610364_0001/
+&gt; INFO mapreduce.Job: Running job: job_1442439610364_0001
+&gt; (...)
+&gt; Job Finished in 48.333 seconds
+&gt; Estimated value of Pi is 3.14157500000000000000
+</code></pre>
+
+<h3 id="zookeeper">ZooKeeper</h3>
+
+<p>Esse procedimento é baseado na <a href="https://zookeeper.apache.org/doc/r3.4.6/zookeeperStarted.html">documentação do ZooKeeper</a>.</p>
+
+<p>Dentro do container como usuário root:</p>
+
+<pre><code class="language-sh">curl -L -O http://archive.apache.org/dist/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz
+tar zxf zookeeper-3.4.6.tar.gz -C /opt
+chown hadoop:hadoop -R /opt/zookeeper-3.4.6
+
+echo 'export PATH=$PATH:/opt/zookeeper-3.4.6/bin' &gt; /etc/profile.d/zookeeper.sh
+source /etc/profile.d/zookeeper.sh
+
+mkdir -p /data/zookeeper
+chown hadoop:hadoop /data/zookeeper
+</code></pre>
+
+<p>Editar <code>/opt/zookeeper-3.4.6/conf/zoo.cfg</code>:</p>
+
+<pre><code class="language-ini">tickTime=6000
+dataDir=/data/zookeeper
+clientPort=2181
+</code></pre>
+
+<p>Inicializando o serviço:</p>
+
+<pre><code class="language-sh">su - hadoop
+zkServer.sh start
+
+&gt; JMX enabled by default
+&gt; Using config: /opt/zookeeper-3.4.6/bin/../conf/zoo.cfg
+&gt; Starting zookeeper ... STARTED
+</code></pre>
+
+<p>Para parar o serviço:</p>
+
+<pre><code class="language-sh">zkServer.sh stop
+</code></pre>
+
+<p><strong>Teste</strong></p>
+
+<p>(para os testes, deve ser usado o usuário hadoop: <code>su - hadoop</code>)</p>
+
+<p>Processo:</p>
+
+<pre><code class="language-sh">ps x | grep zoo
+
+&gt; 8246 ?        Sl     0:00 /usr/java/jdk1.8.0_60/bin/java (...) org.apache.zookeeper.server.quorum.QuorumPeerMain (...)
+&gt; 8291 ?        S+     0:00 grep zoo
+</code></pre>
+
+<p>Telnet:</p>
+
+<pre><code class="language-sh">echo 'ruok' |  curl telnet://grandesdados-hadoop:2181
+
+&gt; imok
+</code></pre>
+
+<p>Cliente:</p>
+
+<pre><code class="language-sh">zkCli.sh -server grandesdados-hadoop:2181
+
+&gt; Connecting to grandesdados-hadoop:2181
+&gt; ...
+&gt; [zk: grandesdados-hadoop:2181(CONNECTED) 0] ls /
+&gt; [zookeeper]
+&gt; [zk: grandesdados-hadoop:2181(CONNECTED) 1] help
+&gt; ZooKeeper -server host:port cmd args
+&gt; 	stat path [watch]
+&gt; 	set path data [version]
+&gt; 	ls path [watch]
+&gt; 	delquota [-n|-b] path
+&gt; 	ls2 path [watch]
+&gt; 	setAcl path acl
+&gt; 	setquota -n|-b val path
+&gt; 	history
+&gt; 	redo cmdno
+&gt; 	printwatches on|off
+&gt; 	delete path [version]
+&gt; 	sync path
+&gt; 	listquota path
+&gt; 	rmr path
+&gt; 	get path [watch]
+&gt; 	create [-s] [-e] path data acl
+&gt; 	addauth scheme auth
+&gt; 	quit
+&gt; 	getAcl path
+&gt; 	close
+&gt; 	connect host:port
+&gt; [zk: grandesdados-hadoop:2181(CONNECTED) 3] quit
+</code></pre>
+
+<h3 id="hbase">HBase</h3>
+
+<p>Esse procedimento é baseado na <a href="http://hbase.apache.org/book.html#quickstart">documentação do HBase</a>.</p>
+
+<p>Dentro do container como usuário root:</p>
+
+<pre><code class="language-sh">curl -L -O http://archive.apache.org/dist/hbase/1.1.2/hbase-1.1.2-bin.tar.gz
+tar zxf hbase-1.1.2-bin.tar.gz -C /opt
+chown hadoop:hadoop -R /opt/hbase-1.1.2
+
+echo 'export PATH=$PATH:/opt/hbase-1.1.2/bin' &gt; /etc/profile.d/hbase.sh
+source /etc/profile.d/hbase.sh
+
+mkdir -p /data/hbase/tmp
+chown hadoop:hadoop -R /data/hbase
+</code></pre>
+
+<p>Editar <code>/opt/hbase-1.1.2/conf/hbase-site.xml</code>:</p>
+
+<pre><code class="language-xml">&lt;configuration&gt;
+  &lt;property&gt;
+    &lt;name&gt;hbase.cluster.distributed&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;hbase.rootdir&lt;/name&gt;
+    &lt;value&gt;hdfs:///hbase&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;hbase.tmp.dir&lt;/name&gt;
+    &lt;value&gt;/data/hbase/tmp&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;hbase.zookeeper.quorum&lt;/name&gt;
+    &lt;value&gt;grandesdados-hadoop&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<p>Editar <code>/opt/hbase-1.1.2/conf/hbase-env.sh</code>:
+<br/>(manter conteúdo original, só alterar os valores abaixo)</p>
+
+<pre><code class="language-sh">export HBASE_OPTS=&quot;-XX:+UseConcMarkSweepGC -Djava.net.preferIPv4Stack=true&quot;
+export HBASE_MANAGES_ZK=false
+</code></pre>
+
+<p>Inicializando o serviço:</p>
+
+<pre><code class="language-sh">su - hadoop
+start-hbase.sh
+
+&gt; starting master, logging to /opt/hbase-1.1.2/bin/../logs/hbase-hadoop-master-grandesdados-hadoop.out
+&gt; Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=128m; support was removed in 8.0
+&gt; Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=128m; support was removed in 8.0
+&gt; starting regionserver, logging to /opt/hbase-1.1.2/bin/../logs/hbase-hadoop-1-regionserver-grandesdados-hadoop.out
+</code></pre>
+
+<p>Interface Web do Master:</p>
+
+<p><a href="http://grandesdados-hadoop:16010/">http://grandesdados-hadoop:16010/</a></p>
+
+<p>Interface Web do Region Server:</p>
+
+<p><a href="http://grandesdados-hadoop:16301/">http://grandesdados-hadoop:16301/</a></p>
+
+<p>Para parar o serviço:</p>
+
+<pre><code class="language-sh">stop-hbase.sh
+</code></pre>
+
+<p><strong>Teste</strong></p>
+
+<p>(para os testes, deve ser usado o usuário hadoop: <code>su - hadoop</code>)</p>
+
+<p>Processo:</p>
+
+<pre><code class="language-sh">ps x | grep hbase
+
+&gt; 8790 ?        S      0:00 bash /opt/hbase-1.1.2/bin/hbase-daemon.sh --config /opt/hbase-1.1.2/bin/../conf foreground_start master
+&gt; 8804 ?        Sl     0:14 /usr/java/jdk1.8.0_60/bin/java -Dproc_master (...)
+&gt; 8915 ?        S      0:00 bash /opt/hbase-1.1.2/bin/hbase-daemon.sh --config /opt/hbase-1.1.2/bin/../conf foreground_start regionserver -D hbase.regionserver.port=16201 -D hbase.regionserver.info.port=16301
+&gt; 8929 ?        Sl     0:14 /usr/java/jdk1.8.0_60/bin/java -Dproc_regionserver (...)
+&gt; 9329 ?        S+     0:00 grep hbase
+</code></pre>
+
+<p>Cliente:</p>
+
+<pre><code class="language-sh">hbase shell
+
+&gt; HBase Shell; enter 'help&lt;RETURN&gt;' for list of supported commands.
+&gt; Type &quot;exit&lt;RETURN&gt;&quot; to leave the HBase Shell
+&gt; Version 1.1.2, rcc2b70cf03e3378800661ec5cab11eb43fafe0fc, Wed Aug 26 20:11:27 PDT 2015
+&gt;
+&gt; hbase(main):001:0&gt; status
+&gt; 1 servers, 0 dead, 2.0000 average load
+&gt;
+&gt; hbase(main):002:0&gt; help
+&gt; HBase Shell, version 1.1.2, rcc2b70cf03e3378800661ec5cab11eb43fafe0fc, Wed Aug 26 20:11:27 PDT 2015
+&gt; Type 'help &quot;COMMAND&quot;', (e.g. 'help &quot;get&quot;' -- the quotes are necessary) for help on a specific command.
+&gt; Commands are grouped. Type 'help &quot;COMMAND_GROUP&quot;', (e.g. 'help &quot;general&quot;') for help on a command group.
+&gt; (...)
+&gt; hbase(main):004:0&gt; exit
+</code></pre>
+
+<h3 id="kafka">Kafka</h3>
+
+<p>Esse procedimento é baseado na <a href="http://kafka.apache.org/documentation.html#quickstart">documentação do Kafka</a>.</p>
+
+<p>Dentro do container como usuário root:</p>
+
+<pre><code class="language-sh">curl -L -O http://archive.apache.org/dist/kafka/0.8.2.1/kafka_2.10-0.8.2.1.tgz
+tar zxf kafka_2.10-0.8.2.1.tgz -C /opt
+chown hadoop:hadoop -R /opt/kafka_2.10-0.8.2.1
+
+echo 'export PATH=$PATH:/opt/kafka_2.10-0.8.2.1/bin' &gt; /etc/profile.d/kafka.sh
+source /etc/profile.d/kafka.sh
+
+mkdir -p /data/kafka
+chown hadoop:hadoop /data/kafka
+</code></pre>
+
+<p>Editar <code>/opt/kafka_2.10-0.8.2.1/config/server.properties</code>:
+<br/>(manter conteúdo original, só alterar os valores abaixo)</p>
+
+<pre><code class="language-ini">log.dirs=/data/kafka
+zookeeper.connect=grandesdados-hadoop:2181
+</code></pre>
+
+<p>Inicializando o serviço:</p>
+
+<pre><code class="language-sh">su - hadoop
+kafka-server-start.sh /opt/kafka_2.10-0.8.2.1/config/server.properties &amp;&gt; kafka.out &amp;
+</code></pre>
+
+<p>Para parar o serviço:</p>
+
+<pre><code class="language-sh">kafka-server-stop.sh /opt/kafka_2.10-0.8.2.1/config/server.properties
+</code></pre>
+
+<p><strong>Teste</strong></p>
+
+<p>(para os testes, deve ser usado o usuário hadoop: <code>su - hadoop</code>)</p>
+
+<p>Processo:</p>
+
+<pre><code class="language-sh">ps x | grep kafka
+
+&gt; 9818 ?        Sl     0:03 /usr/java/jdk1.8.0_60/bin/java (...) kafka.Kafka /opt/kafka_2.10-0.8.2.1/config/server.properties
+&gt; 9928 ?        S+     0:00 grep kafka
+</code></pre>
+
+<p>Enviando e recebendo mensagens:</p>
+
+<pre><code class="language-sh">kafka-topics.sh \
+--create \
+--zookeeper grandesdados-hadoop:2181 \
+--replication-factor 1 \
+--partitions 1 \
+--topic test
+
+&gt; Created topic &quot;test&quot;.
+
+echo 'Primeira mensagem de teste' | kafka-console-producer.sh --broker-list grandesdados-hadoop:9092 --topic test
+
+&gt; (...)
+
+kafka-console-consumer.sh --zookeeper grandesdados-hadoop:2181 --topic test --from-beginning
+
+&gt; Primeira mensagem de teste
+&gt; ^CConsumed 1 messages
+</code></pre>
+
+<h2 id="conclusão">Conclusão</h2>
+
+<p>A revolução em BigData é um fenômeno da tecnologia desenvolvida ao longo dos últimos anos focada na manipulação de um grande volume de dados em máquinas de baixo custo. Essa é a tecnologia que torna possível combinar uma solução de dados escalável com processos para geração de resultados relevantes, tanto no desenvolvimento de produtos quanto na evolução do conhecimento. O importante é entender como essa tecnologia pode ser usada para agregar valor ao negócio e permitir imaginar soluções inovadoras.</p>
+
+<p>Esse artigo documenta o passo-a-passo de uma configuração local do Hadoop, ZooKeeper, HBase e Kafka. Esses são os serviços essenciais em uma plataforma de BigData que, juntamente com o Spark, possibilitam o desenvolvimento de soluções tanto para processamento batch quanto para tempo real.</p>
+
+<p>Em artigos futuros, entrarei usando essa solução para desenvolver e testar algumas aplicações de BigData usando Spark.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://cirocavani.github.io/post/compilacao-do-spark-15-com-bugfix/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://cirocavani.github.io/post/compilacao-do-spark-15-com-bugfix/">Compilação do Spark 1.5 (com bugfix)</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://cirocavani.github.io/post/otimizacao-dos-parametros-do-spark-als-collaborative-filtering-usando-moe/">Otimização dos parâmetros do Spark ALS (Collaborative Filtering) usando MOE</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://cirocavani.github.io/post/otimizacao-dos-parametros-do-spark-als-collaborative-filtering-usando-moe/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'cirocavani';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="http://cirocavani.github.io/js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-38960920-4', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Otimização dos parâmetros do Spark ALS (Collaborative Filtering) usando MOE &middot; Ciro Cavani</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="http://cirocavani.github.io/img/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="http://cirocavani.github.io/">Ciro Cavani</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/about/"><i class='fa fa-user fa-fw'></i>Sobre Mim</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/cirocavani" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/cirocavani" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://instagram.com/ciro.cavani" target="_blank"><i class="fa fa-instagram fa-fw"></i>Instagram</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/cirocavani" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/cirocavani" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Otimização dos parâmetros do Spark ALS (Collaborative Filtering) usando MOE</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>24 Sep 2015, 19:44</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tutorial">Tutorial</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/otimiza%C3%A7%C3%A3o">Otimização</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/sistema-de-recomenda%C3%A7%C3%A3o">Sistema de Recomendação</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/algoritmos">Algoritmos</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/spark">Spark</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  <p>Esse tutorial é sobre otimização de parâmetros em modelos de machine learning. Para esse tutorial, a ferramenta utilizada é o MOE, Metric Optimization Engine, desenvolvido pelo Yelp que implementa o algoritmo de busca usando Gaussian Process. O algoritmo escolhido para ter os parâmetros otimizados é o Collaborative Filtering baseado na fatoração da matriz de preferências. De forma genérica, esse é um processo que pode ser facilmente adaptado para outros algoritmos e permite sistematizar a árdua tarefa de escolher os melhores parâmetros para um modelo.</p>
+
+<p><a href="http://yelp.github.io/MOE/">http://yelp.github.io/MOE/</a></p>
+
+<blockquote>
+<p>MOE (Metric Optimization Engine) is an efficient way to optimize a system’s parameters, when evaluating parameters is time-consuming or expensive.</p>
+
+<p>How does MOE work?</p>
+
+<ol>
+<li>Build a Gaussian Process (GP) with the historical data</li>
+<li>Optimize the hyperparameters of the Gaussian Process</li>
+<li>Find the point(s) of highest Expected Improvement (EI)</li>
+<li>Return the point(s) to sample, then repeat</li>
+</ol>
+</blockquote>
+
+<p>Primeiramente, é feita a instalação do MOE. Nesse processo, é necessário configurar o ambiente para compilar as dependências do projeto e o código que é composto por Python e C++. No final desse procedimento, o serviço do MOE estará disponível como um servidor REST e a API Python que pode ser usada para definir o procedimento de otimização.</p>
+
+<p>O procedimento de instalação em detalhes é descrito aqui:</p>
+
+<p><a href="http://yelp.github.io/MOE/install.html#install-from-source">http://yelp.github.io/MOE/install.html#install-from-source</a></p>
+
+<pre><code class="language-sh">
+mkdir grandesdados-opt
+cd grandesdados-opt
+
+virtualenv --no-site-packages --python=python2.7 moe-env
+
+&gt; Running virtualenv with interpreter /usr/bin/python2.7
+&gt; New python executable in moe-env/bin/python2.7
+&gt; Also creating executable in moe-env/bin/python
+&gt; Installing setuptools, pip, wheel...done.
+
+source moe-env/bin/activate
+
+git clone https://github.com/Yelp/MOE.git
+cd MOE
+
+pip install -r requirements.txt
+
+&gt; (...)
+&gt; Successfully installed (...)
+
+python setup.py install
+
+&gt; (...)
+
+pserve --reload development.ini
+
+&gt; (...)
+&gt; Starting server in PID 23232.
+&gt; serving on 0.0.0.0:6543 view at http://127.0.0.1:6543
+
+# (nesse momento, esse terminal fica 'preso' mostrando o log do servidor do MOE)
+
+</code></pre>
+
+<p>O próximo passo é instalar o algoritmo que tem parâmetros que precisam ser otimizados.</p>
+
+<p>Nesse tutorial, será usado o algoritmo de Collaborative Filtering baseado na fatoração da matriz de preferências que gera um vetor para cada usuário e item da matriz original. Nesse algoritmo, os parâmetros são a dimensão do vetor a ser gerado (fatores latentes), o número de iterações para fatoração da matriz e o parâmetro de regularização usado na fatoração.</p>
+
+<p>O DataSet usado é um sample MovieLens que já vem na distribuição do Spark. São 1501 ratings, 30 usuários e 100 filmes.</p>
+
+<p>O código pode ser análisado aqui:</p>
+
+<p><a href="https://github.com/apache/spark/blob/v1.5.0/examples/src/main/scala/org/apache/spark/examples/ml/MovieLensALS.scala">https://github.com/apache/spark/blob/v1.5.0/examples/src/main/scala/org/apache/spark/examples/ml/MovieLensALS.scala</a></p>
+
+<p>(procedimento na mesma pasta anterior <code>grandesdados-opt</code>)</p>
+
+<pre><code class="language-sh">curl -L -O http://ftp.unicamp.br/pub/apache/spark/spark-1.5.0/spark-1.5.0-bin-hadoop2.6.tgz
+tar zxf spark-1.5.0-bin-hadoop2.6.tgz
+cd spark-1.5.0-bin-hadoop2.6/
+
+cp conf/log4j.properties{.template,}
+sed -i s/log4j\.rootCategory\=INFO/log4j\.rootCategory\=ERROR/1 conf/log4j.properties
+
+echo &quot;spark.ui.showConsoleProgress=false&quot; &gt; conf/spark-defaults.conf
+
+</code></pre>
+
+<p>Executando o exemplo do MovieLens (a saída são os parâmetros):</p>
+
+<pre><code class="language-sh">
+./bin/run-example ml.MovieLensALS
+
+&gt; Error: Missing option --ratings
+&gt; Error: Missing option --movies
+&gt; MovieLensALS: an example app for ALS on MovieLens data.
+&gt; Usage: MovieLensALS [options]
+&gt;
+&gt;   --ratings &lt;value&gt;
+&gt;         path to a MovieLens dataset of ratings
+&gt;   --movies &lt;value&gt;
+&gt;         path to a MovieLens dataset of movies
+&gt;   --rank &lt;value&gt;
+&gt;         rank, default: 10
+&gt;   --maxIter &lt;value&gt;
+&gt;         max number of iterations, default: 10
+&gt;   --regParam &lt;value&gt;
+&gt;         regularization parameter, default: 0.1
+&gt;   --numBlocks &lt;value&gt;
+&gt;         number of blocks, default: 10
+&gt;
+&gt; Example command line to run this app:
+&gt;
+&gt;  bin/spark-submit --class org.apache.spark.examples.ml.MovieLensALS \
+&gt;   examples/target/scala-*/spark-examples-*.jar \
+&gt;   --rank 10 --maxIter 15 --regParam 0.1 \
+&gt;   --movies data/mllib/als/sample_movielens_movies.txt \
+&gt;   --ratings data/mllib/als/sample_movielens_ratings.txt
+
+</code></pre>
+
+<p>Fazendo uma execução:</p>
+
+<pre><code class="language-sh">
+time ./bin/run-example ml.MovieLensALS \
+--rank 10 --maxIter 15 --regParam 0.1 \
+--movies data/mllib/als/sample_movielens_movies.txt \
+--ratings data/mllib/als/sample_movielens_ratings.txt
+
+&gt; Got 1501 ratings from 30 users on 100 movies.                                   
+&gt; Training: 1169, test: 332.
+&gt; Test RMSE = 0.9815785141168548.                                                 
+&gt; Found 0 false positives                                                         
+&gt;
+&gt; real	0m22.441s
+&gt; user	0m56.320s
+&gt; sys	0m1.847s
+
+</code></pre>
+
+<p>Para fazer a otimização, o MOE requer que o problema seja modelado como uma função do vetor de parâmetros para um valor escalar. O objetivo da ferramenta é minimizar essa função.</p>
+
+<p>Para o problema do ALS, por simplicidade, vamos aproveitar que o exemplo já calcula o RMSE e usar a função que mapeia o vetor do Número de Fatores Latentes, Número de Iterações e Regularização para o RMSE. Faz sentido o objetivo ser minimizar o RMSE.</p>
+
+<p>Na pasta <code>grandesdados-opt</code>, crie o arquivo <code>func.sh</code> que mapeia a função desejada:</p>
+
+<pre><code class="language-sh">#!/bin/bash
+
+cd spark-1.5.0-bin-hadoop2.6/
+
+./bin/run-example ml.MovieLensALS \
+--rank $1 --maxIter $2 --regParam $3 \
+--movies data/mllib/als/sample_movielens_movies.txt \
+--ratings data/mllib/als/sample_movielens_ratings.txt 2&gt;&amp;1 \
+| sed -n 's/\(Test RMSE =\) \([0-9]*\.[0-9]*\)\./\2/p'
+</code></pre>
+
+<p>Dessa forma, teremos:</p>
+
+<pre><code class="language-sh">chmod +x func.sh
+
+./func.sh 10 15 0.1
+
+&gt; 0.9815785141168546
+</code></pre>
+
+<p>Agora podemos definir o procedimento de otimização como um experimento do MOE.</p>
+
+<p>O experimento é criado com o domínio dos parâmetros que estamos querendo otimizar. Dado que estamos trabalhando com um DataSet limitado, podemos restringir os valores.</p>
+
+<p>Nesse exemplo, estamos usando:</p>
+
+<ul>
+<li>Número de Fatores Latentes: entre 5 e 50</li>
+<li>Número de Iterações da Fatoração: entre 5 e 20</li>
+<li>Regularização da Fatoração: entre 0.001 e 1</li>
+</ul>
+
+<p>Vamos assumir como primeiro ponto &lsquo;ótimo&rsquo; o que vem documentado no exemplo, ou seja, 10, 15 e 0,1.</p>
+
+<p>A busca por uma solução muito boa pode envolver muitas iterações do processo de otimização, nesse exemplo vamos usar 20, mas poderia ser 100 ou 400 para uma busca mais completa.</p>
+
+<p>Na pasta <code>grandesdados-opt</code>, crie o arquivo <code>opt.py</code> que define o procedimento de otimização:</p>
+
+<pre><code class="language-python">import subprocess
+
+from moe.easy_interface.experiment import Experiment
+from moe.easy_interface.simple_endpoint import gp_next_points
+from moe.optimal_learning.python.data_containers import SamplePoint
+
+def function_to_minimize(x):
+    f = &quot;./func.sh {0:} {1:} {2:}&quot;.format(int(x[0]), int(x[1]), x[2])
+    print f
+    y = subprocess.Popen(f, shell=True, stdout=subprocess.PIPE).stdout.read().strip()
+    if y: print y
+    return float(y)
+
+if __name__ == '__main__':
+    exp = Experiment([[5, 50], [5, 20], [0.001, 1]])
+
+    xmin = []
+    ymin = 0.0
+
+    for i in range(20):
+        print &quot;Sample {0:}&quot;.format(i)
+        try:
+            x = [10.0, 15.0, 0.1] if i == 0 else gp_next_points(exp)[0]
+            y = function_to_minimize(x)
+            exp.historical_data.append_sample_points([
+                SamplePoint(x, y, 0.05),
+            ])
+            if not xmin or y &lt; ymin:
+                xmin, ymin = x, y
+        except ValueError:
+            print &quot;error&quot;
+        print
+
+    print str(xmin)
+    print str(ymin)
+
+</code></pre>
+
+<p>Por fim, o resultado:
+<br/>(necessário estar dentro do virtualenv onde o MOE foi instalado)</p>
+
+<pre><code class="language-sh">python2 opt.py
+
+&gt; Sample 0
+&gt; ./func.sh 10 15 0.1
+&gt; 0.9815785141168545
+&gt; (...)
+&gt; Sample 19
+&gt; ./func.sh 16 19 0.41989952735
+&gt; error
+&gt;
+&gt; [46.6604641336, 19.9410400182, 0.0409527639665]
+&gt; 0.977384860516
+
+</code></pre>
+
+<p>Como podemos ver, os parâmetros 46 para Número de Fatores Latentes, 19 para Iterações da Fatoração e 0,041 para Regularização resultaram em um erro menor nesse dataset de exemplo.</p>
+
+<p>Para mais informações sobre otimização usando o MOE, consulte a documentação.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://cirocavani.github.io/post/configuracao-do-hadoop-hbase-e-kafka-na-maquina-local-com-docker/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://cirocavani.github.io/post/configuracao-do-hadoop-hbase-e-kafka-na-maquina-local-com-docker/">Configuração do Hadoop, HBase e Kafka na Máquina Local com Docker</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'cirocavani';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="http://cirocavani.github.io/js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-38960920-4', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
+
