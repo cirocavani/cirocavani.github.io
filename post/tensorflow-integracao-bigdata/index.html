@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>TensorFlow: Integração com BigData &middot; Ciro Cavani</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="http://cirocavani.github.io/img/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="http://cirocavani.github.io/">Ciro Cavani</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/about/"><i class='fa fa-user fa-fw'></i>Sobre Mim</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/cirocavani" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/cirocavani" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://instagram.com/ciro.cavani" target="_blank"><i class="fa fa-instagram fa-fw"></i>Instagram</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/cirocavani" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/cirocavani" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>TensorFlow: Integração com BigData</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>22 Aug 2016, 22:00</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tensorflow">TensorFlow</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/bigdata">BigData</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/hadoop">Hadoop</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p>Esse artigo é sobre a criação de uma Aplicação com TensorFlow em que o treinamento é feito no YARN (Hadoop), o servidor de inferência é hospedado no Tsuru e as requisições são feitas por Aplicações Java/Scala. Esses são os desafios para colocar em produção na Globo.com aplicações de Inteligência Artificial. Nesse trabalho foram desenvolvidos projetos que são Provas de Conceito de como fazer essa Aplicação TensorFlow integrada com BigData (o código está disponível no GitHub).</p>
+
+<p><strong>Código</strong></p>
+
+<p><a href="https://github.com/cirocavani/tensorflow-poc">https://github.com/cirocavani/tensorflow-poc</a></p>
+
+<h2 id="motivação">Motivação</h2>
+
+<p>O problema começou com: como criar uma Aplicação de AI? A proposta para resolver esse problema foi: TensorFlow.</p>
+
+<p>O problema passou a ser: o que é o TensorFlow? Como criar uma Aplicação com TensorFlow? como colocar essa Aplicação em Produção? como usar essa Aplicação em um produto para entregar valor à empresa e ao usuário?</p>
+
+<p>A preparação para resolver esse problema começou a ser feita no início de 2016, no primeiro Hackday em Janeiro e teve um &ldquo;evento crucial&rdquo; no final de Junho, quando o Google publicou em seu blog de pesquisa o uso do TensorFlow para recomendação de app no Google Play.</p>
+
+<p>O TensorFlow é uma biblioteca usada para treinar algoritmos com dados. Esses &ldquo;algoritmos&rdquo; podem ser &ldquo;executados&rdquo; para gerar resultados que podem ser usados em &ldquo;aplicações inteligentes&rdquo;. Um exemplo de aplicação que pode usar um &ldquo;algoritmo&rdquo; do TensorFlow é Recomendação.</p>
+
+<p>O problema tornou-se: como usar o TensorFlow em Recomendação?</p>
+
+<p>Para resolver esse problema, dividi em duas frentes de trabalho: integrar o TensorFlow na infra de BigData, e; desenvolver uma aplicação de TensorFlow para Recomendação.</p>
+
+<p>A primeira frente de trabalho está feita.</p>
+
+<h2 id="por-que-o-tensorflow">Por que o TensorFlow?</h2>
+
+<p>Nos últimos anos, a tendência que eu venho observando do mercado é que AI finalmente se tornou a área de diferenciação, inovação e crescimento. Os investidores estão cada vez mais colocando dinheiro nessa área. As grandes empresas estão cada vez mais se posicionando como &ldquo;empresas de AI&rdquo;, sendo os maiores exemplos Google, Facebook e Microsoft, com Apple e Amazon chegando junto. Startups como a que fez a app Prisma valem bilhão de dólares.</p>
+
+<p>Enfim, AI é importante.</p>
+
+<p>A minha expectativa é usar Inteligência Artificial na Globo.com, incluindo produção e distribuição de conteúdo, desenvolvimento de produto, controle de infraestrutura, análises de segurança, &hellip; seguir a tendência de Google, Facebook, Microsoft, Amazon, e também ser uma empresa de AI.</p>
+
+<p>Para o trabalho de fazer AI na Globo.com, a tecnologia escolhida foi o TensorFlow, framework de AI do Google. A estratégia escolhida para acelerar o progresso desse trabalho foi usar a infraestrutura de BigData que já tem bastante poder de processamento. Essa é a proposta inicial, com a expectativa de criar demanda suficiente para uma infraestrutura de AI com GPUs.</p>
+
+<p>O TensorFlow é um framework para construção de algoritmos que podem ser usados para processar texto, imagem e vídeo, para tratamento de linguagem natural, reconhecimento de objetos e faces, reconhecimento de padrões, construção de chatbots, construção de bots para jogos, &hellip;, ou seja, é uma biblioteca de funções avançadas que o Google está usando para fazer AI e que está ganhando muita popularidade entre os desenvolvedores. Contudo, há um risco nesse controle direto do Google sobre uma tecnologia que está se tornando a &ldquo;base de tudo&rdquo;.</p>
+
+<p>Recentemente, duas reportagens discutiram o TensorFlow.</p>
+
+<blockquote>
+<p><strong>Here&rsquo;s Why Google Is Open-Sourcing Some Of Its Most Important Technology</strong></p>
+
+<p><a href="http://www.forbes.com/sites/gregsatell/2016/07/18/heres-why-google-is-open-sourcing-some-of-its-most-important-technology/">http://www.forbes.com/sites/gregsatell/2016/07/18/heres-why-google-is-open-sourcing-some-of-its-most-important-technology/</a></p>
+
+<p><strong>Google Sprints Ahead in AI Building Blocks, Leaving Rivals Wary</strong></p>
+
+<p><a href="http://www.bloomberg.com/news/articles/2016-07-21/google-sprints-ahead-in-ai-building-blocks-leaving-rivals-wary">http://www.bloomberg.com/news/articles/2016-07-21/google-sprints-ahead-in-ai-building-blocks-leaving-rivals-wary</a></p>
+</blockquote>
+
+<p>Portanto, o primeiro passo na direção de &ldquo;fazer AI na Globo.com&rdquo; está sendo criar uma primeira Aplicação com TensorFlow.</p>
+
+<p>Esse artigo é sobre como isso foi feito.</p>
+
+<h3 id="o-que-é-o-tensorflow">O que é o TensorFlow?</h3>
+
+<p>TensorFlow é um framework para processamento de tensores (arrays multidimensionais) em ambientes heterogêneos (CPUs, GPUs, mobile). É um projeto open-source do Google liberado em Novembro/2015. A API principal é Python e a engine de execução é C++, o Google espera que a comunidade desenvolva bindings para outras linguagens.</p>
+
+<p>Na prática, o TensorFlow permite escrever algoritmos na forma de operações com tensores (arrays) que resultam em um grafo de execução. Esse grafo é otimizado e as operações são distribuídas para serem executadas em CPU ou GPU de acordo com o tipo de operação e a disponibilidade desses recursos. A engine pode ser estendida com novas operações que podem ter implementações para CPU e/ou GPU e serão usadas de acordo com os recursos. Essa capacidade de otimizar o processamento para recursos heterogêneos é o principal benefício do TensorFlow.</p>
+
+<p>O Google usa o TensorFlow para pesquisa e desenvolvimento de produtos que usam Deep Learning. Contudo, a proposta é que o framework seja usado para Machine Learning em geral. Essa proposta não torna o TensorFlow um framework para processamento geral, mas essa é uma possibilidade para o futuro.</p>
+
+<p>Atualmente, o Google espera que a comunidade use o TensorFlow para criar algoritmos de Machine Learning que, em um segundo momento, poderão se tornar a biblioteca de algoritmos do TensorFlow (hoje, ainda é escasso comparado aos líderes do mercado, scikit-learn e R/CRAN).</p>
+
+<p>Comparado com Spark que é um framework para processamento geral e que tem uma biblioteca de Machine Learning com vários algoritmos (com suporte a batch, stream, SQL e grafos), acredito que o TensorFlow tem um mecanismo de execução mais &ldquo;moderno&rdquo;. O processamento otimizado com recursos heterogêneos é um benefício que hoje não está disponível no Spark e pode se tornar indispensável para os processamentos que estão em demanda na atualidade. Ou seja, o TensorFlow parte de um modelo de execução baseado na demanda crescente de algoritmos inteligentes para processar dados enquanto o Spark é a evolução do modelo antigo de paralelização de processamento que pode estar com os dias contados.</p>
+
+<p>O TensorFlow ainda tem muito o que evoluir para que se torne o framework padrão em processamento de dados e Machine Learning, mas me parece que esse é o futuro para o qual estamos caminhando.</p>
+
+<p>Por fim, Jeff Dean, criador do MapReduce e muitas outras tecnologias de processamento distribuído e BigData, é um dos líderes do TensorFlow, o que dá ao projeto muita credibilidade.</p>
+
+<p>Para saber mais sobre o TensorFlow:</p>
+
+<blockquote>
+<p><strong>TensorFlow</strong><br>
+TensorFlow is an Open Source Software Library for Machine Intelligence</p>
+
+<p><a href="https://www.tensorflow.org/">https://www.tensorflow.org/</a></p>
+
+<p><a href="https://en.wikipedia.org/wiki/TensorFlow">https://en.wikipedia.org/wiki/TensorFlow</a></p>
+
+<p>(código)</p>
+
+<p><a href="https://github.com/tensorflow/tensorflow">https://github.com/tensorflow/tensorflow</a></p>
+
+<p>(blog)</p>
+
+<p><strong>TensorFlow - Google’s latest machine learning system, open sourced for everyone</strong></p>
+
+<p><a href="http://googleresearch.blogspot.com.br/2015/11/tensorflow-googles-latest-machine_9.html">http://googleresearch.blogspot.com.br/2015/11/tensorflow-googles-latest-machine_9.html</a></p>
+
+<p><strong>TensorFlow: Open source machine learning</strong></p>
+
+<p><a href="https://www.youtube.com/watch?v=oZikw5k_2FM">https://www.youtube.com/watch?v=oZikw5k_2FM</a></p>
+
+<p>(Paper)</p>
+
+<p><strong>TensorFlow: Large-scale machine learning on heterogeneous systems</strong></p>
+
+<p><a href="http://download.tensorflow.org/paper/whitepaper2015.pdf">http://download.tensorflow.org/paper/whitepaper2015.pdf</a></p>
+</blockquote>
+
+<p>Os dois últimos releases do TensorFlow foram bastante interessantes:</p>
+
+<blockquote>
+<p><strong>TensorFlow v0.9 now available with improved mobile support</strong></p>
+
+<p><a href="https://developers.googleblog.com/2016/06/tensorflow-v09-now-available-with.html">https://developers.googleblog.com/2016/06/tensorflow-v09-now-available-with.html</a></p>
+
+<p>Esse é o último release e destaca o uso do TensorFlow em aplicações Mobile, onde é possível treinar um modelo que executa no smartphone para reconhecimento de objeto usando o vídeo da câmera, em tempo real.</p>
+
+<p><strong>Announcing TensorFlow 0.8 – now with distributed computing support!</strong></p>
+
+<p><a href="https://research.googleblog.com/2016/04/announcing-tensorflow-08-now-with.html">https://research.googleblog.com/2016/04/announcing-tensorflow-08-now-with.html</a></p>
+
+<p>Nesse release, o destaque foi a funcionalidade de treinamento distribuído do modelo, onde antes só era possível usar uma máquina, agora é possível treinar com várias tanto para distribuir processamento quanto para paralelizar configurações distintas do modelo.</p>
+</blockquote>
+
+<h3 id="experiência-com-tensorflow">Experiência com TensorFlow</h3>
+
+<p>Já há algum tempo, venho trabalhando com o TensorFlow (nos últimos 3 hackdays na Globo.com, quase 9 meses). Recentemente, o Google divulgou um paper em que eles elaboram como usam o TensorFlow para fazer recomendação de apps no Google Play. Essa se tornou a oportunidade que eu encontrei para começar a trazer para a Globo.com a base para crescermos na área de AI.</p>
+
+<blockquote>
+<p><strong>Wide &amp; Deep Learning: Better Together with TensorFlow</strong></p>
+
+<p><a href="https://research.googleblog.com/2016/06/wide-deep-learning-better-together-with.html">https://research.googleblog.com/2016/06/wide-deep-learning-better-together-with.html</a></p>
+
+<p><strong>Wide &amp; Deep Learning for Recommender Systems</strong></p>
+
+<p><a href="http://arxiv.org/abs/1606.07792">http://arxiv.org/abs/1606.07792</a></p>
+</blockquote>
+
+<p>De forma prática, o Google disponibilizou no TensorFlow uma API para criar um modelo e um paper que explica como eles usam esse modelo para fazer recomendação. Eles não disponibilizaram o &ldquo;sistema de recomendação&rdquo; propriamente dito que, na verdade, precisa ser &ldquo;construído&rdquo; a partir do TensorFlow.</p>
+
+<p>Portando, o trabalho consiste em entender a proposta de &ldquo;como&rdquo; fazer recomendação usando o TensorFlow, mapear esse &ldquo;sistema&rdquo; no &ldquo;modus operandi&rdquo; do Ambiente de BigData da Globo.com e avaliar o ganho de ter o TensorFlow como parte dessa plataforma.</p>
+
+<p>Eu comecei a fazer esse trabalho.</p>
+
+<p>Estou trabalhando em duas &ldquo;frentes&rdquo;: a primeira é genérica sobre integração do TensorFlow em BigData e a outra é específica sobre fazer recomendação com TensorFlow. Estou trabalhando em ambas, mas o foco desse artigo é na primeira porque acredito que seja mais interessante para todos que ainda não conhecem o TensorFlow.</p>
+
+<h4 id="aplicação-tensorflow">Aplicação TensorFlow</h4>
+
+<p>A primeira &ldquo;frente&rdquo; de trabalho está sendo ganhar experiência em como o <strong>TensorFlow</strong> funciona e identificar como é possível acomodar esse processo na plataforma da Globo.com.</p>
+
+<blockquote>
+<p><strong>TensorFlow - Google’s latest machine learning system, open sourced for everyone</strong></p>
+
+<p><a href="https://research.googleblog.com/2015/11/tensorflow-googles-latest-machine_9.html">https://research.googleblog.com/2015/11/tensorflow-googles-latest-machine_9.html</a></p>
+</blockquote>
+
+<p>O <strong>TensorFlow</strong> é uma biblioteca C++ com uma API em Python para criação de modelos (especificação do algoritmo / grafo de operações e parâmetros; processamento de dados / treinamento). O resultado do treinamento (e validação) é um &ldquo;modelo de inferência&rdquo; que deve ser &ldquo;transferido&rdquo; para a &ldquo;aplicação&rdquo; que vai &ldquo;fazer&rdquo; AI.</p>
+
+<p>Na prática, uma vez definido o grafo de operações e parâmetros, esse &ldquo;programa&rdquo; é alimentado com dados que vão ajustando os parâmetros. No final, esse grafo com parâmetros &ldquo;aprendidos&rdquo; é transformado em um arquivo que pode ser &ldquo;carregado&rdquo; na aplicação e usado para fazer predições / inferência.</p>
+
+<p>Essa é a fase do treinamento e é praticamente toda em Python.</p>
+
+<p>Uma vez que o &ldquo;modelo de inferência&rdquo; está feito, a próxima fase é fazer inferência.</p>
+
+<p>Em Recomendação, &ldquo;inferência&rdquo; seria fazer uma lista das matérias que mais interessam o Usuário. Esse resultado pode ser obtido de duas formas: off-line e on-line. No primeiro caso, uma aplicação pega todas as matérias disponíveis e executa a inferência em batch guardando os melhores resultados para cada um dos Usuário conhecidos (é isso que fazemos com o algoritmo de Fatoração de Matriz / ALS). No segundo caso, o modelo é usado na requisição na API de Conteúdo para gerar a recomendação para um Usuário (é isso que fazemos com o algoritmo do TF-IDF e gostaríamos de fazer com o ALS também). Considero a primeira solução muito custosa computacionalmente e lenta para refletir o interesse imediato / recente do Usuário. Acredito que a solução on-line é melhor e tem alguns casos de uso em que é a única que faz sentido.</p>
+
+<p>Portanto, a dúvida é: é possível fazer inferência em um modelo do TensorFlow de forma on-line?</p>
+
+<p>No início do ano, o Google tornou público um segundo projeto chamado <strong>TensorFlow Serving</strong> que assume esse papel de executar inferências em modelos do TensorFlow de forma on-line.</p>
+
+<blockquote>
+<p><strong>Running your models in production with TensorFlow Serving</strong></p>
+
+<p><a href="https://research.googleblog.com/2016/02/running-your-models-in-production-with.html">https://research.googleblog.com/2016/02/running-your-models-in-production-with.html</a></p>
+</blockquote>
+
+<p>O <strong>TensorFlow Serving</strong> é uma biblioteca C++ para construção de &ldquo;servidor&rdquo; de inferência genérico, que já tem suporte para o protocolo HTTP2 usando gRPC (ProtoBuf) e integração com a biblioteca do TensorFlow para fazer inferência (incluindo atualização automática de modelos).</p>
+
+<p>Na prática, o TF Serving possibilita escrever APIs para modelos do TensorFlow. Uma aplicação C++ que recebe requisições em HTTP2 e executa a inferência (&ldquo;predição&rdquo;) com o modelo treinado. O principal benefício dessa biblioteca é automaticamente carregar novas versões dos modelos conforme eles vão sendo atualizados pelo treinamento.</p>
+
+<p>Essa é a fase da inferência on-line do modelo e é praticamente toda em C++.</p>
+
+<h4 id="algoritmo-tensorflow">Algoritmo TensorFlow</h4>
+
+<p>A outra &ldquo;frente&rdquo; de trabalho é paralela a primeira e consistem em desenvolver propriamente o algoritmo de recomendação baseado no paper do Google. Isso significa definir as features que serão usadas, como ler esses dados e alimentar o treinamento do modelo e como executar a inferência usando as matérias de um determinado Produto (Portal).</p>
+
+<p>Comecei a fazer esse trabalho também, mas vou deixar para discuti-lo em outro artigo.</p>
+
+<h2 id="tensorflow-em-bigdata">TensorFlow em BigData</h2>
+
+<p>O trabalho consistiu em identificar e resolver todos os requisitos para o desenvolvimento de uma Aplicação TensorFlow em uma infraestrutura de BigData.</p>
+
+<p>Para esse trabalho, a &ldquo;anatomia&rdquo; de uma Aplicação TensorFlow que foi considerada consiste em dois componentes:</p>
+
+<ol>
+<li><p>o treinamento (aprendizado): o código é em Python, precisa de acesso a dados e poder de processamento.</p>
+
+<p>Esse programa deve ser empacotado para rodar no YARN (Hadoop, RedHat EL 6)</p></li>
+
+<li><p>a API de consulta (inferência): o código é em C++, recebe requisições com dados &ldquo;reais&rdquo; e retorna o resultado a partir da versão mais recente de um &ldquo;modelo treinado&rdquo;</p>
+
+<p>Esse programa deve ser empacotado para rodar no Tsuru (Ubuntu LTS 14.04)</p></li>
+</ol>
+
+<p>&hellip;</p>
+
+<p>Para integrar uma aplicação que usa essa &ldquo;Inteligência Artificial&rdquo;, é necessário usar um Cliente que &ldquo;faça requisições&rdquo; ao servidor de inferência (2).</p>
+
+<p>Essa funcionalidade pode ser implementada em qualquer linguagem e é feita com Python nos exemplos do TensorFlow.</p>
+
+<p>Para esse trabalho, o interesse é integrar com Aplicações em Scala, logo um cliente Java satisfaz o requisito (Java 7).</p>
+
+<h2 id="provas-de-conceito">Provas de Conceito</h2>
+
+<p>O trabalho consistiu no desenvolvimento de Provas de Conceito (POC) que exploram os desafios para se criar uma Aplicação TensorFlow.</p>
+
+<p>Todas as POCs rodam dentro do Docker e foram testadas no Linux e no Mac (usando Docker on Mac).</p>
+
+<p>Além do Docker, não é necessário mais nada instalado na máquina.</p>
+
+<p>A POC <a href="#tflearn-wide-n-deep">tflearn_wide_n_deep</a> foi o aquecimento rodando um exemplo do TensorFlow.</p>
+
+<p>As POCs <a href="#tfserving-basic">tfserving_basic</a>, <a href="#tfserving-advanced">tfserving_advanced</a> e <a href="#skeleton-project">skeleton_project</a> correspondem ao trabalho de criar um projeto que consiste de algoritmo Python para treinamento e servidor C++ para servir o modelo (tem um cliente Python para validar o funcionamento).</p>
+
+<p>As POCs <a href="#yarn-training">yarn_training</a>, <a href="#tensorflow-centos6">tensorflow_centos6</a>, <a href="#tensorflow-installer">tensorflow_installer</a>, <a href="#hadoop-centos6">hadoop_centos6</a> e <a href="#hadoop-ubuntu1604">hadoop_ubuntu1604</a> correspondem ao trabalho de fazer o treinamento usando YARN (Hadoop) no RedHat EL 6 (produção).</p>
+
+<p>A POC <a href="#client-java">client_java</a> corresponde ao trabalho de usar em uma aplicação Java/Scala um serviço do TensorFlow.</p>
+
+<p>A POC <a href="#server-tsuru">server_tsuru</a> corresponde ao trabalho de criar uma app no Tsuru para servir um modelo treinado do TensorFlow.</p>
+
+<h4 id="tflearn-wide-n-deep">tflearn_wide_n_deep</h4>
+
+<p>A POC é a execução do tutorial sobre o &ldquo;algoritmo&rdquo; usado na recomendação de app do Google Play.</p>
+
+<p>Na prática, é um classificador binário que responde se uma pessoa ganha mais ou menos de 50 mil dólares baseado em dados do Censo, é uma combinação de Logistic Regression com Rede Neural.</p>
+
+<p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/tflearn_wide_n_deep/README.md">README</a></p>
+
+<h4 id="tfserving-basic">tfserving_basic</h4>
+
+<p>A POC é a execução do tutorial sobre o TensorFlow Serving sem versionamento do modelo.</p>
+
+<p>O &ldquo;algoritmo&rdquo; desse tutorial é um classificador de imagem que faz reconhecimento de dígito usando dataset MNIST e Rede Neural.</p>
+
+<p>Na prática, consiste de todo o processo de compilação do TensorFlow Serving e do TensorFlow para execução dos três requisitos desse trabalho: treinamento, servidor e cliente (essa &ldquo;arquitetura&rdquo; é o resultado final esperado para uma Aplicação TensorFlow).</p>
+
+<p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/tfserving_basic/README.md">README</a></p>
+
+<h4 id="tfserving-advanced">tfserving_advanced</h4>
+
+<p>A POC é a execução do tutorial sobre o TensorFlow Serving com versionamento do modelo.</p>
+
+<p>O &ldquo;algoritmo&rdquo; desse tutorial é um classificador de imagem que faz reconhecimento de dígito usando dataset MNIST e Rede Neural.</p>
+
+<p>Na prática, consiste de todo o processo de compilação do TensorFlow Serving e do TensorFlow para execução dos três requisitos desse trabalho: treinamento, servidor e cliente (essa &ldquo;arquitetura&rdquo; é o resultado final esperado para uma Aplicação TensorFlow).</p>
+
+<p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/tfserving_advanced/README.md">README</a></p>
+
+<h4 id="skeleton-project">skeleton_project</h4>
+
+<p>(código do exemplo extraído para um projeto fora da árvore do TensorFlow Serving)</p>
+
+<p>A POC é a criação de um projeto standalone baseado no código do tutorial sobre o TensorFlow Serving com versionamento do modelo.</p>
+
+<p>O &ldquo;algoritmo&rdquo; desse projeto é um classificador de imagem que faz reconhecimento de dígito usando dataset MNIST e Rede Neural.</p>
+
+<p>Na prática, consiste em separar o código para treinamento, servidor e cliente em um projeto que depende do TensorFlow Serving e usa a mesma ferramenta de build Bazel (fazendo o processo de compilação do TensorFlow Serving e do TensorFlow).</p>
+
+<p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/skeleton_project/README.md">README</a></p>
+
+<h4 id="yarn-training">yarn_training</h4>
+
+<p>(motivação: usar a infraestrutura de armazenamento e processamento do Hadoop para rodar o treinamento com TensorFlow)</p>
+
+<p>A POC é a criação de uma Aplicação YARN para rodar o treinamento com TensorFlow.</p>
+
+<p>Na prática, consiste em criar uma aplicação Java baseada no exemplo de execução de shell script distribuído do YARN, essa aplicação é dividida em duas partes, uma que faz submissão do script e a outra que controla dentro do cluster a execução.</p>
+
+<p>Esse procedimento depende do instalador do TensorFlow criado em <a href="#tensorflow-installer">tensorflow_installer</a> por link simbólico e do container em <a href="#hadoop-centos6">hadoop_centos6</a> estar rodando.</p>
+
+<p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/yarn_training/README.md">README</a></p>
+
+<h4 id="tensorflow-centos6">tensorflow_centos6</h4>
+
+<p>(motivação: o TensorFlow não é oficialmente suportado no RedHat EL 6, o binário é compilado para glibc 2.17 e o código C++ 11, ambos requisitos não disponíveis, mas é possível criar um binário do TensorFlow compatível)</p>
+
+<p>A POC é a construção do binário do TensorFlow compatível com RedHat EL 6.</p>
+
+<p>Na prática, consiste em instalar a versão mais recente do GCC disponível para o CentOS 6, construir a ferramenta de build Bazel (binário incompatível com a glibc) e construir o TensorFlow (com patch para linkage).</p>
+
+<p>Essa POC é só para criar um pacote do TensorFlow.</p>
+
+<p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/tensorflow_centos6/README.md">README</a></p>
+
+<h4 id="tensorflow-installer">tensorflow_installer</h4>
+
+<p>(motivação: evitar download no ambiente de produção e evitar enviar múltiplos arquivos para o Hadoop)</p>
+
+<p>A POC é a criação de um instalador para o algoritmo de treinamento com o TensorFlow que tenha todas as dependência e possa ser executado no RedHat EL 6.</p>
+
+<p>Na prática, consiste em criar um pacote com TensorFlow, Python (conda) e todas as dependências que é embutido em um shell script que faz a instalação e executa o treinamento do TensorFlow.</p>
+
+<p>Esse procedimento depende do pacote do TensorFlow criado em <a href="#tensorflow-centos6">tensorflow_centos6</a> por link simbólico.</p>
+
+<p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/tensorflow_installer/README.md">README</a></p>
+
+<h4 id="hadoop-centos6">hadoop_centos6</h4>
+
+<p>(motivação: essa imagem corresponde a uma &ldquo;aproximação&rdquo; do ambiente de produção que usa RedHat EL 6 com o qual o CentOS6 é binário-compatível - o TensorFlow não é oficialmente suportado nesse sistema)</p>
+
+<p>A POC é a configuração mínima do Hadoop no CentOS 6 para execução do treinamento com TensorFlow no YARN.</p>
+
+<p>Na prática, consiste em rodar os servidores do HDFS (NameNode e DataNode) e do YARN (ResourceManager e NodeManager) para poder executar uma aplicação (ApplicationMaster) que instale o TensorFlow e rode o script Python de treinamento.</p>
+
+<p>Essa POC é só a configuração do Hadoop no CentOS 6.</p>
+
+<p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/hadoop_centos6/README.md">README</a></p>
+
+<h4 id="hadoop-ubuntu1604">hadoop_ubuntu1604</h4>
+
+<p>(motivação: essa imagem corresponde ao ambiente em que o TensorFlow é oficialmente suportado, diferente do ambiente de produção RedHat, ou seja, o comportamento nesse ambiente deve representar o &ldquo;funcionamento correto&rdquo;)</p>
+
+<p>A POC é a configuração mínima do Hadoop no Ubuntu para execução do treinamento com TensorFlow no YARN.</p>
+
+<p>Na prática, consiste em rodar os servidores do HDFS (NameNode e DataNode) e do YARN (ResourceManager e NodeManager) para poder executar uma aplicação (ApplicationMaster) que instale o TensorFlow e rode o script Python de treinamento.</p>
+
+<p>Essa POC é só a configuração do Hadoop no Ubuntu 16.04.</p>
+
+<p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/hadoop_ubuntu1604/README.md">README</a></p>
+
+<h4 id="client-java">client_java</h4>
+
+<p>A POC é a criação de um cliente Java para fazer inferência em um serviço do TensorFlow.</p>
+
+<p>Na prática, consiste em gerar o código do protocolo de comunicação usando o gRPC (Protobuf) e usar esse código para acessar o serviço do TensorFlow, a especificação do protocolo faz parte da implementação do serviço.</p>
+
+<p>O &ldquo;algoritmo&rdquo; desse projeto é um classificador de imagem que faz reconhecimento de dígito usando dataset MNIST e Rede Neural.</p>
+
+<p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/client_java/README.md">README</a></p>
+
+<h4 id="server-tsuru">server_tsuru</h4>
+
+<p>A POC é a criação de uma aplicação do Tsuru para rodar o servidor do TensorFlow.</p>
+
+<p>O &ldquo;algoritmo&rdquo; desse servidor é um classificador de imagem que faz reconhecimento de dígito usando dataset MNIST e Rede Neural.</p>
+
+<p>Na prática, consiste em fazer o deploy do binário do servidor do TensorFlow em uma app do Tsuru.</p>
+
+<p>Esse procedimento depende do binário do servidor do TensorFlow criado em <a href="#skeleton-project">skeleton_project</a>.</p>
+
+<p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/server_tsuru/README.md">README</a></p>
+
+<h2 id="conclusão">Conclusão</h2>
+
+<p>Esse trabalho é o preparatório para a criação de Aplicações TensorFlow que serão colocadas em Produção na Globo.com.</p>
+
+<p>Ainda tem muitos desafios para completar esse trabalho, mas esse é um bom começo.</p>
+
+<p>O TensorFlow é um projeto fascinante e evolui muito rápido - uma excelente oportunidade de aprendizado e cooperação.</p>
+
+<p>Para trabalhos futuros, esses são alguns dos desafios:</p>
+
+<ul>
+<li><p>TFRecord: formato de dados do TensorFlow</p>
+
+<p>Como treinar um modelo a partir de dados armazenado em Parquet?</p></li>
+
+<li><p>Treinamento Distribuído</p>
+
+<p>Como treinar um modelo com múltiplos containers no YARN?</p></li>
+
+<li><p>Tensorboard</p>
+
+<p>Como rodar o Tensorboard no ApplicationMaster para acompanhar o treinamento?</p></li>
+
+<li><p>TF Serving Source para Swift (OpenStack)</p>
+
+<p>Como armazenar os modelos como objetos no Swift (OpenStack)</p></li>
+</ul>
+
+<p>&hellip;</p>
+
+<p>Em um próximo artigo, pretendo discutir um Aplicação TensorFlow para Recomendação.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://cirocavani.github.io/post/otimizacao-dos-parametros-do-spark-als-collaborative-filtering-usando-moe/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://cirocavani.github.io/post/otimizacao-dos-parametros-do-spark-als-collaborative-filtering-usando-moe/">Otimização dos parâmetros do Spark ALS (Collaborative Filtering) usando MOE</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'cirocavani';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="http://cirocavani.github.io/js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-38960920-4', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
+
