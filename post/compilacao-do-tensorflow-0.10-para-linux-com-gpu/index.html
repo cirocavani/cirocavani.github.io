@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Compilação do TensorFlow 0.10 para Linux (com GPU) &middot; Ciro Cavani</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="http://cirocavani.github.io/img/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="http://cirocavani.github.io/">Ciro Cavani</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/about/"><i class='fa fa-user fa-fw'></i>Sobre Mim</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/cirocavani" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/cirocavani" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://instagram.com/ciro.cavani" target="_blank"><i class="fa fa-instagram fa-fw"></i>Instagram</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/cirocavani" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/cirocavani" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Compilação do TensorFlow 0.10 para Linux (com GPU)</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>08 Sep 2016, 22:06</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tutorial">Tutorial</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tensorflow">TensorFlow</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/docker">Docker</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/ubuntu">Ubuntu</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p>Esse tutorial é sobre a construção do pacote do TensorFlow 0.10 para Linux com suporte a GPU. Para esse procedimento é usado o Docker com uma imagem do Ubuntu 16.04, GCC 5.4, Python 2.7, Cuda 8.0 (RC) e cuDNN 5.1. A motivação desse trabalho é usar o TensorFlow com as novas gerações de GPUs da Nvidia (<a href="https://developer.nvidia.com/pascal">Pascal</a>). Um segundo objetivo é a criação de um pacote do TensorFlow com capacidades específicas (por exemplo, um &ldquo;Compute Capability&rdquo; específico).</p>
+
+<p>O procedimento também está disponível como um script para Docker (ainda é necessário fazer o download do Cuda manualmente).</p>
+
+<p><a href="https://github.com/cirocavani/tensorflow-build">https://github.com/cirocavani/tensorflow-build</a></p>
+
+<p>&hellip;</p>
+
+<h2 id="compilação">Compilação</h2>
+
+<p>O procedimento consiste em:</p>
+
+<ol>
+<li>Instalar o Cuda 8.0rc com o patch para GCC 5.4</li>
+<li>Instalar o cuDNN 5.1 para Cuda 8.0</li>
+<li>Instalar o Java 8</li>
+<li>Instalar o Bazel 0.3</li>
+<li>Construir TensorFlow 0.10</li>
+</ol>
+
+<p>O resultado é o pacote do TensorFlow para Python 2 e Linux (com GPU):</p>
+
+<pre><code>tensorflow-0.10.0-py2-none-linux_x86_64.whl
+</code></pre>
+
+<p>Baseado na documentação:</p>
+
+<p><a href="https://www.tensorflow.org/versions/r0.10/get_started/os_setup.html#installing-from-sources">https://www.tensorflow.org/versions/r0.10/get_started/os_setup.html#installing-from-sources</a></p>
+
+<p>Um procedimento alternativo:</p>
+
+<p><a href="https://github.com/tensorflow/tensorflow/blob/r0.10/tensorflow/tools/docker/Dockerfile.devel-gpu">https://github.com/tensorflow/tensorflow/blob/r0.10/tensorflow/tools/docker/Dockerfile.devel-gpu</a></p>
+
+<h3 id="download-do-cuda-8-0rc-cudnn-5-1">Download do Cuda 8.0rc, cuDNN 5.1</h3>
+
+<p>É necessário o download dos pacotes:</p>
+
+<pre><code>cuda_8.0.27_linux.run
+cuda_8.0.27.1_linux.run
+cudnn-8.0-linux-x64-v5.1.tgz
+</code></pre>
+
+<p>Esses pacotes devem ser colocados na pasta <code>build_deps/</code>.</p>
+
+<p>&hellip;</p>
+
+<p>No momento, a versão mais recente do Cuda é a 8.0 RC e só está disponível para download para membros do <a href="https://developer.nvidia.com/accelerated-computing-developer">Accelerated Computing Developer Program</a> no site da Nvidia (o cadastro é gratuito).</p>
+
+<p><a href="https://developer.nvidia.com/cuda-release-candidate-download">https://developer.nvidia.com/cuda-release-candidate-download</a></p>
+
+<blockquote>
+<p>Select Target Platform:</p>
+
+<pre><code>Operating System = Linux
+Architecture = x86_64
+Distribution = Ubuntu
+Version = 16.04
+Installer Type = runfile (local)
+</code></pre>
+
+<p>Download:</p>
+
+<ul>
+<li><strong>Base Installer</strong> - <code>cuda_8.0.27_linux.run</code></li>
+<li><strong>Patch 1</strong> - <code>cuda_8.0.27.1_linux.run</code></li>
+</ul>
+</blockquote>
+
+<p><a href="https://developer.nvidia.com/rdp/cudnn-download">https://developer.nvidia.com/rdp/cudnn-download</a></p>
+
+<blockquote>
+<p>Selecione:</p>
+
+<pre><code>1. I Agree To the Terms of the cuDNN Software License Agreement
+2. Download cuDNN v5.1 (August 10, 2016), for CUDA 8.0 RC
+3. cuDNN v5.1 Library for Linux
+</code></pre>
+
+<p>Download:</p>
+
+<ul>
+<li><code>cudnn-8.0-linux-x64-v5.1.tgz</code>.</li>
+</ul>
+</blockquote>
+
+<h3 id="setup-inicial-no-docker-para-ubuntu-16-04">Setup inicial no Docker para Ubuntu 16.04</h3>
+
+<p>Download dos demais pacotes necessários para o build:</p>
+
+<pre><code class="language-sh">cd build_deps
+
+curl -k -L \
+  -H &quot;Cookie: oraclelicense=accept-securebackup-cookie&quot; \
+  -O http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-linux-x64.tar.gz
+
+curl -k -L \
+  -O https://github.com/bazelbuild/bazel/releases/download/0.3.1/bazel-0.3.1-installer-linux-x86_64.sh
+
+chmod +x cuda_8.0.27_linux.run
+chmod +x cuda_8.0.27.1_linux.run
+chmod +x bazel-0.3.1-installer-linux-x86_64.sh
+
+cd ..
+</code></pre>
+
+<p>Criação do Container com as dependências:</p>
+
+<pre><code class="language-sh">docker create -t --name=tensorflow_build ubuntu:16.04
+docker cp build_deps tensorflow_build:/
+</code></pre>
+
+<p>Execução do Shell no Container:</p>
+
+<pre><code class="language-sh">docker start tensorflow_build
+docker exec -i -t tensorflow_build /bin/bash
+</code></pre>
+
+<p>Setup do Container:</p>
+
+<pre><code class="language-sh">echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+echo 'APT::Install-Recommends &quot;0&quot;;' &gt; 01norecommend
+mv 01norecommend /etc/apt/apt.conf.d
+
+apt-get update
+apt-get upgrade -y
+
+apt-get install -y \
+    build-essential \
+    python-dev \
+    python-wheel \
+    python-setuptools \
+    python-numpy \
+    swig \
+    zlib1g-dev \
+    unzip \
+    file \
+    git \
+    ca-certificates \
+    rsync
+</code></pre>
+
+<h3 id="instalação-do-cuda-8-0rc-e-cudnn-5-1">Instalação do Cuda 8.0rc e cuDNN 5.1</h3>
+
+<p>(comandos a serem executados dentro do container)</p>
+
+<pre><code class="language-sh">/build_deps/cuda_8.0.27_linux.run --silent --toolkit --override
+
+/build_deps/cuda_8.0.27.1_linux.run --silent --accept-eula
+
+tar zxf /build_deps/cudnn-8.0-linux-x64-v5.1.tgz \
+    -C /usr/local/cuda-8.0 --strip-components=1
+</code></pre>
+
+<h3 id="instalação-do-java-8">Instalação do Java 8</h3>
+
+<p>(comandos a serem executados dentro do container)</p>
+
+<pre><code class="language-sh">tar zxf /build_deps/jdk-8u102-linux-x64.tar.gz -C /opt --no-same-owner
+
+echo 'export JAVA_HOME=/opt/jdk1.8.0_102' &gt; /etc/profile.d/java.sh
+echo 'export PATH=$PATH:$JAVA_HOME/bin' &gt;&gt; /etc/profile.d/java.sh
+chmod a+x /etc/profile.d/java.sh
+
+source /etc/profile.d/java.sh
+</code></pre>
+
+<h3 id="instalação-do-bazel-0-3">Instalação do Bazel 0.3</h3>
+
+<p>(comandos a serem executados dentro do container)</p>
+
+<pre><code class="language-sh">/build_deps/bazel-0.3.1-installer-linux-x86_64.sh --prefix=/opt/bazel-0.3.1
+
+echo 'export PATH=$PATH:/opt/bazel-0.3.1/bin' &gt; /etc/profile.d/bazel.sh
+chmod a+x /etc/profile.d/bazel.sh
+
+source /etc/profile.d/bazel.sh
+</code></pre>
+
+<h3 id="construção-do-tensorflow-0-10">Construção do TensorFlow 0.10</h3>
+
+<p>Considerações:</p>
+
+<ul>
+<li><p>Configuração da GPU</p>
+
+<p>É necessário definir qual &ldquo;Compute Capability&rdquo; o binário do TensorFlow vai suportar.</p>
+
+<p><a href="https://developer.nvidia.com/cuda-gpus">https://developer.nvidia.com/cuda-gpus</a></p>
+
+<p>Por exemplo:</p>
+
+<p>A GeForce GT 740M tem Compute Capability 3.0</p>
+
+<pre><code>export TF_CUDA_COMPUTE_CAPABILITIES=3.0
+</code></pre></li>
+
+<li><p>Uso de Memória</p>
+
+<p>O build executa várias tarefas em paralelo e o consumo de memória pode aumentar rapidamente.</p>
+
+<p>Para limitar o número de execuções paralelas é usada a opção <code>-j 4</code> no build.</p>
+
+<p>Em um notebook com 8 cores (HT), 8G de memória é insuficiente.</p></li>
+</ul>
+
+<p>(comandos a serem executados dentro do container)</p>
+
+<pre><code class="language-sh">useradd -m tensorflow
+passwd -d tensorflow
+
+su - tensorflow
+
+git clone https://github.com/tensorflow/tensorflow.git -b r0.10 ~/tensorflow-0.10
+
+cd ~/tensorflow-0.10
+
+export PYTHON_BIN_PATH=/usr/bin/python
+export TF_NEED_GCP=0
+export TF_NEED_CUDA=1
+export GCC_HOST_COMPILER_PATH=/usr/bin/gcc
+export TF_CUDA_VERSION=8.0
+export CUDA_TOOLKIT_PATH=/usr/local/cuda-8.0
+export TF_CUDNN_VERSION=5
+export CUDNN_INSTALL_PATH=/usr/local/cuda-8.0
+export TF_CUDA_COMPUTE_CAPABILITIES=3.0
+./configure
+
+bazel build -j 4 -c opt --config=cuda \
+    //tensorflow/tools/pip_package:build_pip_package
+
+bazel-bin/tensorflow/tools/pip_package/build_pip_package $HOME
+
+mv ~/tensorflow-0.10.0-py2-none-{any,linux_x86_64}.whl
+
+# saindo su
+exit
+
+# saindo do container
+exit
+</code></pre>
+
+<p>&hellip;</p>
+
+<p>Para baixar o pacote (fora do container):</p>
+
+<pre><code class="language-sh">docker cp \
+    tensorflow_build:/home/tensorflow/tensorflow-0.10.0-py2-none-linux_x86_64.whl \
+    .
+</code></pre>
+
+<h2 id="conclusão">Conclusão</h2>
+
+<p>O procedimento de build do TensorFlow não é complicado, mas pequenas variações podem atingir alguns bugs do build (<a href="https://github.com/tensorflow/tensorflow/issues/3985">exemplo</a>). Com um script bem definido, fica fácil criar o pacote do TensorFlow.</p>
+
+<p>Com esse pacote, é possível usar o TensorFlow nas GPUs mais recentes da Nvidia.</p>
+
+<p>No próximo artigo será um tutorial de como configurar um ambiente de desenvolvimento com Jupyter.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://cirocavani.github.io/post/tensorflow-integracao-bigdata/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://cirocavani.github.io/post/tensorflow-integracao-bigdata/">TensorFlow: Integração com BigData</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'cirocavani';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="http://cirocavani.github.io/js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-38960920-4', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
+
