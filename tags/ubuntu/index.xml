@@ -26,7 +26,7 @@
 
 &lt;p&gt;&amp;hellip;&lt;/p&gt;
 
-&lt;h2 id=&#34;compilação&#34;&gt;Compilação&lt;/h2&gt;
+&lt;h2 id=&#34;compilação:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Compilação&lt;/h2&gt;
 
 &lt;p&gt;O procedimento consiste em:&lt;/p&gt;
 
@@ -51,7 +51,7 @@
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/tensorflow/tensorflow/blob/r0.10/tensorflow/tools/docker/Dockerfile.devel-gpu&#34;&gt;https://github.com/tensorflow/tensorflow/blob/r0.10/tensorflow/tools/docker/Dockerfile.devel-gpu&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;download-do-cuda-8-0rc-cudnn-5-1&#34;&gt;Download do Cuda 8.0rc, cuDNN 5.1&lt;/h3&gt;
+&lt;h3 id=&#34;download-do-cuda-8-0rc-cudnn-5-1:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Download do Cuda 8.0rc, cuDNN 5.1&lt;/h3&gt;
 
 &lt;p&gt;É necessário o download dos pacotes:&lt;/p&gt;
 
@@ -103,7 +103,7 @@ Installer Type = runfile (local)
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;setup-inicial-no-docker-para-ubuntu-16-04&#34;&gt;Setup inicial no Docker para Ubuntu 16.04&lt;/h3&gt;
+&lt;h3 id=&#34;setup-inicial-no-docker-para-ubuntu-16-04:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Setup inicial no Docker para Ubuntu 16.04&lt;/h3&gt;
 
 &lt;p&gt;Download dos demais pacotes necessários para o build:&lt;/p&gt;
 
@@ -159,7 +159,7 @@ apt-get install -y \
     rsync
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;instalação-do-cuda-8-0rc-e-cudnn-5-1&#34;&gt;Instalação do Cuda 8.0rc e cuDNN 5.1&lt;/h3&gt;
+&lt;h3 id=&#34;instalação-do-cuda-8-0rc-e-cudnn-5-1:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Instalação do Cuda 8.0rc e cuDNN 5.1&lt;/h3&gt;
 
 &lt;p&gt;(comandos a serem executados dentro do container)&lt;/p&gt;
 
@@ -171,7 +171,7 @@ tar zxf /build_deps/cudnn-8.0-linux-x64-v5.1.tgz \
     -C /usr/local/cuda-8.0 --strip-components=1
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;instalação-do-java-8&#34;&gt;Instalação do Java 8&lt;/h3&gt;
+&lt;h3 id=&#34;instalação-do-java-8:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Instalação do Java 8&lt;/h3&gt;
 
 &lt;p&gt;(comandos a serem executados dentro do container)&lt;/p&gt;
 
@@ -184,7 +184,7 @@ chmod a+x /etc/profile.d/java.sh
 source /etc/profile.d/java.sh
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;instalação-do-bazel-0-3&#34;&gt;Instalação do Bazel 0.3&lt;/h3&gt;
+&lt;h3 id=&#34;instalação-do-bazel-0-3:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Instalação do Bazel 0.3&lt;/h3&gt;
 
 &lt;p&gt;(comandos a serem executados dentro do container)&lt;/p&gt;
 
@@ -196,7 +196,7 @@ chmod a+x /etc/profile.d/bazel.sh
 source /etc/profile.d/bazel.sh
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;construção-do-tensorflow-0-10&#34;&gt;Construção do TensorFlow 0.10&lt;/h3&gt;
+&lt;h3 id=&#34;construção-do-tensorflow-0-10:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Construção do TensorFlow 0.10&lt;/h3&gt;
 
 &lt;p&gt;Considerações:&lt;/p&gt;
 
@@ -268,7 +268,7 @@ exit
     .
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;conclusão&#34;&gt;Conclusão&lt;/h2&gt;
+&lt;h2 id=&#34;conclusão:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Conclusão&lt;/h2&gt;
 
 &lt;p&gt;O procedimento de build do TensorFlow não é complicado, mas pequenas variações podem atingir alguns bugs do build (&lt;a href=&#34;https://github.com/tensorflow/tensorflow/issues/3985&#34;&gt;exemplo&lt;/a&gt;). Com um script bem definido, fica fácil criar o pacote do TensorFlow.&lt;/p&gt;
 

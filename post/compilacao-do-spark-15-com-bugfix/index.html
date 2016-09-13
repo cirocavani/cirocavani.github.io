@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.16" />
+  <meta name="generator" content="Hugo 0.16-DEV" />
 
   <title>Compilação do Spark 1.5 (com bugfix) &middot; Ciro Cavani</title>
 
@@ -217,9 +217,9 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tutorial">Tutorial</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/spark">Spark</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/spark">Spark</a>
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tutorial">Tutorial</a>
     
   </div>
   
@@ -235,7 +235,7 @@
 
 <p>Mais informações sobre a última versão Spark 1.5.0 no <a href="http://spark.apache.org/releases/spark-release-1-5-0.html">Release Notes</a> e no blog da Databricks <a href="https://databricks.com/blog/2015/09/09/announcing-spark-1-5.html">aqui</a>.</p>
 
-<h2 id="pré-requisito">Pré-requisito</h2>
+<h2 id="pré-requisito:a471447a7b0c139f517b6888cdad9c6e">Pré-requisito</h2>
 
 <p>O procedimento consiste em: provisionar o ambiente; fazer uma cópia do branch estável da última versão, e; gerar o pacote binário e os artefatos do Maven.</p>
 
@@ -310,7 +310,7 @@ mvn -version
 &gt; OS name: &quot;linux&quot;, version: &quot;4.0.4-2-arch&quot;, arch: &quot;amd64&quot;, family: &quot;unix&quot;
 </code></pre>
 
-<h2 id="compilação">Compilação</h2>
+<h2 id="compilação:a471447a7b0c139f517b6888cdad9c6e">Compilação</h2>
 
 <p>Primeiramente é criado um clone local do repositório do Spark no qual é desenvolvido a versão 1.5 (estável).</p>
 
@@ -471,7 +471,7 @@ mv ~/.m2/repository/spark-1.5.0-m2-89d351b.tar .
 
 <p><code>spark-1.5.0-m2-89d351b.tar</code></p>
 
-<h2 id="conclusão">Conclusão</h2>
+<h2 id="conclusão:a471447a7b0c139f517b6888cdad9c6e">Conclusão</h2>
 
 <p>O Spark é um framework que vem evoluindo rapidamente, com contribuições das mais diversas origem. Praticamente todos os grandes de BigData estão contribuindo com o Spark. Muitas vezes, surgem novas funcionalidades que podem agregar muito valor nas suas aplicações. Outras vezes, são bugs corrigidos que contribuem para a estabilidade de uma aplicação que já existe. Também tem o &lsquo;prazer&rsquo; de ser um &lsquo;early adopter&rsquo;. Seja qual for o motivo, esse procedimento mostra que o trabalho para ter um pacote do Spark é bem fácil e, por experiência, esse é um fator bastante relevante para ganhar tempo e gerar máximo valor.</p>
 

@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.16" />
+  <meta name="generator" content="Hugo 0.16-DEV" />
 
   <title>Compilação do Hadoop para CentOS6 / RHEL6 usando Docker &middot; Ciro Cavani</title>
 
@@ -217,15 +217,15 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tutorial">Tutorial</a>&nbsp;&#47;
-    
       <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/hadoop">Hadoop</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/docker">Docker</a>&nbsp;&#47;
     
       <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/centos6">CentOS6</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/rhel6">RHEL6</a>
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/rhel6">RHEL6</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/docker">Docker</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tutorial">Tutorial</a>
     
   </div>
   
@@ -243,7 +243,7 @@
 
 <p>Nesse artigo, o foco é um passo a passo de como usar o Docker para gerar um pacote do Hadoop adaptado para o Red Hat Enterprise Linux 6 (RHEL6) usando CentOS6.</p>
 
-<h2 id="pré-requisito">Pré-requisito</h2>
+<h2 id="pré-requisito:ac8d87b01c866329a85ac2f7311bc677">Pré-requisito</h2>
 
 <p>Nesse procedimento, é necessário que o Docker esteja instalado e funcionando; também é necessário acesso à Internet.</p>
 
@@ -270,7 +270,7 @@
 &gt;  OS/Arch:      linux/amd64
 </code></pre>
 
-<h2 id="compilação">Compilação</h2>
+<h2 id="compilação:ac8d87b01c866329a85ac2f7311bc677">Compilação</h2>
 
 <p>Documento com instruções de build do Hadoop <a href="https://github.com/apache/hadoop/blob/release-2.7.1/BUILDING.txt">aqui</a>.</p>
 
@@ -487,7 +487,7 @@ mvn test -Pnative -Drequire.snappy -Drequire.openssl -Dmaven.test.failure.ignore
 sudo docker cp 3cc2bc5e593b:/hadoop/hadoop-2.7.1-src/hadoop-dist/target/hadoop-2.7.1.tar.gz .
 </code></pre>
 
-<h2 id="conclusão">Conclusão</h2>
+<h2 id="conclusão:ac8d87b01c866329a85ac2f7311bc677">Conclusão</h2>
 
 <p>Esse procedimento mostra como o Hadoop pode ser customizado para necessidades específicas e que não requer um esforço muito grande.</p>
 

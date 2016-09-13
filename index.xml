@@ -26,7 +26,7 @@
 
 &lt;p&gt;&amp;hellip;&lt;/p&gt;
 
-&lt;h2 id=&#34;compilação&#34;&gt;Compilação&lt;/h2&gt;
+&lt;h2 id=&#34;compilação:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Compilação&lt;/h2&gt;
 
 &lt;p&gt;O procedimento consiste em:&lt;/p&gt;
 
@@ -51,7 +51,7 @@
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/tensorflow/tensorflow/blob/r0.10/tensorflow/tools/docker/Dockerfile.devel-gpu&#34;&gt;https://github.com/tensorflow/tensorflow/blob/r0.10/tensorflow/tools/docker/Dockerfile.devel-gpu&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;download-do-cuda-8-0rc-cudnn-5-1&#34;&gt;Download do Cuda 8.0rc, cuDNN 5.1&lt;/h3&gt;
+&lt;h3 id=&#34;download-do-cuda-8-0rc-cudnn-5-1:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Download do Cuda 8.0rc, cuDNN 5.1&lt;/h3&gt;
 
 &lt;p&gt;É necessário o download dos pacotes:&lt;/p&gt;
 
@@ -103,7 +103,7 @@ Installer Type = runfile (local)
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;setup-inicial-no-docker-para-ubuntu-16-04&#34;&gt;Setup inicial no Docker para Ubuntu 16.04&lt;/h3&gt;
+&lt;h3 id=&#34;setup-inicial-no-docker-para-ubuntu-16-04:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Setup inicial no Docker para Ubuntu 16.04&lt;/h3&gt;
 
 &lt;p&gt;Download dos demais pacotes necessários para o build:&lt;/p&gt;
 
@@ -159,7 +159,7 @@ apt-get install -y \
     rsync
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;instalação-do-cuda-8-0rc-e-cudnn-5-1&#34;&gt;Instalação do Cuda 8.0rc e cuDNN 5.1&lt;/h3&gt;
+&lt;h3 id=&#34;instalação-do-cuda-8-0rc-e-cudnn-5-1:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Instalação do Cuda 8.0rc e cuDNN 5.1&lt;/h3&gt;
 
 &lt;p&gt;(comandos a serem executados dentro do container)&lt;/p&gt;
 
@@ -171,7 +171,7 @@ tar zxf /build_deps/cudnn-8.0-linux-x64-v5.1.tgz \
     -C /usr/local/cuda-8.0 --strip-components=1
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;instalação-do-java-8&#34;&gt;Instalação do Java 8&lt;/h3&gt;
+&lt;h3 id=&#34;instalação-do-java-8:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Instalação do Java 8&lt;/h3&gt;
 
 &lt;p&gt;(comandos a serem executados dentro do container)&lt;/p&gt;
 
@@ -184,7 +184,7 @@ chmod a+x /etc/profile.d/java.sh
 source /etc/profile.d/java.sh
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;instalação-do-bazel-0-3&#34;&gt;Instalação do Bazel 0.3&lt;/h3&gt;
+&lt;h3 id=&#34;instalação-do-bazel-0-3:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Instalação do Bazel 0.3&lt;/h3&gt;
 
 &lt;p&gt;(comandos a serem executados dentro do container)&lt;/p&gt;
 
@@ -196,7 +196,7 @@ chmod a+x /etc/profile.d/bazel.sh
 source /etc/profile.d/bazel.sh
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;construção-do-tensorflow-0-10&#34;&gt;Construção do TensorFlow 0.10&lt;/h3&gt;
+&lt;h3 id=&#34;construção-do-tensorflow-0-10:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Construção do TensorFlow 0.10&lt;/h3&gt;
 
 &lt;p&gt;Considerações:&lt;/p&gt;
 
@@ -268,7 +268,7 @@ exit
     .
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;conclusão&#34;&gt;Conclusão&lt;/h2&gt;
+&lt;h2 id=&#34;conclusão:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Conclusão&lt;/h2&gt;
 
 &lt;p&gt;O procedimento de build do TensorFlow não é complicado, mas pequenas variações podem atingir alguns bugs do build (&lt;a href=&#34;https://github.com/tensorflow/tensorflow/issues/3985&#34;&gt;exemplo&lt;/a&gt;). Com um script bem definido, fica fácil criar o pacote do TensorFlow.&lt;/p&gt;
 
@@ -292,7 +292,7 @@ exit
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/cirocavani/tensorflow-poc&#34;&gt;https://github.com/cirocavani/tensorflow-poc&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;motivação&#34;&gt;Motivação&lt;/h2&gt;
+&lt;h2 id=&#34;motivação:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;Motivação&lt;/h2&gt;
 
 &lt;p&gt;O problema começou com: como criar uma Aplicação de AI? A proposta para resolver esse problema foi: TensorFlow.&lt;/p&gt;
 
@@ -308,7 +308,7 @@ exit
 
 &lt;p&gt;A primeira frente de trabalho está feita.&lt;/p&gt;
 
-&lt;h2 id=&#34;por-que-o-tensorflow&#34;&gt;Por que o TensorFlow?&lt;/h2&gt;
+&lt;h2 id=&#34;por-que-o-tensorflow:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;Por que o TensorFlow?&lt;/h2&gt;
 
 &lt;p&gt;Nos últimos anos, a tendência que eu venho observando do mercado é que AI finalmente se tornou a área de diferenciação, inovação e crescimento. Os investidores estão cada vez mais colocando dinheiro nessa área. As grandes empresas estão cada vez mais se posicionando como &amp;ldquo;empresas de AI&amp;rdquo;, sendo os maiores exemplos Google, Facebook e Microsoft, com Apple e Amazon chegando junto. Startups como a que fez a app Prisma valem bilhão de dólares.&lt;/p&gt;
 
@@ -336,7 +336,7 @@ exit
 
 &lt;p&gt;Esse artigo é sobre como isso foi feito.&lt;/p&gt;
 
-&lt;h3 id=&#34;o-que-é-o-tensorflow&#34;&gt;O que é o TensorFlow?&lt;/h3&gt;
+&lt;h3 id=&#34;o-que-é-o-tensorflow:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;O que é o TensorFlow?&lt;/h3&gt;
 
 &lt;p&gt;TensorFlow é um framework para processamento de tensores (arrays multidimensionais) em ambientes heterogêneos (CPUs, GPUs, mobile). É um projeto open-source do Google liberado em Novembro/2015. A API principal é Python e a engine de execução é C++, o Google espera que a comunidade desenvolva bindings para outras linguagens.&lt;/p&gt;
 
@@ -399,7 +399,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence&lt;/p&gt;
 &lt;p&gt;Nesse release, o destaque foi a funcionalidade de treinamento distribuído do modelo, onde antes só era possível usar uma máquina, agora é possível treinar com várias tanto para distribuir processamento quanto para paralelizar configurações distintas do modelo.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;experiência-com-tensorflow&#34;&gt;Experiência com TensorFlow&lt;/h3&gt;
+&lt;h3 id=&#34;experiência-com-tensorflow:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;Experiência com TensorFlow&lt;/h3&gt;
 
 &lt;p&gt;Já há algum tempo, venho trabalhando esporadicamente com o TensorFlow (nos últimos 3 hackdays na Globo.com, quase 9 meses). Recentemente, o Google divulgou um paper em que eles elaboram como usam o TensorFlow para fazer recomendação de apps no Google Play. Essa se tornou a oportunidade que eu encontrei para começar a trazer para a Globo.com a base para crescermos na área de AI.&lt;/p&gt;
 
@@ -421,7 +421,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence&lt;/p&gt;
 
 &lt;p&gt;Estou trabalhando em duas &amp;ldquo;frentes&amp;rdquo;: a primeira é genérica sobre integração do TensorFlow em BigData e a outra é específica sobre fazer recomendação com TensorFlow. Estou trabalhando em ambas, mas o foco desse artigo é na primeira porque acredito que seja mais interessante para todos que ainda não conhecem o TensorFlow.&lt;/p&gt;
 
-&lt;h4 id=&#34;aplicação-tensorflow&#34;&gt;Aplicação TensorFlow&lt;/h4&gt;
+&lt;h4 id=&#34;aplicação-tensorflow:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;Aplicação TensorFlow&lt;/h4&gt;
 
 &lt;p&gt;A primeira &amp;ldquo;frente&amp;rdquo; de trabalho está sendo ganhar experiência em como o &lt;strong&gt;TensorFlow&lt;/strong&gt; funciona e identificar como é possível acomodar esse processo na plataforma da Globo.com.&lt;/p&gt;
 
@@ -457,13 +457,13 @@ TensorFlow is an Open Source Software Library for Machine Intelligence&lt;/p&gt;
 
 &lt;p&gt;Essa é a fase da inferência on-line do modelo e é praticamente toda em C++.&lt;/p&gt;
 
-&lt;h4 id=&#34;algoritmo-tensorflow&#34;&gt;Algoritmo TensorFlow&lt;/h4&gt;
+&lt;h4 id=&#34;algoritmo-tensorflow:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;Algoritmo TensorFlow&lt;/h4&gt;
 
 &lt;p&gt;A outra &amp;ldquo;frente&amp;rdquo; de trabalho é paralela a primeira e consistem em desenvolver propriamente o algoritmo de recomendação baseado no paper do Google. Isso significa definir as features que serão usadas, como ler esses dados e alimentar o treinamento do modelo e como executar a inferência usando as matérias de um determinado Produto (Portal).&lt;/p&gt;
 
 &lt;p&gt;Comecei a fazer esse trabalho também, mas vou deixar para discuti-lo em outro artigo.&lt;/p&gt;
 
-&lt;h2 id=&#34;tensorflow-em-bigdata&#34;&gt;TensorFlow em BigData&lt;/h2&gt;
+&lt;h2 id=&#34;tensorflow-em-bigdata:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;TensorFlow em BigData&lt;/h2&gt;
 
 &lt;p&gt;O trabalho consistiu em identificar e resolver todos os requisitos para o desenvolvimento de uma Aplicação TensorFlow em uma infraestrutura de BigData.&lt;/p&gt;
 
@@ -487,7 +487,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence&lt;/p&gt;
 
 &lt;p&gt;Para esse trabalho, o interesse é integrar com Aplicações em Scala, logo um cliente Java satisfaz o requisito (Java 7).&lt;/p&gt;
 
-&lt;h2 id=&#34;provas-de-conceito&#34;&gt;Provas de Conceito&lt;/h2&gt;
+&lt;h2 id=&#34;provas-de-conceito:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;Provas de Conceito&lt;/h2&gt;
 
 &lt;p&gt;O trabalho consistiu no desenvolvimento de Provas de Conceito (POC) que exploram os desafios para se criar uma Aplicação TensorFlow.&lt;/p&gt;
 
@@ -505,7 +505,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence&lt;/p&gt;
 
 &lt;p&gt;A POC &lt;a href=&#34;#server-tsuru&#34;&gt;server_tsuru&lt;/a&gt; corresponde ao trabalho de criar uma app no Tsuru para servir um modelo treinado do TensorFlow.&lt;/p&gt;
 
-&lt;h4 id=&#34;tflearn-wide-n-deep&#34;&gt;tflearn_wide_n_deep&lt;/h4&gt;
+&lt;h4 id=&#34;tflearn-wide-n-deep:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;tflearn_wide_n_deep&lt;/h4&gt;
 
 &lt;p&gt;A POC é a execução do tutorial sobre o &amp;ldquo;algoritmo&amp;rdquo; usado na recomendação de app do Google Play.&lt;/p&gt;
 
@@ -513,7 +513,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/cirocavani/tensorflow-poc/blob/master/tflearn_wide_n_deep/README.md&#34;&gt;README&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;tfserving-basic&#34;&gt;tfserving_basic&lt;/h4&gt;
+&lt;h4 id=&#34;tfserving-basic:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;tfserving_basic&lt;/h4&gt;
 
 &lt;p&gt;A POC é a execução do tutorial sobre o TensorFlow Serving sem versionamento do modelo.&lt;/p&gt;
 
@@ -523,7 +523,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/cirocavani/tensorflow-poc/blob/master/tfserving_basic/README.md&#34;&gt;README&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;tfserving-advanced&#34;&gt;tfserving_advanced&lt;/h4&gt;
+&lt;h4 id=&#34;tfserving-advanced:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;tfserving_advanced&lt;/h4&gt;
 
 &lt;p&gt;A POC é a execução do tutorial sobre o TensorFlow Serving com versionamento do modelo.&lt;/p&gt;
 
@@ -533,7 +533,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/cirocavani/tensorflow-poc/blob/master/tfserving_advanced/README.md&#34;&gt;README&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;skeleton-project&#34;&gt;skeleton_project&lt;/h4&gt;
+&lt;h4 id=&#34;skeleton-project:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;skeleton_project&lt;/h4&gt;
 
 &lt;p&gt;(código do exemplo extraído para um projeto fora da árvore do TensorFlow Serving)&lt;/p&gt;
 
@@ -545,7 +545,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/cirocavani/tensorflow-poc/blob/master/skeleton_project/README.md&#34;&gt;README&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;yarn-training&#34;&gt;yarn_training&lt;/h4&gt;
+&lt;h4 id=&#34;yarn-training:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;yarn_training&lt;/h4&gt;
 
 &lt;p&gt;(motivação: usar a infraestrutura de armazenamento e processamento do Hadoop para rodar o treinamento com TensorFlow)&lt;/p&gt;
 
@@ -557,7 +557,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/cirocavani/tensorflow-poc/blob/master/yarn_training/README.md&#34;&gt;README&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;tensorflow-centos6&#34;&gt;tensorflow_centos6&lt;/h4&gt;
+&lt;h4 id=&#34;tensorflow-centos6:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;tensorflow_centos6&lt;/h4&gt;
 
 &lt;p&gt;(motivação: o TensorFlow não é oficialmente suportado no RedHat EL 6, o binário é compilado para glibc 2.17 e o código C++ 11, ambos requisitos não disponíveis, mas é possível criar um binário do TensorFlow compatível)&lt;/p&gt;
 
@@ -569,7 +569,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/cirocavani/tensorflow-poc/blob/master/tensorflow_centos6/README.md&#34;&gt;README&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;tensorflow-installer&#34;&gt;tensorflow_installer&lt;/h4&gt;
+&lt;h4 id=&#34;tensorflow-installer:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;tensorflow_installer&lt;/h4&gt;
 
 &lt;p&gt;(motivação: evitar download no ambiente de produção e evitar enviar múltiplos arquivos para o Hadoop)&lt;/p&gt;
 
@@ -581,7 +581,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/cirocavani/tensorflow-poc/blob/master/tensorflow_installer/README.md&#34;&gt;README&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;hadoop-centos6&#34;&gt;hadoop_centos6&lt;/h4&gt;
+&lt;h4 id=&#34;hadoop-centos6:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;hadoop_centos6&lt;/h4&gt;
 
 &lt;p&gt;(motivação: essa imagem corresponde a uma &amp;ldquo;aproximação&amp;rdquo; do ambiente de produção que usa RedHat EL 6 com o qual o CentOS6 é binário-compatível - o TensorFlow não é oficialmente suportado nesse sistema)&lt;/p&gt;
 
@@ -593,7 +593,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/cirocavani/tensorflow-poc/blob/master/hadoop_centos6/README.md&#34;&gt;README&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;hadoop-ubuntu1604&#34;&gt;hadoop_ubuntu1604&lt;/h4&gt;
+&lt;h4 id=&#34;hadoop-ubuntu1604:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;hadoop_ubuntu1604&lt;/h4&gt;
 
 &lt;p&gt;(motivação: essa imagem corresponde ao ambiente em que o TensorFlow é oficialmente suportado, diferente do ambiente de produção RedHat, ou seja, o comportamento nesse ambiente deve representar o &amp;ldquo;funcionamento correto&amp;rdquo;)&lt;/p&gt;
 
@@ -605,7 +605,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/cirocavani/tensorflow-poc/blob/master/hadoop_ubuntu1604/README.md&#34;&gt;README&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;client-java&#34;&gt;client_java&lt;/h4&gt;
+&lt;h4 id=&#34;client-java:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;client_java&lt;/h4&gt;
 
 &lt;p&gt;A POC é a criação de um cliente Java para fazer inferência em um serviço do TensorFlow.&lt;/p&gt;
 
@@ -615,7 +615,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/cirocavani/tensorflow-poc/blob/master/client_java/README.md&#34;&gt;README&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;server-tsuru&#34;&gt;server_tsuru&lt;/h4&gt;
+&lt;h4 id=&#34;server-tsuru:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;server_tsuru&lt;/h4&gt;
 
 &lt;p&gt;A POC é a criação de uma aplicação do Tsuru para rodar o servidor do TensorFlow.&lt;/p&gt;
 
@@ -627,7 +627,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/cirocavani/tensorflow-poc/blob/master/server_tsuru/README.md&#34;&gt;README&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;conclusão&#34;&gt;Conclusão&lt;/h2&gt;
+&lt;h2 id=&#34;conclusão:e68203cf87ce4097158c2f1411eaff4a&#34;&gt;Conclusão&lt;/h2&gt;
 
 &lt;p&gt;Esse trabalho é o preparatório para a criação de Aplicações TensorFlow que serão colocadas em Produção na Globo.com.&lt;/p&gt;
 
@@ -926,7 +926,7 @@ if __name__ == &#39;__main__&#39;:
 
 &lt;p&gt;Esse tutorial é sobre a criação de uma imagem do Docker com a configuração local do Hadoop, HBase e Kafka. Nesse procedimento, o Hadoop é configurado no modo pseudo-distribuído com cada serviço rodando em uma instância própria da JVM, mas todas na mesma máquina. O HBase e o Kafka também rodam em modo &amp;lsquo;distribuído&amp;rsquo; compartilhando uma instância separada do ZooKeeper. Esse procedimento é muito útil para testar funcionalidades desses serviços e aprendizado, mas não é uma solução completa para uso em produção.&lt;/p&gt;
 
-&lt;h2 id=&#34;pré-requisito&#34;&gt;Pré-requisito&lt;/h2&gt;
+&lt;h2 id=&#34;pré-requisito:7662b18c2fa1b345b82a7d885cf16b10&#34;&gt;Pré-requisito&lt;/h2&gt;
 
 &lt;p&gt;Nesse procedimento, é necessário que o Docker esteja instalado e funcionando; também é necessário acesso à Internet.&lt;/p&gt;
 
@@ -953,11 +953,11 @@ if __name__ == &#39;__main__&#39;:
 &amp;gt;  OS/Arch:      linux/amd64
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;configuração&#34;&gt;Configuração&lt;/h2&gt;
+&lt;h2 id=&#34;configuração:7662b18c2fa1b345b82a7d885cf16b10&#34;&gt;Configuração&lt;/h2&gt;
 
 &lt;p&gt;Hadoop, ZooKeeper, HBase e Kafka.&lt;/p&gt;
 
-&lt;h3 id=&#34;container&#34;&gt;Container&lt;/h3&gt;
+&lt;h3 id=&#34;container:7662b18c2fa1b345b82a7d885cf16b10&#34;&gt;Container&lt;/h3&gt;
 
 &lt;p&gt;Começamos com a criação de um conainer do Docker com a imagem do CentOS6.&lt;/p&gt;
 
@@ -1044,7 +1044,7 @@ whoami
 &amp;gt; root
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;hadoop&#34;&gt;Hadoop&lt;/h3&gt;
+&lt;h3 id=&#34;hadoop:7662b18c2fa1b345b82a7d885cf16b10&#34;&gt;Hadoop&lt;/h3&gt;
 
 &lt;p&gt;Procedimento para configuração local do Hadoop em modo pseudo-distribuído com uma JVM por serviço.&lt;/p&gt;
 
@@ -1304,7 +1304,7 @@ hdfs dfs -mkdir -p /user/hadoop
 &amp;gt; Estimated value of Pi is 3.14157500000000000000
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;zookeeper&#34;&gt;ZooKeeper&lt;/h3&gt;
+&lt;h3 id=&#34;zookeeper:7662b18c2fa1b345b82a7d885cf16b10&#34;&gt;ZooKeeper&lt;/h3&gt;
 
 &lt;p&gt;Esse procedimento é baseado na &lt;a href=&#34;https://zookeeper.apache.org/doc/r3.4.6/zookeeperStarted.html&#34;&gt;documentação do ZooKeeper&lt;/a&gt;.&lt;/p&gt;
 
@@ -1396,7 +1396,7 @@ zkServer.sh start
 &amp;gt; [zk: grandesdados-hadoop:2181(CONNECTED) 3] quit
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;hbase&#34;&gt;HBase&lt;/h3&gt;
+&lt;h3 id=&#34;hbase:7662b18c2fa1b345b82a7d885cf16b10&#34;&gt;HBase&lt;/h3&gt;
 
 &lt;p&gt;Esse procedimento é baseado na &lt;a href=&#34;http://hbase.apache.org/book.html#quickstart&#34;&gt;documentação do HBase&lt;/a&gt;.&lt;/p&gt;
 
@@ -1500,7 +1500,7 @@ start-hbase.sh
 &amp;gt; hbase(main):004:0&amp;gt; exit
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;kafka&#34;&gt;Kafka&lt;/h3&gt;
+&lt;h3 id=&#34;kafka:7662b18c2fa1b345b82a7d885cf16b10&#34;&gt;Kafka&lt;/h3&gt;
 
 &lt;p&gt;Esse procedimento é baseado na &lt;a href=&#34;http://kafka.apache.org/documentation.html#quickstart&#34;&gt;documentação do Kafka&lt;/a&gt;.&lt;/p&gt;
 
@@ -1568,7 +1568,7 @@ kafka-console-consumer.sh --zookeeper grandesdados-hadoop:2181 --topic test --fr
 &amp;gt; ^CConsumed 1 messages
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;conclusão&#34;&gt;Conclusão&lt;/h2&gt;
+&lt;h2 id=&#34;conclusão:7662b18c2fa1b345b82a7d885cf16b10&#34;&gt;Conclusão&lt;/h2&gt;
 
 &lt;p&gt;A revolução em BigData é um fenômeno da tecnologia desenvolvida ao longo dos últimos anos focada na manipulação de um grande volume de dados em máquinas de baixo custo. Essa é a tecnologia que torna possível combinar uma solução de dados escalável com processos para geração de resultados relevantes, tanto no desenvolvimento de produtos quanto na evolução do conhecimento. O importante é entender como essa tecnologia pode ser usada para agregar valor ao negócio e permitir imaginar soluções inovadoras.&lt;/p&gt;
 
@@ -1592,7 +1592,7 @@ kafka-console-consumer.sh --zookeeper grandesdados-hadoop:2181 --topic test --fr
 
 &lt;p&gt;Mais informações sobre a última versão Spark 1.5.0 no &lt;a href=&#34;http://spark.apache.org/releases/spark-release-1-5-0.html&#34;&gt;Release Notes&lt;/a&gt; e no blog da Databricks &lt;a href=&#34;https://databricks.com/blog/2015/09/09/announcing-spark-1-5.html&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;pré-requisito&#34;&gt;Pré-requisito&lt;/h2&gt;
+&lt;h2 id=&#34;pré-requisito:a471447a7b0c139f517b6888cdad9c6e&#34;&gt;Pré-requisito&lt;/h2&gt;
 
 &lt;p&gt;O procedimento consiste em: provisionar o ambiente; fazer uma cópia do branch estável da última versão, e; gerar o pacote binário e os artefatos do Maven.&lt;/p&gt;
 
@@ -1667,7 +1667,7 @@ mvn -version
 &amp;gt; OS name: &amp;quot;linux&amp;quot;, version: &amp;quot;4.0.4-2-arch&amp;quot;, arch: &amp;quot;amd64&amp;quot;, family: &amp;quot;unix&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;compilação&#34;&gt;Compilação&lt;/h2&gt;
+&lt;h2 id=&#34;compilação:a471447a7b0c139f517b6888cdad9c6e&#34;&gt;Compilação&lt;/h2&gt;
 
 &lt;p&gt;Primeiramente é criado um clone local do repositório do Spark no qual é desenvolvido a versão 1.5 (estável).&lt;/p&gt;
 
@@ -1828,7 +1828,7 @@ mv ~/.m2/repository/spark-1.5.0-m2-89d351b.tar .
 
 &lt;p&gt;&lt;code&gt;spark-1.5.0-m2-89d351b.tar&lt;/code&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;conclusão&#34;&gt;Conclusão&lt;/h2&gt;
+&lt;h2 id=&#34;conclusão:a471447a7b0c139f517b6888cdad9c6e&#34;&gt;Conclusão&lt;/h2&gt;
 
 &lt;p&gt;O Spark é um framework que vem evoluindo rapidamente, com contribuições das mais diversas origem. Praticamente todos os grandes de BigData estão contribuindo com o Spark. Muitas vezes, surgem novas funcionalidades que podem agregar muito valor nas suas aplicações. Outras vezes, são bugs corrigidos que contribuem para a estabilidade de uma aplicação que já existe. Também tem o &amp;lsquo;prazer&amp;rsquo; de ser um &amp;lsquo;early adopter&amp;rsquo;. Seja qual for o motivo, esse procedimento mostra que o trabalho para ter um pacote do Spark é bem fácil e, por experiência, esse é um fator bastante relevante para ganhar tempo e gerar máximo valor.&lt;/p&gt;
 
@@ -1852,7 +1852,7 @@ mv ~/.m2/repository/spark-1.5.0-m2-89d351b.tar .
 
 &lt;p&gt;Nesse artigo, o foco é um passo a passo de como usar o Docker para gerar um pacote do Hadoop adaptado para o Red Hat Enterprise Linux 6 (RHEL6) usando CentOS6.&lt;/p&gt;
 
-&lt;h2 id=&#34;pré-requisito&#34;&gt;Pré-requisito&lt;/h2&gt;
+&lt;h2 id=&#34;pré-requisito:ac8d87b01c866329a85ac2f7311bc677&#34;&gt;Pré-requisito&lt;/h2&gt;
 
 &lt;p&gt;Nesse procedimento, é necessário que o Docker esteja instalado e funcionando; também é necessário acesso à Internet.&lt;/p&gt;
 
@@ -1879,7 +1879,7 @@ mv ~/.m2/repository/spark-1.5.0-m2-89d351b.tar .
 &amp;gt;  OS/Arch:      linux/amd64
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;compilação&#34;&gt;Compilação&lt;/h2&gt;
+&lt;h2 id=&#34;compilação:ac8d87b01c866329a85ac2f7311bc677&#34;&gt;Compilação&lt;/h2&gt;
 
 &lt;p&gt;Documento com instruções de build do Hadoop &lt;a href=&#34;https://github.com/apache/hadoop/blob/release-2.7.1/BUILDING.txt&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 
@@ -2096,7 +2096,7 @@ mvn test -Pnative -Drequire.snappy -Drequire.openssl -Dmaven.test.failure.ignore
 sudo docker cp 3cc2bc5e593b:/hadoop/hadoop-2.7.1-src/hadoop-dist/target/hadoop-2.7.1.tar.gz .
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;conclusão&#34;&gt;Conclusão&lt;/h2&gt;
+&lt;h2 id=&#34;conclusão:ac8d87b01c866329a85ac2f7311bc677&#34;&gt;Conclusão&lt;/h2&gt;
 
 &lt;p&gt;Esse procedimento mostra como o Hadoop pode ser customizado para necessidades específicas e que não requer um esforço muito grande.&lt;/p&gt;
 
@@ -2124,7 +2124,7 @@ sudo docker cp 3cc2bc5e593b:/hadoop/hadoop-2.7.1-src/hadoop-dist/target/hadoop-2
 
 &lt;p&gt;Os slides originais dessa palestra podem ser acessados &lt;a href=&#34;http://www.slideshare.net/cirocavani/rio-big-data-meetup-20141021&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;personalização&#34;&gt;Personalização&lt;/h2&gt;
+&lt;h2 id=&#34;personalização:f639fdd98dff6b631b8bb3edbce40bc8&#34;&gt;Personalização&lt;/h2&gt;
 
 &lt;p&gt;A Globo.com é a empresa de Internet do Grupo Globo e tem alguns dos maiores portais do Brasil (G1, Globo Esporte, GShow e Vídeos). São dezenas de milhões de acessos por dia aos portais com cerca de 10 milhões de visitantes únicos e uma produção massiva de conteúdo bastante variado em Jornalismo, Esporte, Variedades e Vídeos (juntamente com TV Globo, Editora Globo e demais empresas do Grupo).&lt;/p&gt;
 
@@ -2132,7 +2132,7 @@ sudo docker cp 3cc2bc5e593b:/hadoop/hadoop-2.7.1-src/hadoop-dist/target/hadoop-2
 
 &lt;p&gt;A Plataforma de BigData da Globo.com surgiu dessa experiência.&lt;/p&gt;
 
-&lt;h3 id=&#34;recomendação&#34;&gt;Recomendação&lt;/h3&gt;
+&lt;h3 id=&#34;recomendação:f639fdd98dff6b631b8bb3edbce40bc8&#34;&gt;Recomendação&lt;/h3&gt;
 
 &lt;p&gt;O Sistema de Recomendação é projetado para coletar os sinais produzidos tanto pela dinâmica do usuário quanto pela dinâmica do conteúdo e filtrar o que é relevante para o usuário no momento em que isso é importante.&lt;/p&gt;
 
@@ -2157,7 +2157,7 @@ sudo docker cp 3cc2bc5e593b:/hadoop/hadoop-2.7.1-src/hadoop-dist/target/hadoop-2
 
 &lt;p&gt;&lt;em&gt;Toda vez que uma página da Globo.com é visitada, é gerado um sinal de pageview com o id do usuário, a URL e o timestamp. Esse sinal passa pelo Kafka e é armazenado no Hadoop. Um job Spark varre todos os sinais não processados na última execução (timestamp) gerando um arquivo com o formato user-item-rating (rating = número de visitas, por simplicidade) correspondendo a matriz de Preferências. Outro job Spark é executado para processar a matriz de Preferências, fazer a fatoração e gerar os vetores de fatores latentes por usuário e item. Os fatores latentes são usados para calcular os scores (ratings) não observados (itens não vistos pelo usuário) e os 30 maiores são armazenados no HBase. Quando configurada para esse algoritmo, a API consulta o HBase e usa a lista com score para combinar com outros resultados e fazer a recomendação.&lt;/em&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;tecnologia&#34;&gt;Tecnologia&lt;/h2&gt;
+&lt;h2 id=&#34;tecnologia:f639fdd98dff6b631b8bb3edbce40bc8&#34;&gt;Tecnologia&lt;/h2&gt;
 
 &lt;p&gt;A revolução em BigData é um fenômeno da tecnologia desenvolvida ao longo dos últimos anos focada na manipulação de um grande volume de dados em máquinas de baixo custo. Essa é a tecnologia que torna possível combinar uma solução de dados escalável com processos para geração de resultados relevantes, tanto no desenvolvimento de produtos quanto na evolução do conhecimento. O importante é entender como essa tecnologia pode ser usada para agregar valor ao negócio e permitir imaginar soluções inovadoras.&lt;/p&gt;
 
@@ -2165,7 +2165,7 @@ sudo docker cp 3cc2bc5e593b:/hadoop/hadoop-2.7.1-src/hadoop-dist/target/hadoop-2
 
 &lt;p&gt;Em artigos futuros, entrarei em mais detalhes sobre como usar essas tecnologias.&lt;/p&gt;
 
-&lt;h3 id=&#34;hadoop&#34;&gt;Hadoop&lt;/h3&gt;
+&lt;h3 id=&#34;hadoop:f639fdd98dff6b631b8bb3edbce40bc8&#34;&gt;Hadoop&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://cirocavani.github.io/images/posts/bigdata_na_globocom/hadoop-logo.jpg&#34; alt=&#34;Hadoop logo&#34; /&gt;&lt;/p&gt;
 
@@ -2218,7 +2218,7 @@ sudo docker cp 3cc2bc5e593b:/hadoop/hadoop-2.7.1-src/hadoop-dist/target/hadoop-2
 &lt;a href=&#34;http://www.socc2013.org/home/program/a5-vavilapalli.pdf&#34;&gt;http://www.socc2013.org/home/program/a5-vavilapalli.pdf&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;hbase&#34;&gt;HBase&lt;/h3&gt;
+&lt;h3 id=&#34;hbase:f639fdd98dff6b631b8bb3edbce40bc8&#34;&gt;HBase&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://cirocavani.github.io/images/posts/bigdata_na_globocom/hbase-logo.png&#34; alt=&#34;HBase logo&#34; /&gt;&lt;/p&gt;
 
@@ -2265,7 +2265,7 @@ sudo docker cp 3cc2bc5e593b:/hadoop/hadoop-2.7.1-src/hadoop-dist/target/hadoop-2
 &lt;a href=&#34;http://research.google.com/archive/spanner-osdi2012.pdf&#34;&gt;http://research.google.com/archive/spanner-osdi2012.pdf&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;kafka&#34;&gt;Kafka&lt;/h3&gt;
+&lt;h3 id=&#34;kafka:f639fdd98dff6b631b8bb3edbce40bc8&#34;&gt;Kafka&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://cirocavani.github.io/images/posts/bigdata_na_globocom/kafka-logo.png&#34; alt=&#34;Kafka logo&#34; /&gt;&lt;/p&gt;
 
@@ -2305,7 +2305,7 @@ httpd://spark.apache.org/streaming/&lt;/p&gt;
 &lt;a href=&#34;https://slider.incubator.apache.org/&#34;&gt;https://slider.incubator.apache.org/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;spark&#34;&gt;Spark&lt;/h3&gt;
+&lt;h3 id=&#34;spark:f639fdd98dff6b631b8bb3edbce40bc8&#34;&gt;Spark&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://cirocavani.github.io/images/posts/bigdata_na_globocom/spark-logo.png&#34; alt=&#34;Spark logo&#34; /&gt;&lt;/p&gt;
 
@@ -2353,7 +2353,7 @@ httpd://spark.apache.org/streaming/&lt;/p&gt;
 &lt;a href=&#34;http://www.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf&#34;&gt;http://www.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&#34;conclusão&#34;&gt;Conclusão&lt;/h2&gt;
+&lt;h2 id=&#34;conclusão:f639fdd98dff6b631b8bb3edbce40bc8&#34;&gt;Conclusão&lt;/h2&gt;
 
 &lt;p&gt;Esse artigo é a catarse de um pouco mais de 2 anos de trabalho feito pelo time de Personalização no desenvolvimento do Sistema de Recomendação. Esse trabalho teve início com um grupo de cerca de 5 pessoas e, com alguma troca, se manteve nesse tamanho por grande parte do tempo. Há cerca de 9 meses, BigData ganhou internamente em importância e foi criada uma área dentro da empresa com esse foco. Onde antes tínhamos o Sistema de Recomendação como o único produto de dados dessa Plataforma de BigData, desse ponto em diante passamos a ter o desafio de tornar essa tecnologia disponível e útil para toda a empresa e todo o Grupo. Também estamos aumentando o time e planejando o crescimento para atender outros casos de uso. O mais importante dessa experiência é que construímos um conhecimento sólido para continuarmos desenvolvendo essa plataforma e expandir sua capacidade e valor dentro do Grupo.&lt;/p&gt;
 
