@@ -24,7 +24,7 @@
 
 &lt;p&gt;Os slides originais dessa palestra podem ser acessados &lt;a href=&#34;http://www.slideshare.net/cirocavani/rio-big-data-meetup-20141021&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;personalização:f639fdd98dff6b631b8bb3edbce40bc8&#34;&gt;Personalização&lt;/h2&gt;
+&lt;h2 id=&#34;personalização&#34;&gt;Personalização&lt;/h2&gt;
 
 &lt;p&gt;A Globo.com é a empresa de Internet do Grupo Globo e tem alguns dos maiores portais do Brasil (G1, Globo Esporte, GShow e Vídeos). São dezenas de milhões de acessos por dia aos portais com cerca de 10 milhões de visitantes únicos e uma produção massiva de conteúdo bastante variado em Jornalismo, Esporte, Variedades e Vídeos (juntamente com TV Globo, Editora Globo e demais empresas do Grupo).&lt;/p&gt;
 
@@ -32,7 +32,7 @@
 
 &lt;p&gt;A Plataforma de BigData da Globo.com surgiu dessa experiência.&lt;/p&gt;
 
-&lt;h3 id=&#34;recomendação:f639fdd98dff6b631b8bb3edbce40bc8&#34;&gt;Recomendação&lt;/h3&gt;
+&lt;h3 id=&#34;recomendação&#34;&gt;Recomendação&lt;/h3&gt;
 
 &lt;p&gt;O Sistema de Recomendação é projetado para coletar os sinais produzidos tanto pela dinâmica do usuário quanto pela dinâmica do conteúdo e filtrar o que é relevante para o usuário no momento em que isso é importante.&lt;/p&gt;
 
@@ -57,7 +57,7 @@
 
 &lt;p&gt;&lt;em&gt;Toda vez que uma página da Globo.com é visitada, é gerado um sinal de pageview com o id do usuário, a URL e o timestamp. Esse sinal passa pelo Kafka e é armazenado no Hadoop. Um job Spark varre todos os sinais não processados na última execução (timestamp) gerando um arquivo com o formato user-item-rating (rating = número de visitas, por simplicidade) correspondendo a matriz de Preferências. Outro job Spark é executado para processar a matriz de Preferências, fazer a fatoração e gerar os vetores de fatores latentes por usuário e item. Os fatores latentes são usados para calcular os scores (ratings) não observados (itens não vistos pelo usuário) e os 30 maiores são armazenados no HBase. Quando configurada para esse algoritmo, a API consulta o HBase e usa a lista com score para combinar com outros resultados e fazer a recomendação.&lt;/em&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;tecnologia:f639fdd98dff6b631b8bb3edbce40bc8&#34;&gt;Tecnologia&lt;/h2&gt;
+&lt;h2 id=&#34;tecnologia&#34;&gt;Tecnologia&lt;/h2&gt;
 
 &lt;p&gt;A revolução em BigData é um fenômeno da tecnologia desenvolvida ao longo dos últimos anos focada na manipulação de um grande volume de dados em máquinas de baixo custo. Essa é a tecnologia que torna possível combinar uma solução de dados escalável com processos para geração de resultados relevantes, tanto no desenvolvimento de produtos quanto na evolução do conhecimento. O importante é entender como essa tecnologia pode ser usada para agregar valor ao negócio e permitir imaginar soluções inovadoras.&lt;/p&gt;
 
@@ -65,7 +65,7 @@
 
 &lt;p&gt;Em artigos futuros, entrarei em mais detalhes sobre como usar essas tecnologias.&lt;/p&gt;
 
-&lt;h3 id=&#34;hadoop:f639fdd98dff6b631b8bb3edbce40bc8&#34;&gt;Hadoop&lt;/h3&gt;
+&lt;h3 id=&#34;hadoop&#34;&gt;Hadoop&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://cirocavani.github.io/images/posts/bigdata_na_globocom/hadoop-logo.jpg&#34; alt=&#34;Hadoop logo&#34; /&gt;&lt;/p&gt;
 
@@ -118,7 +118,7 @@
 &lt;a href=&#34;http://www.socc2013.org/home/program/a5-vavilapalli.pdf&#34;&gt;http://www.socc2013.org/home/program/a5-vavilapalli.pdf&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;hbase:f639fdd98dff6b631b8bb3edbce40bc8&#34;&gt;HBase&lt;/h3&gt;
+&lt;h3 id=&#34;hbase&#34;&gt;HBase&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://cirocavani.github.io/images/posts/bigdata_na_globocom/hbase-logo.png&#34; alt=&#34;HBase logo&#34; /&gt;&lt;/p&gt;
 
@@ -165,7 +165,7 @@
 &lt;a href=&#34;http://research.google.com/archive/spanner-osdi2012.pdf&#34;&gt;http://research.google.com/archive/spanner-osdi2012.pdf&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;kafka:f639fdd98dff6b631b8bb3edbce40bc8&#34;&gt;Kafka&lt;/h3&gt;
+&lt;h3 id=&#34;kafka&#34;&gt;Kafka&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://cirocavani.github.io/images/posts/bigdata_na_globocom/kafka-logo.png&#34; alt=&#34;Kafka logo&#34; /&gt;&lt;/p&gt;
 
@@ -205,7 +205,7 @@ httpd://spark.apache.org/streaming/&lt;/p&gt;
 &lt;a href=&#34;https://slider.incubator.apache.org/&#34;&gt;https://slider.incubator.apache.org/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;spark:f639fdd98dff6b631b8bb3edbce40bc8&#34;&gt;Spark&lt;/h3&gt;
+&lt;h3 id=&#34;spark&#34;&gt;Spark&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://cirocavani.github.io/images/posts/bigdata_na_globocom/spark-logo.png&#34; alt=&#34;Spark logo&#34; /&gt;&lt;/p&gt;
 
@@ -253,7 +253,7 @@ httpd://spark.apache.org/streaming/&lt;/p&gt;
 &lt;a href=&#34;http://www.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf&#34;&gt;http://www.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&#34;conclusão:f639fdd98dff6b631b8bb3edbce40bc8&#34;&gt;Conclusão&lt;/h2&gt;
+&lt;h2 id=&#34;conclusão&#34;&gt;Conclusão&lt;/h2&gt;
 
 &lt;p&gt;Esse artigo é a catarse de um pouco mais de 2 anos de trabalho feito pelo time de Personalização no desenvolvimento do Sistema de Recomendação. Esse trabalho teve início com um grupo de cerca de 5 pessoas e, com alguma troca, se manteve nesse tamanho por grande parte do tempo. Há cerca de 9 meses, BigData ganhou internamente em importância e foi criada uma área dentro da empresa com esse foco. Onde antes tínhamos o Sistema de Recomendação como o único produto de dados dessa Plataforma de BigData, desse ponto em diante passamos a ter o desafio de tornar essa tecnologia disponível e útil para toda a empresa e todo o Grupo. Também estamos aumentando o time e planejando o crescimento para atender outros casos de uso. O mais importante dessa experiência é que construímos um conhecimento sólido para continuarmos desenvolvendo essa plataforma e expandir sua capacidade e valor dentro do Grupo.&lt;/p&gt;
 
