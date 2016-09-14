@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.16-DEV" />
+  <meta name="generator" content="Hugo 0.16" />
 
   <title>Compilação do TensorFlow 0.10 para Linux (com GPU) &middot; Ciro Cavani</title>
 
@@ -241,7 +241,7 @@
 
 <p>&hellip;</p>
 
-<h2 id="compilação:291e0c1fa75cdcafa45ea1a9fc30a281">Compilação</h2>
+<h2 id="compilação">Compilação</h2>
 
 <p>O procedimento consiste em:</p>
 
@@ -266,7 +266,7 @@
 
 <p><a href="https://github.com/tensorflow/tensorflow/blob/r0.10/tensorflow/tools/docker/Dockerfile.devel-gpu">https://github.com/tensorflow/tensorflow/blob/r0.10/tensorflow/tools/docker/Dockerfile.devel-gpu</a></p>
 
-<h3 id="download-do-cuda-8-0rc-cudnn-5-1:291e0c1fa75cdcafa45ea1a9fc30a281">Download do Cuda 8.0rc, cuDNN 5.1</h3>
+<h3 id="download-do-cuda-8-0rc-cudnn-5-1">Download do Cuda 8.0rc, cuDNN 5.1</h3>
 
 <p>É necessário o download dos pacotes:</p>
 
@@ -318,7 +318,7 @@ Installer Type = runfile (local)
 </ul>
 </blockquote>
 
-<h3 id="setup-inicial-no-docker-para-ubuntu-16-04:291e0c1fa75cdcafa45ea1a9fc30a281">Setup inicial no Docker para Ubuntu 16.04</h3>
+<h3 id="setup-inicial-no-docker-para-ubuntu-16-04">Setup inicial no Docker para Ubuntu 16.04</h3>
 
 <p>Download dos demais pacotes necessários para o build:</p>
 
@@ -374,7 +374,7 @@ apt-get install -y \
     rsync
 </code></pre>
 
-<h3 id="instalação-do-cuda-8-0rc-e-cudnn-5-1:291e0c1fa75cdcafa45ea1a9fc30a281">Instalação do Cuda 8.0rc e cuDNN 5.1</h3>
+<h3 id="instalação-do-cuda-8-0rc-e-cudnn-5-1">Instalação do Cuda 8.0rc e cuDNN 5.1</h3>
 
 <p>(comandos a serem executados dentro do container)</p>
 
@@ -386,7 +386,7 @@ tar zxf /build_deps/cudnn-8.0-linux-x64-v5.1.tgz \
     -C /usr/local/cuda-8.0 --strip-components=1
 </code></pre>
 
-<h3 id="instalação-do-java-8:291e0c1fa75cdcafa45ea1a9fc30a281">Instalação do Java 8</h3>
+<h3 id="instalação-do-java-8">Instalação do Java 8</h3>
 
 <p>(comandos a serem executados dentro do container)</p>
 
@@ -399,7 +399,7 @@ chmod a+x /etc/profile.d/java.sh
 source /etc/profile.d/java.sh
 </code></pre>
 
-<h3 id="instalação-do-bazel-0-3:291e0c1fa75cdcafa45ea1a9fc30a281">Instalação do Bazel 0.3</h3>
+<h3 id="instalação-do-bazel-0-3">Instalação do Bazel 0.3</h3>
 
 <p>(comandos a serem executados dentro do container)</p>
 
@@ -411,7 +411,7 @@ chmod a+x /etc/profile.d/bazel.sh
 source /etc/profile.d/bazel.sh
 </code></pre>
 
-<h3 id="construção-do-tensorflow-0-10:291e0c1fa75cdcafa45ea1a9fc30a281">Construção do TensorFlow 0.10</h3>
+<h3 id="construção-do-tensorflow-0-10">Construção do TensorFlow 0.10</h3>
 
 <p>Considerações:</p>
 
@@ -483,7 +483,7 @@ exit
     .
 </code></pre>
 
-<h2 id="conclusão:291e0c1fa75cdcafa45ea1a9fc30a281">Conclusão</h2>
+<h2 id="conclusão">Conclusão</h2>
 
 <p>O procedimento de build do TensorFlow não é complicado, mas pequenas variações podem atingir alguns bugs do build (<a href="https://github.com/tensorflow/tensorflow/issues/3985">exemplo</a>). Com um script bem definido, fica fácil criar o pacote do TensorFlow.</p>
 
@@ -511,8 +511,14 @@ exit
   </div>
   <div class="pure-u-10-24">
     
+    <nav class="next">
+      <a href="http://cirocavani.github.io/post/tensorflow-no-jupyter-com-notebooks/">TensorFlow no Jupyter (com notebooks)</a>
+    </nav>
+    
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://cirocavani.github.io/post/tensorflow-no-jupyter-com-notebooks/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>

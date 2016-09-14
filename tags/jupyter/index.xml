@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jupyter on Ciro Cavani</title>
+    <link>http://cirocavani.github.io/tags/jupyter/</link>
+    <description>Recent content in Jupyter on Ciro Cavani</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>&amp;copy; 2016. All rights reserved.</copyright>
+    <lastBuildDate>Tue, 13 Sep 2016 21:13:26 -0300</lastBuildDate>
+    <atom:link href="http://cirocavani.github.io/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>TensorFlow no Jupyter (com notebooks)</title>
+      <link>http://cirocavani.github.io/post/tensorflow-no-jupyter-com-notebooks/</link>
+      <pubDate>Tue, 13 Sep 2016 21:13:26 -0300</pubDate>
+      
+      <guid>http://cirocavani.github.io/post/tensorflow-no-jupyter-com-notebooks/</guid>
+      <description>
+
+&lt;p&gt;Esse tutorial é sobre o TensorFlow no Jupyter. A princípio, esse projeto pode ser usado para instalar automaticamente o Jupyter Notebook configurado com TensorFlow 0.10 e alguns notebooks de exemplo (tutoriais do TensorFlow). Outro objetivo é servir como base para criação de configurações customizadas isoladas (exemplo um ambiente extra para testar com TensorFlow GPU Python 3 com CUDA 8). O Jupyter é uma ferramenta excelente para testar ideias e prototipar rapidamente com TensorFlow.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Projeto&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/cirocavani/tensorflow-jupyter&#34;&gt;https://github.com/cirocavani/tensorflow-jupyter&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Esse artigo consiste em:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;o procedimento de instalação básico&lt;/li&gt;
+&lt;li&gt;a descrição dos notebooks de exemplo&lt;/li&gt;
+&lt;li&gt;a explicação de como funciona a instalação&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;instalação&#34;&gt;Instalação&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/cirocavani/tensorflow-jupyter.git
+cd tensorflow-jupyter
+
+#bin/setup-linux
+bin/setup-mac
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Comandos:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;bin/jupyter
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Inicializa o Jupyter que já tem o kernel do TensorFlow configurado.&lt;/p&gt;
+
+&lt;p&gt;Acesso em &lt;a href=&#34;http://localhost:8888/&#34;&gt;http://localhost:8888/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;bin/tensorboard
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Inicializa a ferramenta de visualização do TensorFlow, mostra grafo de execução, valores de medições do treinamento.&lt;/p&gt;
+
+&lt;p&gt;Acesso em &lt;a href=&#34;http://localhost:6006/&#34;&gt;http://localhost:6006/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;notebooks-exemplo&#34;&gt;Notebooks Exemplo&lt;/h2&gt;
+
+&lt;p&gt;Os notebooks exemplo são baseados nos tutorias disponiveis no site do TensorFlow. Os tutoriais originais estão referenciados no início do notebook. O código de alguns tutoriais foi alterado para usar algumas funcionalidades mais &amp;ldquo;reais&amp;rdquo; (por exemplo: leitura de CSV em batch).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;0 - First Run&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2000%20-%20First%20Run.ipynb&#34;&gt;Notebook&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hello World com TensorFlow.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1 - Linear Regression&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2001%20-%20Linear%20Regression.ipynb&#34;&gt;Notebook&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Nesse exemplo, é feito uma regressão linear para o fit de uma reta em dados gerados sinteticamente pela função y = 0.1x + 0.3, ou seja, o TensorFlow aprende os parâmetros 0.1 e 0.3 de um dataset ruidoso.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2 - MNIST, Softmax Regression&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2002%20-%20MNIST%2C%20Softmax%20Regression.ipynb&#34;&gt;Notebook&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Nesse exemplo, é feito um classificador com uma regressão softmax para identificação de dígitos 0-9 em uma imagem. Dado na entrada uma imagem de 28x28 pixels de um dígito manuscrito, o classificador retorna 10 valores, cada um indicando a &amp;ldquo;probabilidade&amp;rdquo; de ser um dos dígitos que a variável representa. A acurácia é de 92%.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3 - MNIST, Convolutional Network&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2003%20-%20MNIST%2C%20Convolutional%20Network.ipynb&#34;&gt;Notebook&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Nesse exemplo, é feito um classificador com uma rede neural convolutiva para identificação de dígitos 0-9 em uma imagem. Dado na entrada uma imagem de 28x28 pixels de um dígito manuscrito, o classificador retorna 10 valores, cada um indicando a &amp;ldquo;probabilidade&amp;rdquo; de ser um dos dígitos que a variável representa. A acurácia é de 99%.&lt;/p&gt;
+
+&lt;p&gt;A rede é formada por duas camadas de convolução, uma camada toda conectada, uma camada de dropout e uma camada de regressão softmax.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4 - MNIST, Feed-forward NN with Log&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2004%20-%20MNIST%2C%20Feed-forward%20NN%20with%20Log.ipynb&#34;&gt;Notebook&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Nesse exemplo, é feito um classificador com uma rede neural feed-forward para identificação de dígitos 0-9 em uma imagem. Dado na entrada uma imagem de 28x28 pixels de um dígito manuscrito, o classificador retorna 10 valores, cada um indicando a &amp;ldquo;probabilidade&amp;rdquo; de ser um dos dígitos que a variável representa. A acurácia é de 99%.&lt;/p&gt;
+
+&lt;p&gt;A rede é formada por duas camadas toda conectada e uma camada de regressão softmax.&lt;/p&gt;
+
+&lt;p&gt;O modelo treinado nesse notebook pode ser visualizado no TensorBoard.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5 - Iris, DNN Classifier (tf.contrib.learn)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2005%20-%20Iris%2C%20DNN%20Classifier%20%28tf.contrib.learn%29.ipynb&#34;&gt;Notebook&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Nesse exemplo, é feito um classificador com uma rede neural para classificação de 3 espécies de flor. Dada na entrada as medidas da sépala e da pétala, o classificador retorna a espécie 0 setosa, 1 versicolor e 2 virginica. A acurácia é de 97%.&lt;/p&gt;
+
+&lt;p&gt;A rede é formada por 5 camadas.&lt;/p&gt;
+
+&lt;p&gt;O modelo treinado nesse notebook pode ser visualizado no TensorBoard.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6 - Iris, DNN Classifier with Log (tf.contrib.learn)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2006%20-%20Iris%2C%20DNN%20Classifier%20with%20Log%20%28tf.contrib.learn%29.ipynb&#34;&gt;Notebook&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Nesse exemplo, é feito um classificador com uma rede neural para classificação de 3 espécies de flor. Dada na entrada as medidas da sépala e da pétala, o classificador retorna a espécie 0 setosa, 1 versicolor e 2 virginica. A acurácia é de 97%.&lt;/p&gt;
+
+&lt;p&gt;A rede é formada por 5 camadas e é feito o monitoramento de métricas que podem ser visualizadas no log do notebook e no TensorBoard.&lt;/p&gt;
+
+&lt;p&gt;O modelo treinado nesse notebook pode ser visualizado no TensorBoard.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;7 - Reading CSV&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2007%20-%20Reading%20CSV.ipynb&#34;&gt;Notebook&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Nesse exemplo, é feito o pipeline para leitura de dados de um arquivo CSV. O arquivo usado nesse estudo é o mesmo do Census.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;8 - Census, Logistic Regression Classifier (tf.contrib.learn)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2008%20-%20Census%2C%20Logistic%20Regression%20Classifier%20%28tf.contrib.learn%29.ipynb&#34;&gt;Notebook&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Nesse exemplo, é feito um classificador com uma regressão logística para classificação de rendimento maior que 50 mil dólares. Dada na entrada as informações do Census, o classificador retorna 1 mais de 50 mil e 0 menos de 50 mil. A acurácia é de 87%.&lt;/p&gt;
+
+&lt;p&gt;O modelo treinado nesse notebook pode ser visualizado no TensorBoard.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;9 - Census, Combined Classifier (tf.contrib.learn)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2009%20-%20Census%2C%20Combined%20Classifier%20%28tf.contrib.learn%29.ipynb&#34;&gt;Notebook&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Nesse exemplo, é feito um classificador com a combinação de uma rede neural e uma regressão logística (treinadas em conjunto) para classificação de rendimento maior que 50 mil dólares. Dada na entrada as informações do Census, o classificador retorna 1 mais de 50 mil e 0 menos de 50 mil. A acurácia é de 93%.&lt;/p&gt;
+
+&lt;p&gt;O modelo treinado nesse notebook pode ser visualizado no TensorBoard.&lt;/p&gt;
+
+&lt;h2 id=&#34;funcionamento&#34;&gt;Funcionamento&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;IMPORTANTE:&lt;/p&gt;
+
+&lt;p&gt;Essa é a descrição de como é feita a configuração do projeto, contudo esse procedimento já está definido no comando &lt;code&gt;bin/setup-linux&lt;/code&gt; (ou &lt;code&gt;bin/setup-mac&lt;/code&gt;) que deve ser executado ao invés desse procedimento.&lt;/p&gt;
+
+&lt;p&gt;Esse passo a passo é para ajudar a customização do Projeto.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;O procedimento de instalação consiste em:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Instalar o Python 2.7 com &lt;code&gt;miniconda&lt;/code&gt; (Linux ou Mac)&lt;/li&gt;
+&lt;li&gt;Instalar o Jupyter Notebook 4.2 no &lt;em&gt;environment&lt;/em&gt; &lt;code&gt;default&lt;/code&gt; do &lt;code&gt;conda2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Instalar o TensorFlow 0.10 em um &lt;em&gt;environment&lt;/em&gt; próprio (para Python 2.7)&lt;/li&gt;
+&lt;li&gt;Instalar o kernel do Python no &lt;em&gt;environment&lt;/em&gt; do TensorFlow&lt;/li&gt;
+&lt;li&gt;Configurar o kernel no Jupyter que é executado no &lt;em&gt;environment&lt;/em&gt; do TensorFlow&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;A estrutura do projeto será:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;deps/conda2&lt;/code&gt;: instalação do Python 2.7 (&lt;code&gt;miniconda&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;deps/tensorflow-0.10&lt;/code&gt;: instalação do TensorFlow 0.10 (&lt;em&gt;environment&lt;/em&gt; isolado)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;data/kernels/tensorflow-0.10/kernel.json&lt;/code&gt;: configuração do kernel no Jupyter para o TensorFlow&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ao final desse procedimento, a execução do Jupyter consiste de (&lt;code&gt;bin/jupyter&lt;/code&gt;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export JUPYTER_DATA_DIR=`pwd`/data
+deps/conda2/bin/jupyter notebook --no-browser --notebook-dir=`pwd`/workspace
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Para a criação de uma customização, os passos 3, 4 e 5 devem ser ajustados para um novo &lt;em&gt;environment&lt;/em&gt; com configuração customizada.&lt;/p&gt;
+
+&lt;h3 id=&#34;instalação-do-python&#34;&gt;Instalação do Python&lt;/h3&gt;
+
+&lt;p&gt;A instalação do Python é feita usando o &lt;code&gt;miniconda&lt;/code&gt; para versão 2.7 (para Linux ou Mac).&lt;/p&gt;
+
+&lt;p&gt;Os comandos de Python e Conda ficam disponíveis na pasta &lt;code&gt;deps/conda2/bin&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://conda.pydata.org/miniconda.html&#34;&gt;http://conda.pydata.org/miniconda.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;(Linux)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl -k -L \
+    -O https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
+
+chmod +x Miniconda2-latest-Linux-x86_64.sh
+
+./Miniconda2-latest-Linux-x86_64.sh -b -f -p deps/conda2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;instalação-do-jupyter&#34;&gt;Instalação do Jupyter&lt;/h3&gt;
+
+&lt;p&gt;O Jupyter tem um meta pacote que depende de todos os componentes, incluindo o Notebook.&lt;/p&gt;
+
+&lt;p&gt;O comando do Jupyter fica disponível em &lt;code&gt;deps/conda2/bin/jupyter&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://jupyter.readthedocs.io/en/latest/install.html&#34;&gt;http://jupyter.readthedocs.io/en/latest/install.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://pypi.python.org/pypi/jupyter&#34;&gt;https://pypi.python.org/pypi/jupyter&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;deps/conda2/bin/pip install --upgrade jupyter
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;instalação-do-tensorflow&#34;&gt;Instalação do TensorFlow&lt;/h3&gt;
+
+&lt;p&gt;O TensorFlow é distribuído como um pacote Wheel e é instalado em um &lt;em&gt;environment&lt;/em&gt; isolado criado no &lt;code&gt;miniconda&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;O comando do TensorBoard fica disponível em &lt;code&gt;deps/tensorflow-0.10/bin/tensorboard&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.tensorflow.org/versions/r0.10/get_started/os_setup.html#anaconda-installation&#34;&gt;https://www.tensorflow.org/versions/r0.10/get_started/os_setup.html#anaconda-installation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;(Linux)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;deps/conda2/bin/conda create -y -p deps/tensorflow-0.10 python=2.7
+
+deps/tensorflow-0.10/bin/pip install \
+    https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp27-none-linux_x86_64.whl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;instalação-do-kernel-para-o-tensorflow&#34;&gt;Instalação do Kernel para o TensorFlow&lt;/h3&gt;
+
+&lt;p&gt;No &lt;em&gt;environment&lt;/em&gt; do TensorFlow é instalado o kernel Python que possibilita a conexão a partir do Jupyter (Notebook). Isso torna possível escrever código Python que é executado dentre desse &lt;em&gt;environment&lt;/em&gt; isolado.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ipython.readthedocs.io/en/stable/install/kernel_install.html&#34;&gt;http://ipython.readthedocs.io/en/stable/install/kernel_install.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://pypi.python.org/pypi/ipykernel&#34;&gt;https://pypi.python.org/pypi/ipykernel&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;deps/tensorflow-0.10/bin/pip install ipykernel
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;configuração-do-kernel-para-o-tensorflow&#34;&gt;Configuração do Kernel para o TensorFlow&lt;/h3&gt;
+
+&lt;p&gt;O Jupyter é configurado com o comando que executa o kernel do Python dentro do &lt;em&gt;environment&lt;/em&gt; que tem o TensorFlow. O kernel é responsável por receber requisições do servidor do Jupyter e executar código Python no processo em que é executado. Esse processo é executado em isolamento e pacotes adicionais devem ser instalados nesse &lt;em&gt;environment&lt;/em&gt; sem conflito com outros &lt;em&gt;environments&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jupyter-client.readthedocs.io/en/latest/kernels.html#kernelspecs&#34;&gt;https://jupyter-client.readthedocs.io/en/latest/kernels.html#kernelspecs&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mkdir -p data/kernels/tensorflow-0.10-py2
+
+echo &amp;quot;{
+ \&amp;quot;display_name\&amp;quot;: \&amp;quot;TensorFlow 0.10 (CPU, Python 2)\&amp;quot;,
+ \&amp;quot;language\&amp;quot;: \&amp;quot;python\&amp;quot;,
+ \&amp;quot;argv\&amp;quot;: [
+  \&amp;quot;`pwd`/deps/tensorflow-0.10/bin/python\&amp;quot;,
+  \&amp;quot;-c\&amp;quot;,
+  \&amp;quot;from ipykernel.kernelapp import main; main()\&amp;quot;,
+  \&amp;quot;-f\&amp;quot;,
+  \&amp;quot;{connection_file}\&amp;quot;
+ ]
+}&amp;quot; &amp;gt; data/kernels/tensorflow-0.10-py2/kernel.json
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;conclusão&#34;&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;O Jupyter é uma excelente ferramenta para exploração de ideias e desenvolvimento de código rápido. A facilidade de visualização e execução independente de células é muito prático. O desenvolvimento de aplicações mais complexas e com código mais estruturado já não é muito favorável.&lt;/p&gt;
+
+&lt;p&gt;O TensorFlow é uma ferramenta sofisticada para desenvolvimento de algoritmos inteligentes. Algumas APIs podem ser complexas e de difícil entendimento, algumas vezes bem documentadas e outras não. A comunidade é muito engajada e o Google vem produzindo tutoriais, documentação e modelos muito úteis para o aprendizado.&lt;/p&gt;
+
+&lt;p&gt;Aprender TensorFlow no Jupyter é o melhor caminho e essa é a proposta desse Projeto.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

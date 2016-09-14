@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>TensorFlow no Jupyter (com notebooks) &middot; Ciro Cavani</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="http://cirocavani.github.io/img/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="http://cirocavani.github.io/">Ciro Cavani</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/about/"><i class='fa fa-user fa-fw'></i>Sobre Mim</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/cirocavani" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/cirocavani" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://instagram.com/ciro.cavani" target="_blank"><i class="fa fa-instagram fa-fw"></i>Instagram</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/cirocavani" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/cirocavani" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>TensorFlow no Jupyter (com notebooks)</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>13 Sep 2016, 21:13</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tensorflow">TensorFlow</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/jupyter">Jupyter</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tutorial">Tutorial</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p>Esse tutorial é sobre o TensorFlow no Jupyter. A princípio, esse projeto pode ser usado para instalar automaticamente o Jupyter Notebook configurado com TensorFlow 0.10 e alguns notebooks de exemplo (tutoriais do TensorFlow). Outro objetivo é servir como base para criação de configurações customizadas isoladas (exemplo um ambiente extra para testar com TensorFlow GPU Python 3 com CUDA 8). O Jupyter é uma ferramenta excelente para testar ideias e prototipar rapidamente com TensorFlow.</p>
+
+<p><strong>Projeto</strong></p>
+
+<p><a href="https://github.com/cirocavani/tensorflow-jupyter">https://github.com/cirocavani/tensorflow-jupyter</a></p>
+
+<p>Esse artigo consiste em:</p>
+
+<ol>
+<li>o procedimento de instalação básico</li>
+<li>a descrição dos notebooks de exemplo</li>
+<li>a explicação de como funciona a instalação</li>
+</ol>
+
+<h2 id="instalação">Instalação</h2>
+
+<pre><code>git clone https://github.com/cirocavani/tensorflow-jupyter.git
+cd tensorflow-jupyter
+
+#bin/setup-linux
+bin/setup-mac
+</code></pre>
+
+<p>Comandos:</p>
+
+<pre><code>bin/jupyter
+</code></pre>
+
+<p>Inicializa o Jupyter que já tem o kernel do TensorFlow configurado.</p>
+
+<p>Acesso em <a href="http://localhost:8888/">http://localhost:8888/</a>.</p>
+
+<pre><code>bin/tensorboard
+</code></pre>
+
+<p>Inicializa a ferramenta de visualização do TensorFlow, mostra grafo de execução, valores de medições do treinamento.</p>
+
+<p>Acesso em <a href="http://localhost:6006/">http://localhost:6006/</a>.</p>
+
+<h2 id="notebooks-exemplo">Notebooks Exemplo</h2>
+
+<p>Os notebooks exemplo são baseados nos tutorias disponiveis no site do TensorFlow. Os tutoriais originais estão referenciados no início do notebook. O código de alguns tutoriais foi alterado para usar algumas funcionalidades mais &ldquo;reais&rdquo; (por exemplo: leitura de CSV em batch).</p>
+
+<p><strong>0 - First Run</strong></p>
+
+<p><a href="https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2000%20-%20First%20Run.ipynb">Notebook</a></p>
+
+<p>Hello World com TensorFlow.</p>
+
+<p><strong>1 - Linear Regression</strong></p>
+
+<p><a href="https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2001%20-%20Linear%20Regression.ipynb">Notebook</a></p>
+
+<p>Nesse exemplo, é feito uma regressão linear para o fit de uma reta em dados gerados sinteticamente pela função y = 0.1x + 0.3, ou seja, o TensorFlow aprende os parâmetros 0.1 e 0.3 de um dataset ruidoso.</p>
+
+<p><strong>2 - MNIST, Softmax Regression</strong></p>
+
+<p><a href="https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2002%20-%20MNIST%2C%20Softmax%20Regression.ipynb">Notebook</a></p>
+
+<p>Nesse exemplo, é feito um classificador com uma regressão softmax para identificação de dígitos 0-9 em uma imagem. Dado na entrada uma imagem de 28x28 pixels de um dígito manuscrito, o classificador retorna 10 valores, cada um indicando a &ldquo;probabilidade&rdquo; de ser um dos dígitos que a variável representa. A acurácia é de 92%.</p>
+
+<p><strong>3 - MNIST, Convolutional Network</strong></p>
+
+<p><a href="https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2003%20-%20MNIST%2C%20Convolutional%20Network.ipynb">Notebook</a></p>
+
+<p>Nesse exemplo, é feito um classificador com uma rede neural convolutiva para identificação de dígitos 0-9 em uma imagem. Dado na entrada uma imagem de 28x28 pixels de um dígito manuscrito, o classificador retorna 10 valores, cada um indicando a &ldquo;probabilidade&rdquo; de ser um dos dígitos que a variável representa. A acurácia é de 99%.</p>
+
+<p>A rede é formada por duas camadas de convolução, uma camada toda conectada, uma camada de dropout e uma camada de regressão softmax.</p>
+
+<p><strong>4 - MNIST, Feed-forward NN with Log</strong></p>
+
+<p><a href="https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2004%20-%20MNIST%2C%20Feed-forward%20NN%20with%20Log.ipynb">Notebook</a></p>
+
+<p>Nesse exemplo, é feito um classificador com uma rede neural feed-forward para identificação de dígitos 0-9 em uma imagem. Dado na entrada uma imagem de 28x28 pixels de um dígito manuscrito, o classificador retorna 10 valores, cada um indicando a &ldquo;probabilidade&rdquo; de ser um dos dígitos que a variável representa. A acurácia é de 99%.</p>
+
+<p>A rede é formada por duas camadas toda conectada e uma camada de regressão softmax.</p>
+
+<p>O modelo treinado nesse notebook pode ser visualizado no TensorBoard.</p>
+
+<p><strong>5 - Iris, DNN Classifier (tf.contrib.learn)</strong></p>
+
+<p><a href="https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2005%20-%20Iris%2C%20DNN%20Classifier%20%28tf.contrib.learn%29.ipynb">Notebook</a></p>
+
+<p>Nesse exemplo, é feito um classificador com uma rede neural para classificação de 3 espécies de flor. Dada na entrada as medidas da sépala e da pétala, o classificador retorna a espécie 0 setosa, 1 versicolor e 2 virginica. A acurácia é de 97%.</p>
+
+<p>A rede é formada por 5 camadas.</p>
+
+<p>O modelo treinado nesse notebook pode ser visualizado no TensorBoard.</p>
+
+<p><strong>6 - Iris, DNN Classifier with Log (tf.contrib.learn)</strong></p>
+
+<p><a href="https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2006%20-%20Iris%2C%20DNN%20Classifier%20with%20Log%20%28tf.contrib.learn%29.ipynb">Notebook</a></p>
+
+<p>Nesse exemplo, é feito um classificador com uma rede neural para classificação de 3 espécies de flor. Dada na entrada as medidas da sépala e da pétala, o classificador retorna a espécie 0 setosa, 1 versicolor e 2 virginica. A acurácia é de 97%.</p>
+
+<p>A rede é formada por 5 camadas e é feito o monitoramento de métricas que podem ser visualizadas no log do notebook e no TensorBoard.</p>
+
+<p>O modelo treinado nesse notebook pode ser visualizado no TensorBoard.</p>
+
+<p><strong>7 - Reading CSV</strong></p>
+
+<p><a href="https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2007%20-%20Reading%20CSV.ipynb">Notebook</a></p>
+
+<p>Nesse exemplo, é feito o pipeline para leitura de dados de um arquivo CSV. O arquivo usado nesse estudo é o mesmo do Census.</p>
+
+<p><strong>8 - Census, Logistic Regression Classifier (tf.contrib.learn)</strong></p>
+
+<p><a href="https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2008%20-%20Census%2C%20Logistic%20Regression%20Classifier%20%28tf.contrib.learn%29.ipynb">Notebook</a></p>
+
+<p>Nesse exemplo, é feito um classificador com uma regressão logística para classificação de rendimento maior que 50 mil dólares. Dada na entrada as informações do Census, o classificador retorna 1 mais de 50 mil e 0 menos de 50 mil. A acurácia é de 87%.</p>
+
+<p>O modelo treinado nesse notebook pode ser visualizado no TensorBoard.</p>
+
+<p><strong>9 - Census, Combined Classifier (tf.contrib.learn)</strong></p>
+
+<p><a href="https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Example%2009%20-%20Census%2C%20Combined%20Classifier%20%28tf.contrib.learn%29.ipynb">Notebook</a></p>
+
+<p>Nesse exemplo, é feito um classificador com a combinação de uma rede neural e uma regressão logística (treinadas em conjunto) para classificação de rendimento maior que 50 mil dólares. Dada na entrada as informações do Census, o classificador retorna 1 mais de 50 mil e 0 menos de 50 mil. A acurácia é de 93%.</p>
+
+<p>O modelo treinado nesse notebook pode ser visualizado no TensorBoard.</p>
+
+<h2 id="funcionamento">Funcionamento</h2>
+
+<blockquote>
+<p>IMPORTANTE:</p>
+
+<p>Essa é a descrição de como é feita a configuração do projeto, contudo esse procedimento já está definido no comando <code>bin/setup-linux</code> (ou <code>bin/setup-mac</code>) que deve ser executado ao invés desse procedimento.</p>
+
+<p>Esse passo a passo é para ajudar a customização do Projeto.</p>
+</blockquote>
+
+<p>O procedimento de instalação consiste em:</p>
+
+<ol>
+<li>Instalar o Python 2.7 com <code>miniconda</code> (Linux ou Mac)</li>
+<li>Instalar o Jupyter Notebook 4.2 no <em>environment</em> <code>default</code> do <code>conda2</code></li>
+<li>Instalar o TensorFlow 0.10 em um <em>environment</em> próprio (para Python 2.7)</li>
+<li>Instalar o kernel do Python no <em>environment</em> do TensorFlow</li>
+<li>Configurar o kernel no Jupyter que é executado no <em>environment</em> do TensorFlow</li>
+</ol>
+
+<p>A estrutura do projeto será:</p>
+
+<ul>
+<li><code>deps/conda2</code>: instalação do Python 2.7 (<code>miniconda</code>)</li>
+<li><code>deps/tensorflow-0.10</code>: instalação do TensorFlow 0.10 (<em>environment</em> isolado)</li>
+<li><code>data/kernels/tensorflow-0.10/kernel.json</code>: configuração do kernel no Jupyter para o TensorFlow</li>
+</ul>
+
+<p>Ao final desse procedimento, a execução do Jupyter consiste de (<code>bin/jupyter</code>):</p>
+
+<pre><code>export JUPYTER_DATA_DIR=`pwd`/data
+deps/conda2/bin/jupyter notebook --no-browser --notebook-dir=`pwd`/workspace
+</code></pre>
+
+<p>Para a criação de uma customização, os passos 3, 4 e 5 devem ser ajustados para um novo <em>environment</em> com configuração customizada.</p>
+
+<h3 id="instalação-do-python">Instalação do Python</h3>
+
+<p>A instalação do Python é feita usando o <code>miniconda</code> para versão 2.7 (para Linux ou Mac).</p>
+
+<p>Os comandos de Python e Conda ficam disponíveis na pasta <code>deps/conda2/bin</code>.</p>
+
+<p><a href="http://conda.pydata.org/miniconda.html">http://conda.pydata.org/miniconda.html</a></p>
+
+<p>(Linux)</p>
+
+<pre><code>curl -k -L \
+    -O https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
+
+chmod +x Miniconda2-latest-Linux-x86_64.sh
+
+./Miniconda2-latest-Linux-x86_64.sh -b -f -p deps/conda2
+</code></pre>
+
+<h3 id="instalação-do-jupyter">Instalação do Jupyter</h3>
+
+<p>O Jupyter tem um meta pacote que depende de todos os componentes, incluindo o Notebook.</p>
+
+<p>O comando do Jupyter fica disponível em <code>deps/conda2/bin/jupyter</code>.</p>
+
+<p><a href="http://jupyter.readthedocs.io/en/latest/install.html">http://jupyter.readthedocs.io/en/latest/install.html</a></p>
+
+<p><a href="https://pypi.python.org/pypi/jupyter">https://pypi.python.org/pypi/jupyter</a></p>
+
+<pre><code>deps/conda2/bin/pip install --upgrade jupyter
+</code></pre>
+
+<h3 id="instalação-do-tensorflow">Instalação do TensorFlow</h3>
+
+<p>O TensorFlow é distribuído como um pacote Wheel e é instalado em um <em>environment</em> isolado criado no <code>miniconda</code>.</p>
+
+<p>O comando do TensorBoard fica disponível em <code>deps/tensorflow-0.10/bin/tensorboard</code>.</p>
+
+<p><a href="https://www.tensorflow.org/versions/r0.10/get_started/os_setup.html#anaconda-installation">https://www.tensorflow.org/versions/r0.10/get_started/os_setup.html#anaconda-installation</a></p>
+
+<p>(Linux)</p>
+
+<pre><code>deps/conda2/bin/conda create -y -p deps/tensorflow-0.10 python=2.7
+
+deps/tensorflow-0.10/bin/pip install \
+    https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp27-none-linux_x86_64.whl
+</code></pre>
+
+<h3 id="instalação-do-kernel-para-o-tensorflow">Instalação do Kernel para o TensorFlow</h3>
+
+<p>No <em>environment</em> do TensorFlow é instalado o kernel Python que possibilita a conexão a partir do Jupyter (Notebook). Isso torna possível escrever código Python que é executado dentre desse <em>environment</em> isolado.</p>
+
+<p><a href="http://ipython.readthedocs.io/en/stable/install/kernel_install.html">http://ipython.readthedocs.io/en/stable/install/kernel_install.html</a></p>
+
+<p><a href="https://pypi.python.org/pypi/ipykernel">https://pypi.python.org/pypi/ipykernel</a></p>
+
+<pre><code>deps/tensorflow-0.10/bin/pip install ipykernel
+</code></pre>
+
+<h3 id="configuração-do-kernel-para-o-tensorflow">Configuração do Kernel para o TensorFlow</h3>
+
+<p>O Jupyter é configurado com o comando que executa o kernel do Python dentro do <em>environment</em> que tem o TensorFlow. O kernel é responsável por receber requisições do servidor do Jupyter e executar código Python no processo em que é executado. Esse processo é executado em isolamento e pacotes adicionais devem ser instalados nesse <em>environment</em> sem conflito com outros <em>environments</em>.</p>
+
+<p><a href="https://jupyter-client.readthedocs.io/en/latest/kernels.html#kernelspecs">https://jupyter-client.readthedocs.io/en/latest/kernels.html#kernelspecs</a></p>
+
+<pre><code>mkdir -p data/kernels/tensorflow-0.10-py2
+
+echo &quot;{
+ \&quot;display_name\&quot;: \&quot;TensorFlow 0.10 (CPU, Python 2)\&quot;,
+ \&quot;language\&quot;: \&quot;python\&quot;,
+ \&quot;argv\&quot;: [
+  \&quot;`pwd`/deps/tensorflow-0.10/bin/python\&quot;,
+  \&quot;-c\&quot;,
+  \&quot;from ipykernel.kernelapp import main; main()\&quot;,
+  \&quot;-f\&quot;,
+  \&quot;{connection_file}\&quot;
+ ]
+}&quot; &gt; data/kernels/tensorflow-0.10-py2/kernel.json
+</code></pre>
+
+<h2 id="conclusão">Conclusão</h2>
+
+<p>O Jupyter é uma excelente ferramenta para exploração de ideias e desenvolvimento de código rápido. A facilidade de visualização e execução independente de células é muito prático. O desenvolvimento de aplicações mais complexas e com código mais estruturado já não é muito favorável.</p>
+
+<p>O TensorFlow é uma ferramenta sofisticada para desenvolvimento de algoritmos inteligentes. Algumas APIs podem ser complexas e de difícil entendimento, algumas vezes bem documentadas e outras não. A comunidade é muito engajada e o Google vem produzindo tutoriais, documentação e modelos muito úteis para o aprendizado.</p>
+
+<p>Aprender TensorFlow no Jupyter é o melhor caminho e essa é a proposta desse Projeto.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://cirocavani.github.io/post/compilacao-do-tensorflow-0.10-para-linux-com-gpu/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://cirocavani.github.io/post/compilacao-do-tensorflow-0.10-para-linux-com-gpu/">Compilação do TensorFlow 0.10 para Linux (com GPU)</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'cirocavani';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="http://cirocavani.github.io/js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-38960920-4', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
+

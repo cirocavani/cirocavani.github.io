@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.16-DEV" />
+  <meta name="generator" content="Hugo 0.16" />
 
   <title>TensorFlow: Integração com BigData &middot; Ciro Cavani</title>
 
@@ -237,7 +237,7 @@
 
 <p><a href="https://github.com/cirocavani/tensorflow-poc">https://github.com/cirocavani/tensorflow-poc</a></p>
 
-<h2 id="motivação:e68203cf87ce4097158c2f1411eaff4a">Motivação</h2>
+<h2 id="motivação">Motivação</h2>
 
 <p>O problema começou com: como criar uma Aplicação de AI? A proposta para resolver esse problema foi: TensorFlow.</p>
 
@@ -253,7 +253,7 @@
 
 <p>A primeira frente de trabalho está feita.</p>
 
-<h2 id="por-que-o-tensorflow:e68203cf87ce4097158c2f1411eaff4a">Por que o TensorFlow?</h2>
+<h2 id="por-que-o-tensorflow">Por que o TensorFlow?</h2>
 
 <p>Nos últimos anos, a tendência que eu venho observando do mercado é que AI finalmente se tornou a área de diferenciação, inovação e crescimento. Os investidores estão cada vez mais colocando dinheiro nessa área. As grandes empresas estão cada vez mais se posicionando como &ldquo;empresas de AI&rdquo;, sendo os maiores exemplos Google, Facebook e Microsoft, com Apple e Amazon chegando junto. Startups como a que fez a app Prisma valem bilhão de dólares.</p>
 
@@ -281,7 +281,7 @@
 
 <p>Esse artigo é sobre como isso foi feito.</p>
 
-<h3 id="o-que-é-o-tensorflow:e68203cf87ce4097158c2f1411eaff4a">O que é o TensorFlow?</h3>
+<h3 id="o-que-é-o-tensorflow">O que é o TensorFlow?</h3>
 
 <p>TensorFlow é um framework para processamento de tensores (arrays multidimensionais) em ambientes heterogêneos (CPUs, GPUs, mobile). É um projeto open-source do Google liberado em Novembro/2015. A API principal é Python e a engine de execução é C++, o Google espera que a comunidade desenvolva bindings para outras linguagens.</p>
 
@@ -344,7 +344,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence</p>
 <p>Nesse release, o destaque foi a funcionalidade de treinamento distribuído do modelo, onde antes só era possível usar uma máquina, agora é possível treinar com várias tanto para distribuir processamento quanto para paralelizar configurações distintas do modelo.</p>
 </blockquote>
 
-<h3 id="experiência-com-tensorflow:e68203cf87ce4097158c2f1411eaff4a">Experiência com TensorFlow</h3>
+<h3 id="experiência-com-tensorflow">Experiência com TensorFlow</h3>
 
 <p>Já há algum tempo, venho trabalhando esporadicamente com o TensorFlow (nos últimos 3 hackdays na Globo.com, quase 9 meses). Recentemente, o Google divulgou um paper em que eles elaboram como usam o TensorFlow para fazer recomendação de apps no Google Play. Essa se tornou a oportunidade que eu encontrei para começar a trazer para a Globo.com a base para crescermos na área de AI.</p>
 
@@ -366,7 +366,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence</p>
 
 <p>Estou trabalhando em duas &ldquo;frentes&rdquo;: a primeira é genérica sobre integração do TensorFlow em BigData e a outra é específica sobre fazer recomendação com TensorFlow. Estou trabalhando em ambas, mas o foco desse artigo é na primeira porque acredito que seja mais interessante para todos que ainda não conhecem o TensorFlow.</p>
 
-<h4 id="aplicação-tensorflow:e68203cf87ce4097158c2f1411eaff4a">Aplicação TensorFlow</h4>
+<h4 id="aplicação-tensorflow">Aplicação TensorFlow</h4>
 
 <p>A primeira &ldquo;frente&rdquo; de trabalho está sendo ganhar experiência em como o <strong>TensorFlow</strong> funciona e identificar como é possível acomodar esse processo na plataforma da Globo.com.</p>
 
@@ -402,13 +402,13 @@ TensorFlow is an Open Source Software Library for Machine Intelligence</p>
 
 <p>Essa é a fase da inferência on-line do modelo e é praticamente toda em C++.</p>
 
-<h4 id="algoritmo-tensorflow:e68203cf87ce4097158c2f1411eaff4a">Algoritmo TensorFlow</h4>
+<h4 id="algoritmo-tensorflow">Algoritmo TensorFlow</h4>
 
 <p>A outra &ldquo;frente&rdquo; de trabalho é paralela a primeira e consistem em desenvolver propriamente o algoritmo de recomendação baseado no paper do Google. Isso significa definir as features que serão usadas, como ler esses dados e alimentar o treinamento do modelo e como executar a inferência usando as matérias de um determinado Produto (Portal).</p>
 
 <p>Comecei a fazer esse trabalho também, mas vou deixar para discuti-lo em outro artigo.</p>
 
-<h2 id="tensorflow-em-bigdata:e68203cf87ce4097158c2f1411eaff4a">TensorFlow em BigData</h2>
+<h2 id="tensorflow-em-bigdata">TensorFlow em BigData</h2>
 
 <p>O trabalho consistiu em identificar e resolver todos os requisitos para o desenvolvimento de uma Aplicação TensorFlow em uma infraestrutura de BigData.</p>
 
@@ -432,7 +432,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence</p>
 
 <p>Para esse trabalho, o interesse é integrar com Aplicações em Scala, logo um cliente Java satisfaz o requisito (Java 7).</p>
 
-<h2 id="provas-de-conceito:e68203cf87ce4097158c2f1411eaff4a">Provas de Conceito</h2>
+<h2 id="provas-de-conceito">Provas de Conceito</h2>
 
 <p>O trabalho consistiu no desenvolvimento de Provas de Conceito (POC) que exploram os desafios para se criar uma Aplicação TensorFlow.</p>
 
@@ -450,7 +450,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence</p>
 
 <p>A POC <a href="#server-tsuru">server_tsuru</a> corresponde ao trabalho de criar uma app no Tsuru para servir um modelo treinado do TensorFlow.</p>
 
-<h4 id="tflearn-wide-n-deep:e68203cf87ce4097158c2f1411eaff4a">tflearn_wide_n_deep</h4>
+<h4 id="tflearn-wide-n-deep">tflearn_wide_n_deep</h4>
 
 <p>A POC é a execução do tutorial sobre o &ldquo;algoritmo&rdquo; usado na recomendação de app do Google Play.</p>
 
@@ -458,7 +458,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence</p>
 
 <p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/tflearn_wide_n_deep/README.md">README</a></p>
 
-<h4 id="tfserving-basic:e68203cf87ce4097158c2f1411eaff4a">tfserving_basic</h4>
+<h4 id="tfserving-basic">tfserving_basic</h4>
 
 <p>A POC é a execução do tutorial sobre o TensorFlow Serving sem versionamento do modelo.</p>
 
@@ -468,7 +468,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence</p>
 
 <p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/tfserving_basic/README.md">README</a></p>
 
-<h4 id="tfserving-advanced:e68203cf87ce4097158c2f1411eaff4a">tfserving_advanced</h4>
+<h4 id="tfserving-advanced">tfserving_advanced</h4>
 
 <p>A POC é a execução do tutorial sobre o TensorFlow Serving com versionamento do modelo.</p>
 
@@ -478,7 +478,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence</p>
 
 <p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/tfserving_advanced/README.md">README</a></p>
 
-<h4 id="skeleton-project:e68203cf87ce4097158c2f1411eaff4a">skeleton_project</h4>
+<h4 id="skeleton-project">skeleton_project</h4>
 
 <p>(código do exemplo extraído para um projeto fora da árvore do TensorFlow Serving)</p>
 
@@ -490,7 +490,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence</p>
 
 <p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/skeleton_project/README.md">README</a></p>
 
-<h4 id="yarn-training:e68203cf87ce4097158c2f1411eaff4a">yarn_training</h4>
+<h4 id="yarn-training">yarn_training</h4>
 
 <p>(motivação: usar a infraestrutura de armazenamento e processamento do Hadoop para rodar o treinamento com TensorFlow)</p>
 
@@ -502,7 +502,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence</p>
 
 <p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/yarn_training/README.md">README</a></p>
 
-<h4 id="tensorflow-centos6:e68203cf87ce4097158c2f1411eaff4a">tensorflow_centos6</h4>
+<h4 id="tensorflow-centos6">tensorflow_centos6</h4>
 
 <p>(motivação: o TensorFlow não é oficialmente suportado no RedHat EL 6, o binário é compilado para glibc 2.17 e o código C++ 11, ambos requisitos não disponíveis, mas é possível criar um binário do TensorFlow compatível)</p>
 
@@ -514,7 +514,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence</p>
 
 <p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/tensorflow_centos6/README.md">README</a></p>
 
-<h4 id="tensorflow-installer:e68203cf87ce4097158c2f1411eaff4a">tensorflow_installer</h4>
+<h4 id="tensorflow-installer">tensorflow_installer</h4>
 
 <p>(motivação: evitar download no ambiente de produção e evitar enviar múltiplos arquivos para o Hadoop)</p>
 
@@ -526,7 +526,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence</p>
 
 <p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/tensorflow_installer/README.md">README</a></p>
 
-<h4 id="hadoop-centos6:e68203cf87ce4097158c2f1411eaff4a">hadoop_centos6</h4>
+<h4 id="hadoop-centos6">hadoop_centos6</h4>
 
 <p>(motivação: essa imagem corresponde a uma &ldquo;aproximação&rdquo; do ambiente de produção que usa RedHat EL 6 com o qual o CentOS6 é binário-compatível - o TensorFlow não é oficialmente suportado nesse sistema)</p>
 
@@ -538,7 +538,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence</p>
 
 <p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/hadoop_centos6/README.md">README</a></p>
 
-<h4 id="hadoop-ubuntu1604:e68203cf87ce4097158c2f1411eaff4a">hadoop_ubuntu1604</h4>
+<h4 id="hadoop-ubuntu1604">hadoop_ubuntu1604</h4>
 
 <p>(motivação: essa imagem corresponde ao ambiente em que o TensorFlow é oficialmente suportado, diferente do ambiente de produção RedHat, ou seja, o comportamento nesse ambiente deve representar o &ldquo;funcionamento correto&rdquo;)</p>
 
@@ -550,7 +550,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence</p>
 
 <p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/hadoop_ubuntu1604/README.md">README</a></p>
 
-<h4 id="client-java:e68203cf87ce4097158c2f1411eaff4a">client_java</h4>
+<h4 id="client-java">client_java</h4>
 
 <p>A POC é a criação de um cliente Java para fazer inferência em um serviço do TensorFlow.</p>
 
@@ -560,7 +560,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence</p>
 
 <p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/client_java/README.md">README</a></p>
 
-<h4 id="server-tsuru:e68203cf87ce4097158c2f1411eaff4a">server_tsuru</h4>
+<h4 id="server-tsuru">server_tsuru</h4>
 
 <p>A POC é a criação de uma aplicação do Tsuru para rodar o servidor do TensorFlow.</p>
 
@@ -572,7 +572,7 @@ TensorFlow is an Open Source Software Library for Machine Intelligence</p>
 
 <p><a href="https://github.com/cirocavani/tensorflow-poc/blob/master/server_tsuru/README.md">README</a></p>
 
-<h2 id="conclusão:e68203cf87ce4097158c2f1411eaff4a">Conclusão</h2>
+<h2 id="conclusão">Conclusão</h2>
 
 <p>Esse trabalho é o preparatório para a criação de Aplicações TensorFlow que serão colocadas em Produção na Globo.com.</p>
 
