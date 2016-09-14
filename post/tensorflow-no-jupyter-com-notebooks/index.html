@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.16" />
+  <meta name="generator" content="Hugo 0.16-DEV" />
 
   <title>TensorFlow no Jupyter (com notebooks) &middot; Ciro Cavani</title>
 
@@ -245,7 +245,7 @@
 <li>a explicação de como funciona a instalação</li>
 </ol>
 
-<h2 id="instalação">Instalação</h2>
+<h2 id="instalação:7208144944ce0e5bccb4482f1d082b1f">Instalação</h2>
 
 <pre><code>git clone https://github.com/cirocavani/tensorflow-jupyter.git
 cd tensorflow-jupyter
@@ -270,7 +270,7 @@ bin/setup-mac
 
 <p>Acesso em <a href="http://localhost:6006/">http://localhost:6006/</a>.</p>
 
-<h2 id="notebooks-exemplo">Notebooks Exemplo</h2>
+<h2 id="notebooks-exemplo:7208144944ce0e5bccb4482f1d082b1f">Notebooks Exemplo</h2>
 
 <p>Os notebooks exemplo são baseados nos tutorias disponiveis no site do TensorFlow. Os tutoriais originais estão referenciados no início do notebook. O código de alguns tutoriais foi alterado para usar algumas funcionalidades mais &ldquo;reais&rdquo; (por exemplo: leitura de CSV em batch).</p>
 
@@ -352,14 +352,14 @@ bin/setup-mac
 
 <p>O modelo treinado nesse notebook pode ser visualizado no TensorBoard.</p>
 
-<h2 id="funcionamento">Funcionamento</h2>
+<h2 id="funcionamento:7208144944ce0e5bccb4482f1d082b1f">Funcionamento</h2>
 
 <blockquote>
 <p>IMPORTANTE:</p>
 
 <p>Essa é a descrição de como é feita a configuração do projeto, contudo esse procedimento já está definido no comando <code>bin/setup-linux</code> (ou <code>bin/setup-mac</code>) que deve ser executado ao invés desse procedimento.</p>
 
-<p>Esse passo a passo é para ajudar a customização do Projeto.</p>
+<p>Esse passo a passo é para ajudar na customização do Projeto.</p>
 </blockquote>
 
 <p>O procedimento de instalação consiste em:</p>
@@ -388,7 +388,7 @@ deps/conda2/bin/jupyter notebook --no-browser --notebook-dir=`pwd`/workspace
 
 <p>Para a criação de uma customização, os passos 3, 4 e 5 devem ser ajustados para um novo <em>environment</em> com configuração customizada.</p>
 
-<h3 id="instalação-do-python">Instalação do Python</h3>
+<h3 id="instalação-do-python:7208144944ce0e5bccb4482f1d082b1f">Instalação do Python</h3>
 
 <p>A instalação do Python é feita usando o <code>miniconda</code> para versão 2.7 (para Linux ou Mac).</p>
 
@@ -406,7 +406,7 @@ chmod +x Miniconda2-latest-Linux-x86_64.sh
 ./Miniconda2-latest-Linux-x86_64.sh -b -f -p deps/conda2
 </code></pre>
 
-<h3 id="instalação-do-jupyter">Instalação do Jupyter</h3>
+<h3 id="instalação-do-jupyter:7208144944ce0e5bccb4482f1d082b1f">Instalação do Jupyter</h3>
 
 <p>O Jupyter tem um meta pacote que depende de todos os componentes, incluindo o Notebook.</p>
 
@@ -419,7 +419,7 @@ chmod +x Miniconda2-latest-Linux-x86_64.sh
 <pre><code>deps/conda2/bin/pip install --upgrade jupyter
 </code></pre>
 
-<h3 id="instalação-do-tensorflow">Instalação do TensorFlow</h3>
+<h3 id="instalação-do-tensorflow:7208144944ce0e5bccb4482f1d082b1f">Instalação do TensorFlow</h3>
 
 <p>O TensorFlow é distribuído como um pacote Wheel e é instalado em um <em>environment</em> isolado criado no <code>miniconda</code>.</p>
 
@@ -435,9 +435,9 @@ deps/tensorflow-0.10/bin/pip install \
     https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp27-none-linux_x86_64.whl
 </code></pre>
 
-<h3 id="instalação-do-kernel-para-o-tensorflow">Instalação do Kernel para o TensorFlow</h3>
+<h3 id="instalação-do-kernel-para-o-tensorflow:7208144944ce0e5bccb4482f1d082b1f">Instalação do Kernel para o TensorFlow</h3>
 
-<p>No <em>environment</em> do TensorFlow é instalado o kernel Python que possibilita a conexão a partir do Jupyter (Notebook). Isso torna possível escrever código Python que é executado dentre desse <em>environment</em> isolado.</p>
+<p>No <em>environment</em> do TensorFlow é instalado o kernel Python que possibilita a conexão a partir do Jupyter (Notebook). Isso torna possível escrever código Python que é executado dentro desse <em>environment</em> isolado.</p>
 
 <p><a href="http://ipython.readthedocs.io/en/stable/install/kernel_install.html">http://ipython.readthedocs.io/en/stable/install/kernel_install.html</a></p>
 
@@ -446,9 +446,9 @@ deps/tensorflow-0.10/bin/pip install \
 <pre><code>deps/tensorflow-0.10/bin/pip install ipykernel
 </code></pre>
 
-<h3 id="configuração-do-kernel-para-o-tensorflow">Configuração do Kernel para o TensorFlow</h3>
+<h3 id="configuração-do-kernel-para-o-tensorflow:7208144944ce0e5bccb4482f1d082b1f">Configuração do Kernel para o TensorFlow</h3>
 
-<p>O Jupyter é configurado com o comando que executa o kernel do Python dentro do <em>environment</em> que tem o TensorFlow. O kernel é responsável por receber requisições do servidor do Jupyter e executar código Python no processo em que é executado. Esse processo é executado em isolamento e pacotes adicionais devem ser instalados nesse <em>environment</em> sem conflito com outros <em>environments</em>.</p>
+<p>O Jupyter é configurado com o comando que executa o kernel do Python dentro do <em>environment</em> que tem o TensorFlow. O kernel é responsável por receber requisições do servidor do Jupyter e executar código Python no processo em que está executando. Esse processo é executado somente com os pacotes do próprio <em>environment</em> (isolamento) e pacotes adicionais devem ser instalados nesse <em>environment</em> sem conflito com outros <em>environments</em>.</p>
 
 <p><a href="https://jupyter-client.readthedocs.io/en/latest/kernels.html#kernelspecs">https://jupyter-client.readthedocs.io/en/latest/kernels.html#kernelspecs</a></p>
 
@@ -467,7 +467,7 @@ echo &quot;{
 }&quot; &gt; data/kernels/tensorflow-0.10-py2/kernel.json
 </code></pre>
 
-<h2 id="conclusão">Conclusão</h2>
+<h2 id="conclusão:7208144944ce0e5bccb4482f1d082b1f">Conclusão</h2>
 
 <p>O Jupyter é uma excelente ferramenta para exploração de ideias e desenvolvimento de código rápido. A facilidade de visualização e execução independente de células é muito prático. O desenvolvimento de aplicações mais complexas e com código mais estruturado já não é muito favorável.</p>
 

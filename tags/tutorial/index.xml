@@ -32,7 +32,7 @@
 &lt;li&gt;a explicação de como funciona a instalação&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;instalação&#34;&gt;Instalação&lt;/h2&gt;
+&lt;h2 id=&#34;instalação:7208144944ce0e5bccb4482f1d082b1f&#34;&gt;Instalação&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;git clone https://github.com/cirocavani/tensorflow-jupyter.git
 cd tensorflow-jupyter
@@ -57,7 +57,7 @@ bin/setup-mac
 
 &lt;p&gt;Acesso em &lt;a href=&#34;http://localhost:6006/&#34;&gt;http://localhost:6006/&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;notebooks-exemplo&#34;&gt;Notebooks Exemplo&lt;/h2&gt;
+&lt;h2 id=&#34;notebooks-exemplo:7208144944ce0e5bccb4482f1d082b1f&#34;&gt;Notebooks Exemplo&lt;/h2&gt;
 
 &lt;p&gt;Os notebooks exemplo são baseados nos tutorias disponiveis no site do TensorFlow. Os tutoriais originais estão referenciados no início do notebook. O código de alguns tutoriais foi alterado para usar algumas funcionalidades mais &amp;ldquo;reais&amp;rdquo; (por exemplo: leitura de CSV em batch).&lt;/p&gt;
 
@@ -139,14 +139,14 @@ bin/setup-mac
 
 &lt;p&gt;O modelo treinado nesse notebook pode ser visualizado no TensorBoard.&lt;/p&gt;
 
-&lt;h2 id=&#34;funcionamento&#34;&gt;Funcionamento&lt;/h2&gt;
+&lt;h2 id=&#34;funcionamento:7208144944ce0e5bccb4482f1d082b1f&#34;&gt;Funcionamento&lt;/h2&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;IMPORTANTE:&lt;/p&gt;
 
 &lt;p&gt;Essa é a descrição de como é feita a configuração do projeto, contudo esse procedimento já está definido no comando &lt;code&gt;bin/setup-linux&lt;/code&gt; (ou &lt;code&gt;bin/setup-mac&lt;/code&gt;) que deve ser executado ao invés desse procedimento.&lt;/p&gt;
 
-&lt;p&gt;Esse passo a passo é para ajudar a customização do Projeto.&lt;/p&gt;
+&lt;p&gt;Esse passo a passo é para ajudar na customização do Projeto.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;O procedimento de instalação consiste em:&lt;/p&gt;
@@ -175,7 +175,7 @@ deps/conda2/bin/jupyter notebook --no-browser --notebook-dir=`pwd`/workspace
 
 &lt;p&gt;Para a criação de uma customização, os passos 3, 4 e 5 devem ser ajustados para um novo &lt;em&gt;environment&lt;/em&gt; com configuração customizada.&lt;/p&gt;
 
-&lt;h3 id=&#34;instalação-do-python&#34;&gt;Instalação do Python&lt;/h3&gt;
+&lt;h3 id=&#34;instalação-do-python:7208144944ce0e5bccb4482f1d082b1f&#34;&gt;Instalação do Python&lt;/h3&gt;
 
 &lt;p&gt;A instalação do Python é feita usando o &lt;code&gt;miniconda&lt;/code&gt; para versão 2.7 (para Linux ou Mac).&lt;/p&gt;
 
@@ -193,7 +193,7 @@ chmod +x Miniconda2-latest-Linux-x86_64.sh
 ./Miniconda2-latest-Linux-x86_64.sh -b -f -p deps/conda2
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;instalação-do-jupyter&#34;&gt;Instalação do Jupyter&lt;/h3&gt;
+&lt;h3 id=&#34;instalação-do-jupyter:7208144944ce0e5bccb4482f1d082b1f&#34;&gt;Instalação do Jupyter&lt;/h3&gt;
 
 &lt;p&gt;O Jupyter tem um meta pacote que depende de todos os componentes, incluindo o Notebook.&lt;/p&gt;
 
@@ -206,7 +206,7 @@ chmod +x Miniconda2-latest-Linux-x86_64.sh
 &lt;pre&gt;&lt;code&gt;deps/conda2/bin/pip install --upgrade jupyter
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;instalação-do-tensorflow&#34;&gt;Instalação do TensorFlow&lt;/h3&gt;
+&lt;h3 id=&#34;instalação-do-tensorflow:7208144944ce0e5bccb4482f1d082b1f&#34;&gt;Instalação do TensorFlow&lt;/h3&gt;
 
 &lt;p&gt;O TensorFlow é distribuído como um pacote Wheel e é instalado em um &lt;em&gt;environment&lt;/em&gt; isolado criado no &lt;code&gt;miniconda&lt;/code&gt;.&lt;/p&gt;
 
@@ -222,9 +222,9 @@ deps/tensorflow-0.10/bin/pip install \
     https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp27-none-linux_x86_64.whl
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;instalação-do-kernel-para-o-tensorflow&#34;&gt;Instalação do Kernel para o TensorFlow&lt;/h3&gt;
+&lt;h3 id=&#34;instalação-do-kernel-para-o-tensorflow:7208144944ce0e5bccb4482f1d082b1f&#34;&gt;Instalação do Kernel para o TensorFlow&lt;/h3&gt;
 
-&lt;p&gt;No &lt;em&gt;environment&lt;/em&gt; do TensorFlow é instalado o kernel Python que possibilita a conexão a partir do Jupyter (Notebook). Isso torna possível escrever código Python que é executado dentre desse &lt;em&gt;environment&lt;/em&gt; isolado.&lt;/p&gt;
+&lt;p&gt;No &lt;em&gt;environment&lt;/em&gt; do TensorFlow é instalado o kernel Python que possibilita a conexão a partir do Jupyter (Notebook). Isso torna possível escrever código Python que é executado dentro desse &lt;em&gt;environment&lt;/em&gt; isolado.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://ipython.readthedocs.io/en/stable/install/kernel_install.html&#34;&gt;http://ipython.readthedocs.io/en/stable/install/kernel_install.html&lt;/a&gt;&lt;/p&gt;
 
@@ -233,9 +233,9 @@ deps/tensorflow-0.10/bin/pip install \
 &lt;pre&gt;&lt;code&gt;deps/tensorflow-0.10/bin/pip install ipykernel
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;configuração-do-kernel-para-o-tensorflow&#34;&gt;Configuração do Kernel para o TensorFlow&lt;/h3&gt;
+&lt;h3 id=&#34;configuração-do-kernel-para-o-tensorflow:7208144944ce0e5bccb4482f1d082b1f&#34;&gt;Configuração do Kernel para o TensorFlow&lt;/h3&gt;
 
-&lt;p&gt;O Jupyter é configurado com o comando que executa o kernel do Python dentro do &lt;em&gt;environment&lt;/em&gt; que tem o TensorFlow. O kernel é responsável por receber requisições do servidor do Jupyter e executar código Python no processo em que é executado. Esse processo é executado em isolamento e pacotes adicionais devem ser instalados nesse &lt;em&gt;environment&lt;/em&gt; sem conflito com outros &lt;em&gt;environments&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;O Jupyter é configurado com o comando que executa o kernel do Python dentro do &lt;em&gt;environment&lt;/em&gt; que tem o TensorFlow. O kernel é responsável por receber requisições do servidor do Jupyter e executar código Python no processo em que está executando. Esse processo é executado somente com os pacotes do próprio &lt;em&gt;environment&lt;/em&gt; (isolamento) e pacotes adicionais devem ser instalados nesse &lt;em&gt;environment&lt;/em&gt; sem conflito com outros &lt;em&gt;environments&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://jupyter-client.readthedocs.io/en/latest/kernels.html#kernelspecs&#34;&gt;https://jupyter-client.readthedocs.io/en/latest/kernels.html#kernelspecs&lt;/a&gt;&lt;/p&gt;
 
@@ -254,7 +254,7 @@ echo &amp;quot;{
 }&amp;quot; &amp;gt; data/kernels/tensorflow-0.10-py2/kernel.json
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;conclusão&#34;&gt;Conclusão&lt;/h2&gt;
+&lt;h2 id=&#34;conclusão:7208144944ce0e5bccb4482f1d082b1f&#34;&gt;Conclusão&lt;/h2&gt;
 
 &lt;p&gt;O Jupyter é uma excelente ferramenta para exploração de ideias e desenvolvimento de código rápido. A facilidade de visualização e execução independente de células é muito prático. O desenvolvimento de aplicações mais complexas e com código mais estruturado já não é muito favorável.&lt;/p&gt;
 
@@ -280,7 +280,7 @@ echo &amp;quot;{
 
 &lt;p&gt;&amp;hellip;&lt;/p&gt;
 
-&lt;h2 id=&#34;compilação&#34;&gt;Compilação&lt;/h2&gt;
+&lt;h2 id=&#34;compilação:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Compilação&lt;/h2&gt;
 
 &lt;p&gt;O procedimento consiste em:&lt;/p&gt;
 
@@ -305,7 +305,7 @@ echo &amp;quot;{
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/tensorflow/tensorflow/blob/r0.10/tensorflow/tools/docker/Dockerfile.devel-gpu&#34;&gt;https://github.com/tensorflow/tensorflow/blob/r0.10/tensorflow/tools/docker/Dockerfile.devel-gpu&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;download-do-cuda-8-0rc-cudnn-5-1&#34;&gt;Download do Cuda 8.0rc, cuDNN 5.1&lt;/h3&gt;
+&lt;h3 id=&#34;download-do-cuda-8-0rc-cudnn-5-1:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Download do Cuda 8.0rc, cuDNN 5.1&lt;/h3&gt;
 
 &lt;p&gt;É necessário o download dos pacotes:&lt;/p&gt;
 
@@ -357,7 +357,7 @@ Installer Type = runfile (local)
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;setup-inicial-no-docker-para-ubuntu-16-04&#34;&gt;Setup inicial no Docker para Ubuntu 16.04&lt;/h3&gt;
+&lt;h3 id=&#34;setup-inicial-no-docker-para-ubuntu-16-04:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Setup inicial no Docker para Ubuntu 16.04&lt;/h3&gt;
 
 &lt;p&gt;Download dos demais pacotes necessários para o build:&lt;/p&gt;
 
@@ -413,7 +413,7 @@ apt-get install -y \
     rsync
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;instalação-do-cuda-8-0rc-e-cudnn-5-1&#34;&gt;Instalação do Cuda 8.0rc e cuDNN 5.1&lt;/h3&gt;
+&lt;h3 id=&#34;instalação-do-cuda-8-0rc-e-cudnn-5-1:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Instalação do Cuda 8.0rc e cuDNN 5.1&lt;/h3&gt;
 
 &lt;p&gt;(comandos a serem executados dentro do container)&lt;/p&gt;
 
@@ -425,7 +425,7 @@ tar zxf /build_deps/cudnn-8.0-linux-x64-v5.1.tgz \
     -C /usr/local/cuda-8.0 --strip-components=1
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;instalação-do-java-8&#34;&gt;Instalação do Java 8&lt;/h3&gt;
+&lt;h3 id=&#34;instalação-do-java-8:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Instalação do Java 8&lt;/h3&gt;
 
 &lt;p&gt;(comandos a serem executados dentro do container)&lt;/p&gt;
 
@@ -438,7 +438,7 @@ chmod a+x /etc/profile.d/java.sh
 source /etc/profile.d/java.sh
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;instalação-do-bazel-0-3&#34;&gt;Instalação do Bazel 0.3&lt;/h3&gt;
+&lt;h3 id=&#34;instalação-do-bazel-0-3:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Instalação do Bazel 0.3&lt;/h3&gt;
 
 &lt;p&gt;(comandos a serem executados dentro do container)&lt;/p&gt;
 
@@ -450,7 +450,7 @@ chmod a+x /etc/profile.d/bazel.sh
 source /etc/profile.d/bazel.sh
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;construção-do-tensorflow-0-10&#34;&gt;Construção do TensorFlow 0.10&lt;/h3&gt;
+&lt;h3 id=&#34;construção-do-tensorflow-0-10:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Construção do TensorFlow 0.10&lt;/h3&gt;
 
 &lt;p&gt;Considerações:&lt;/p&gt;
 
@@ -522,7 +522,7 @@ exit
     .
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;conclusão&#34;&gt;Conclusão&lt;/h2&gt;
+&lt;h2 id=&#34;conclusão:291e0c1fa75cdcafa45ea1a9fc30a281&#34;&gt;Conclusão&lt;/h2&gt;
 
 &lt;p&gt;O procedimento de build do TensorFlow não é complicado, mas pequenas variações podem atingir alguns bugs do build (&lt;a href=&#34;https://github.com/tensorflow/tensorflow/issues/3985&#34;&gt;exemplo&lt;/a&gt;). Com um script bem definido, fica fácil criar o pacote do TensorFlow.&lt;/p&gt;
 
@@ -787,7 +787,7 @@ if __name__ == &#39;__main__&#39;:
 
 &lt;p&gt;Esse tutorial é sobre a criação de uma imagem do Docker com a configuração local do Hadoop, HBase e Kafka. Nesse procedimento, o Hadoop é configurado no modo pseudo-distribuído com cada serviço rodando em uma instância própria da JVM, mas todas na mesma máquina. O HBase e o Kafka também rodam em modo &amp;lsquo;distribuído&amp;rsquo; compartilhando uma instância separada do ZooKeeper. Esse procedimento é muito útil para testar funcionalidades desses serviços e aprendizado, mas não é uma solução completa para uso em produção.&lt;/p&gt;
 
-&lt;h2 id=&#34;pré-requisito&#34;&gt;Pré-requisito&lt;/h2&gt;
+&lt;h2 id=&#34;pré-requisito:7662b18c2fa1b345b82a7d885cf16b10&#34;&gt;Pré-requisito&lt;/h2&gt;
 
 &lt;p&gt;Nesse procedimento, é necessário que o Docker esteja instalado e funcionando; também é necessário acesso à Internet.&lt;/p&gt;
 
@@ -814,11 +814,11 @@ if __name__ == &#39;__main__&#39;:
 &amp;gt;  OS/Arch:      linux/amd64
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;configuração&#34;&gt;Configuração&lt;/h2&gt;
+&lt;h2 id=&#34;configuração:7662b18c2fa1b345b82a7d885cf16b10&#34;&gt;Configuração&lt;/h2&gt;
 
 &lt;p&gt;Hadoop, ZooKeeper, HBase e Kafka.&lt;/p&gt;
 
-&lt;h3 id=&#34;container&#34;&gt;Container&lt;/h3&gt;
+&lt;h3 id=&#34;container:7662b18c2fa1b345b82a7d885cf16b10&#34;&gt;Container&lt;/h3&gt;
 
 &lt;p&gt;Começamos com a criação de um conainer do Docker com a imagem do CentOS6.&lt;/p&gt;
 
@@ -905,7 +905,7 @@ whoami
 &amp;gt; root
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;hadoop&#34;&gt;Hadoop&lt;/h3&gt;
+&lt;h3 id=&#34;hadoop:7662b18c2fa1b345b82a7d885cf16b10&#34;&gt;Hadoop&lt;/h3&gt;
 
 &lt;p&gt;Procedimento para configuração local do Hadoop em modo pseudo-distribuído com uma JVM por serviço.&lt;/p&gt;
 
@@ -1165,7 +1165,7 @@ hdfs dfs -mkdir -p /user/hadoop
 &amp;gt; Estimated value of Pi is 3.14157500000000000000
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;zookeeper&#34;&gt;ZooKeeper&lt;/h3&gt;
+&lt;h3 id=&#34;zookeeper:7662b18c2fa1b345b82a7d885cf16b10&#34;&gt;ZooKeeper&lt;/h3&gt;
 
 &lt;p&gt;Esse procedimento é baseado na &lt;a href=&#34;https://zookeeper.apache.org/doc/r3.4.6/zookeeperStarted.html&#34;&gt;documentação do ZooKeeper&lt;/a&gt;.&lt;/p&gt;
 
@@ -1257,7 +1257,7 @@ zkServer.sh start
 &amp;gt; [zk: grandesdados-hadoop:2181(CONNECTED) 3] quit
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;hbase&#34;&gt;HBase&lt;/h3&gt;
+&lt;h3 id=&#34;hbase:7662b18c2fa1b345b82a7d885cf16b10&#34;&gt;HBase&lt;/h3&gt;
 
 &lt;p&gt;Esse procedimento é baseado na &lt;a href=&#34;http://hbase.apache.org/book.html#quickstart&#34;&gt;documentação do HBase&lt;/a&gt;.&lt;/p&gt;
 
@@ -1361,7 +1361,7 @@ start-hbase.sh
 &amp;gt; hbase(main):004:0&amp;gt; exit
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;kafka&#34;&gt;Kafka&lt;/h3&gt;
+&lt;h3 id=&#34;kafka:7662b18c2fa1b345b82a7d885cf16b10&#34;&gt;Kafka&lt;/h3&gt;
 
 &lt;p&gt;Esse procedimento é baseado na &lt;a href=&#34;http://kafka.apache.org/documentation.html#quickstart&#34;&gt;documentação do Kafka&lt;/a&gt;.&lt;/p&gt;
 
@@ -1429,7 +1429,7 @@ kafka-console-consumer.sh --zookeeper grandesdados-hadoop:2181 --topic test --fr
 &amp;gt; ^CConsumed 1 messages
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;conclusão&#34;&gt;Conclusão&lt;/h2&gt;
+&lt;h2 id=&#34;conclusão:7662b18c2fa1b345b82a7d885cf16b10&#34;&gt;Conclusão&lt;/h2&gt;
 
 &lt;p&gt;A revolução em BigData é um fenômeno da tecnologia desenvolvida ao longo dos últimos anos focada na manipulação de um grande volume de dados em máquinas de baixo custo. Essa é a tecnologia que torna possível combinar uma solução de dados escalável com processos para geração de resultados relevantes, tanto no desenvolvimento de produtos quanto na evolução do conhecimento. O importante é entender como essa tecnologia pode ser usada para agregar valor ao negócio e permitir imaginar soluções inovadoras.&lt;/p&gt;
 
@@ -1453,7 +1453,7 @@ kafka-console-consumer.sh --zookeeper grandesdados-hadoop:2181 --topic test --fr
 
 &lt;p&gt;Mais informações sobre a última versão Spark 1.5.0 no &lt;a href=&#34;http://spark.apache.org/releases/spark-release-1-5-0.html&#34;&gt;Release Notes&lt;/a&gt; e no blog da Databricks &lt;a href=&#34;https://databricks.com/blog/2015/09/09/announcing-spark-1-5.html&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;pré-requisito&#34;&gt;Pré-requisito&lt;/h2&gt;
+&lt;h2 id=&#34;pré-requisito:a471447a7b0c139f517b6888cdad9c6e&#34;&gt;Pré-requisito&lt;/h2&gt;
 
 &lt;p&gt;O procedimento consiste em: provisionar o ambiente; fazer uma cópia do branch estável da última versão, e; gerar o pacote binário e os artefatos do Maven.&lt;/p&gt;
 
@@ -1528,7 +1528,7 @@ mvn -version
 &amp;gt; OS name: &amp;quot;linux&amp;quot;, version: &amp;quot;4.0.4-2-arch&amp;quot;, arch: &amp;quot;amd64&amp;quot;, family: &amp;quot;unix&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;compilação&#34;&gt;Compilação&lt;/h2&gt;
+&lt;h2 id=&#34;compilação:a471447a7b0c139f517b6888cdad9c6e&#34;&gt;Compilação&lt;/h2&gt;
 
 &lt;p&gt;Primeiramente é criado um clone local do repositório do Spark no qual é desenvolvido a versão 1.5 (estável).&lt;/p&gt;
 
@@ -1689,7 +1689,7 @@ mv ~/.m2/repository/spark-1.5.0-m2-89d351b.tar .
 
 &lt;p&gt;&lt;code&gt;spark-1.5.0-m2-89d351b.tar&lt;/code&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;conclusão&#34;&gt;Conclusão&lt;/h2&gt;
+&lt;h2 id=&#34;conclusão:a471447a7b0c139f517b6888cdad9c6e&#34;&gt;Conclusão&lt;/h2&gt;
 
 &lt;p&gt;O Spark é um framework que vem evoluindo rapidamente, com contribuições das mais diversas origem. Praticamente todos os grandes de BigData estão contribuindo com o Spark. Muitas vezes, surgem novas funcionalidades que podem agregar muito valor nas suas aplicações. Outras vezes, são bugs corrigidos que contribuem para a estabilidade de uma aplicação que já existe. Também tem o &amp;lsquo;prazer&amp;rsquo; de ser um &amp;lsquo;early adopter&amp;rsquo;. Seja qual for o motivo, esse procedimento mostra que o trabalho para ter um pacote do Spark é bem fácil e, por experiência, esse é um fator bastante relevante para ganhar tempo e gerar máximo valor.&lt;/p&gt;
 
@@ -1713,7 +1713,7 @@ mv ~/.m2/repository/spark-1.5.0-m2-89d351b.tar .
 
 &lt;p&gt;Nesse artigo, o foco é um passo a passo de como usar o Docker para gerar um pacote do Hadoop adaptado para o Red Hat Enterprise Linux 6 (RHEL6) usando CentOS6.&lt;/p&gt;
 
-&lt;h2 id=&#34;pré-requisito&#34;&gt;Pré-requisito&lt;/h2&gt;
+&lt;h2 id=&#34;pré-requisito:ac8d87b01c866329a85ac2f7311bc677&#34;&gt;Pré-requisito&lt;/h2&gt;
 
 &lt;p&gt;Nesse procedimento, é necessário que o Docker esteja instalado e funcionando; também é necessário acesso à Internet.&lt;/p&gt;
 
@@ -1740,7 +1740,7 @@ mv ~/.m2/repository/spark-1.5.0-m2-89d351b.tar .
 &amp;gt;  OS/Arch:      linux/amd64
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;compilação&#34;&gt;Compilação&lt;/h2&gt;
+&lt;h2 id=&#34;compilação:ac8d87b01c866329a85ac2f7311bc677&#34;&gt;Compilação&lt;/h2&gt;
 
 &lt;p&gt;Documento com instruções de build do Hadoop &lt;a href=&#34;https://github.com/apache/hadoop/blob/release-2.7.1/BUILDING.txt&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 
@@ -1957,7 +1957,7 @@ mvn test -Pnative -Drequire.snappy -Drequire.openssl -Dmaven.test.failure.ignore
 sudo docker cp 3cc2bc5e593b:/hadoop/hadoop-2.7.1-src/hadoop-dist/target/hadoop-2.7.1.tar.gz .
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;conclusão&#34;&gt;Conclusão&lt;/h2&gt;
+&lt;h2 id=&#34;conclusão:ac8d87b01c866329a85ac2f7311bc677&#34;&gt;Conclusão&lt;/h2&gt;
 
 &lt;p&gt;Esse procedimento mostra como o Hadoop pode ser customizado para necessidades específicas e que não requer um esforço muito grande.&lt;/p&gt;
 

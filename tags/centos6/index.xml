@@ -26,7 +26,7 @@
 
 &lt;p&gt;Nesse artigo, o foco é um passo a passo de como usar o Docker para gerar um pacote do Hadoop adaptado para o Red Hat Enterprise Linux 6 (RHEL6) usando CentOS6.&lt;/p&gt;
 
-&lt;h2 id=&#34;pré-requisito&#34;&gt;Pré-requisito&lt;/h2&gt;
+&lt;h2 id=&#34;pré-requisito:ac8d87b01c866329a85ac2f7311bc677&#34;&gt;Pré-requisito&lt;/h2&gt;
 
 &lt;p&gt;Nesse procedimento, é necessário que o Docker esteja instalado e funcionando; também é necessário acesso à Internet.&lt;/p&gt;
 
@@ -53,7 +53,7 @@
 &amp;gt;  OS/Arch:      linux/amd64
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;compilação&#34;&gt;Compilação&lt;/h2&gt;
+&lt;h2 id=&#34;compilação:ac8d87b01c866329a85ac2f7311bc677&#34;&gt;Compilação&lt;/h2&gt;
 
 &lt;p&gt;Documento com instruções de build do Hadoop &lt;a href=&#34;https://github.com/apache/hadoop/blob/release-2.7.1/BUILDING.txt&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 
@@ -270,7 +270,7 @@ mvn test -Pnative -Drequire.snappy -Drequire.openssl -Dmaven.test.failure.ignore
 sudo docker cp 3cc2bc5e593b:/hadoop/hadoop-2.7.1-src/hadoop-dist/target/hadoop-2.7.1.tar.gz .
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;conclusão&#34;&gt;Conclusão&lt;/h2&gt;
+&lt;h2 id=&#34;conclusão:ac8d87b01c866329a85ac2f7311bc677&#34;&gt;Conclusão&lt;/h2&gt;
 
 &lt;p&gt;Esse procedimento mostra como o Hadoop pode ser customizado para necessidades específicas e que não requer um esforço muito grande.&lt;/p&gt;
 
