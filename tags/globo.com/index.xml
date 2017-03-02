@@ -2,12 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Globo.Com on Ciro Cavani</title>
-    <link>http://cirocavani.github.io/tags/globo/index.com/</link>
+    <link>http://cirocavani.github.io/tags/globo.com/index.xml</link>
     <description>Recent content in Globo.Com on Ciro Cavani</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
-    <lastBuildDate>Thu, 27 Aug 2015 06:00:00 -0300</lastBuildDate>
     <atom:link href="http://cirocavani.github.io/tags/globo.com/index.xml" rel="self" type="application/rss+xml" />
     
     <item>

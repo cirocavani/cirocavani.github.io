@@ -2,12 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ubuntu on Ciro Cavani</title>
-    <link>http://cirocavani.github.io/tags/ubuntu/</link>
+    <link>http://cirocavani.github.io/tags/ubuntu/index.xml</link>
     <description>Recent content in Ubuntu on Ciro Cavani</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
-    <lastBuildDate>Thu, 08 Sep 2016 22:06:49 -0300</lastBuildDate>
     <atom:link href="http://cirocavani.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
     <item>

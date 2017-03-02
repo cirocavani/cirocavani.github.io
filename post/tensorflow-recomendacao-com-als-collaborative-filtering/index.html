@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.19" />
+
+  <title>TensorFlow: Recomendação com ALS (Collaborative Filtering) &middot; Ciro Cavani</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="http://cirocavani.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="http://cirocavani.github.io/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+  <style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #777;
+}
+</style>
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i &lt; all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="http://cirocavani.github.io/">Ciro Cavani</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/about/"><i class='fa fa-user fa-fw'></i>Sobre Mim</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://cirocavani.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/cirocavani" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/cirocavani" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://instagram.com/ciro.cavani" target="_blank"><i class="fa fa-instagram fa-fw"></i>Instagram</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/cirocavani" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/cirocavani" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>TensorFlow: Recomendação com ALS (Collaborative Filtering)</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>01 Mar 2017, 11:31</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tensorflow">TensorFlow</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/spark">Spark</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/sistema-de-recomenda%C3%A7%C3%A3o">Sistema de Recomendação</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/algoritmos">Algoritmos</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tutorial">Tutorial</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p>Esse artigo é sobre a análise do ALS implementado no TensorFlow. O ALS é um método para fatoração de matriz usado como algoritmo de <em>Collaborative Filtering</em> em Sistemas de Recomendação. A análise consiste no treinamento e <em>tuning</em> desse algoritmo e a avaliação do erro final. Para comparação, o mesmo algoritmo é implementado com o Spark. A metodologia usada tem características peculiares de como a Recomendação e o ALS funcionam. O resultado mostra que o Spark tem performance melhor que o TensorFlow no erro final.</p>
+
+<p><strong>Código</strong></p>
+
+<p><a href="https://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Recommendation/ALS.ipynb">Notebook</a></p>
+
+<h2 id="motivação">Motivação</h2>
+
+<p>Desde que comecei a trabalhar com Recomendação na Globo.com, já coloquei em Produção mais de uma implementação do ALS. É um algoritmo relativamente fácil de entender e que tem excelentes resultados na prática. Atualmente, a implementação que usamos em Produção é a do <a href="https://youtu.be/Q0VXllYilM0">Spark 2</a>. O TensorFlow é uma tecnologia que possibilita a implementação de algoritmos mais sofisticados de Inteligência Artificial que tenho interesse em usar em Produção. Seria ideal que pudesse ser usado nos algoritmos mais comuns que tem boa performance.</p>
+
+<p>Com base nessa ideia, essa análise é uma primeira comparação entre essas duas implementações do TensorFlow e do Spark.</p>
+
+<blockquote>
+<p><strong>IMPORTANTE</strong></p>
+
+<p>Essa análise foi feita com um dataset pequeno com objetivo de facilitar o desenvolvimento, portanto, os resultados obtidos são apenas para ter uma ideia e não servervem para chegar em <em>conclusões definitivas</em> sobre essas implementações.</p>
+</blockquote>
+
+<p>Tomei conhecimento de que o TensorFlow tinha a implementação do ALS a partir de um vídeo do <a href="https://events.withgoogle.com/tensorflow-dev-summit/">TensorFlow Dev Summit</a> que ocorreu em 15/Fevereiro (WALS no tempo 2:20):</p>
+
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/Tuv5QYKU-MM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0"></iframe>
+ </div>
+
+
+<h2 id="introdução">Introdução</h2>
+
+<p>A ideia geral é simples:</p>
+
+<blockquote>
+<p>Usuários dão rating para alguns filmes e o algoritmo gera uma lista de outros filmes que o usuário também daria um bom rating.</p>
+
+<p>O ALS é um método de fatoração de matriz que é usado para &lsquo;completar&rsquo; os ratings dos filmes que o usuário não deu rating, baseado nos ratings que vários usuários deram aos filmes.</p>
+
+<p>Cada usuário e filme é transformado em um vetor de números (fatores) que são ajustados para representar o interesse do usuário em uma determinada característica de um filme (cada fator é um &lsquo;peso&rsquo; que indica quanto o usuário gosta e quanto o filme oferece). O produto entre os fatores do usuário e os fatores do filme tem que ser &lsquo;igual&rsquo; ao rating que o usuário deu ao filme.</p>
+
+<p>No caso dos filmes que o usuário não deu rating (não viu?), esse produto é o &lsquo;rating previsto&rsquo;. Ordenando todos os ratings previstos, os maiores são usados para recomendação.</p>
+
+<p>Esse é o algoritmo de Collaborative Filtering com ALS.</p>
+
+<p>Esse é o algoritmo que ficou famoso no prêmio Netflix.</p>
+</blockquote>
+
+<p>Nesse trabalho, a análise do ALS consiste em:</p>
+
+<ol>
+<li>Preparação de Dados: ratings do MovieLens, dataset para treinamento, validação e teste</li>
+<li>Treinamento com TensorFlow: algoritmo que completa a matriz de ratings com ALS do TensorFlow</li>
+<li>Treinamento com Spark: algoritmo que completa a matriz de ratings com ALS do Spark</li>
+<li>Seleção de Parâmetros: busca da combinação com menor erro no dataset de validação</li>
+<li>Comparação: avaliação do erro no dataset de teste da melhor combinação de parâmetros</li>
+</ol>
+
+<h2 id="preparação-dos-dados">Preparação dos Dados</h2>
+
+<p>Os dados usados nessa análise são do <a href="https://grouplens.org/datasets/movielens/">MovieLens</a>.</p>
+
+<p><strong>MovieLens Small</strong></p>
+
+<p>[ <a href="http://files.grouplens.org/datasets/movielens/ml-latest-small-README.html">README</a> ]
+[ <a href="http://files.grouplens.org/datasets/movielens/ml-latest-small.zip">ZipFile</a> ]</p>
+
+<blockquote>
+<p>This dataset (ml-latest-small) describes 5-star rating and free-text tagging activity from MovieLens, a movie recommendation service. It contains 100004 ratings and 1296 tag applications across 9125 movies. These data were created by 671 users between January 09, 1995 and October 16, 2016. This dataset was generated on October 17, 2016.</p>
+
+<p>Users were selected at random for inclusion. All selected users had rated at least 20 movies. No demographic information is included. Each user is represented by an id, and no other information is provided.</p>
+
+<p>The data are contained in the files links.csv, movies.csv, ratings.csv and tags.csv.</p>
+</blockquote>
+
+<p>&hellip;</p>
+
+<p>O dataset consiste de 100.004 ratings registrados por 671 usuários em 9.066 vídeos (o número de vídeos com rating é menor que o número de vídeos com tag, 9.125). Como esperado, a matriz de usuários por vídeos é bastante esparsa: apenas 1,64% de ratings dos 6.083.286 (671 x 9.066) possíveis.</p>
+
+<blockquote>
+<p>Diferente desse dataset, em que o número de usuários é bem menor que o número de itens (menor que <sup>1</sup>&frasl;<sub>10</sub>), na recomendação da Globo.com normalmente a proporção é inversa, ou seja, muito mais usuários do que itens - nas nossas próprias análises, essa é uma característica relevante.</p>
+</blockquote>
+
+<p>Esse dataset é bastante pequeno e serve ao propósito de desenvolvido da análise e não para encontrar &lsquo;grandes verdades&rsquo;.</p>
+
+<p>A estratégia é dividir esses dados para treinamento, validação e teste. O dataset de treinamento será usado como os dados que o algoritmo conhece do usuário (e deve aprender sobre). O dataset de validação é para ser usado durante o treinamento para medir a performance do algoritmo, verificar overfitting (ou under) e fazer tuning de parâmetros. O dataset de teste será usado uma única vez para medir o desempenho final do algoritmo com os melhores parâmetros.</p>
+
+<p>O critério usado para dividir os dados é baseado em uma especificidade de Recomendação. No pipeline de Produção, um algoritmo é treinado com os dados históricos e tem sua performance avaliada em tempo real. Desconsiderando o impacto que a própria recomendação possa ter no consumo de itens, essa mesma &lsquo;dinâmica temporal&rsquo; é usada para dividir os dados.</p>
+
+<p>Os ratings são ordenados pelo timestamp em que foram feitos. Os primeiros 80% desses ratings são designados para treinamento / validação e os últimos 20% são designados para teste. Novamente, o primeiro dataset é ordenado e dividido em 80% para treinamento e 20% para validação. A divisão, portanto, fica 64% para treinamento, 16% para validação e 20% para teste.</p>
+
+<blockquote>
+<p>Uma variação desse critério: separar por tempo primeiro entre 70% treinamento e 30% validação / teste, depois separar por shuffle 15% de validação e 15% de teste. (Escolhi usar só o critério de tempo porque é mais próximo de Produção)</p>
+</blockquote>
+
+<p>O dataset de treinamento tem 64.002 ratings, 435 usuários e 5.668 vídeos.</p>
+
+<p>O dataset de validação tem 16.001 ratings, 136 usuários e 4.112 vídeos.</p>
+
+<p>O dataset de teste tem 20.001 ratings, 147 usuários e 4.753 vídeos.</p>
+
+<p>&hellip;</p>
+
+<p>A medida de performance usada nesse análise é o RMSE (<a href="https://en.wikipedia.org/wiki/Root-mean-square_error">Root Mean Square Error</a>) onde o &lsquo;erro&rsquo; é a diferença entre o rating atribuído pelo usuário a um vídeo e o rating calulado pelo produto entre o vetor de fatores desse usuário e o vetor de fatores desse vídeo. O RMSE é uma medida aproximada de quanto o algoritmo pode errar a predição de rating, para mais ou para menos. A expectativa é que esse valor seja muito pequeno para o dataset de treinamento (o ALS minimiza um função similar ao RMSE).</p>
+
+<p>Para efeito de avaliação de performance, temos uma especificidade do ALS. Uma vez que é necessário ter o vetor de fatores tanto do usuário quanto do vídeo para estimar o rating, apenas usuários e vídeos que estão simultaneamente no dataset de treinamento e validação (ou teste) podem ser considerados para o cálculo do RMSE. Nesse caso, estamos avaliando a capacidade de predição do algoritmo e ignorando a cobertura (tanto em usuários ou vídeos).</p>
+
+<p>Apenas um subconjunto do dataset de validação e teste é usado para avaliação.</p>
+
+<p>(Todo o dataset de treinamento pode ser usado na avaliação)</p>
+
+<p>A avaliação com o dataset de validação tem 944 ratings, 23 usuários e 2.424 vídeos.</p>
+
+<p>A avaliação com o dataset de teste tem 278 ratings, 5 usuários e 2.332 vídeos.</p>
+
+<h2 id="treinamento-com-tensorflow">Treinamento com TensorFlow</h2>
+
+<p>A implementação do algoritmo foi baseada na documentação da classe WALS do TensorFlow e nos testes dessa classe.</p>
+
+<p>Documentação da implementação do WALS:</p>
+
+<p>[ <a href="https://github.com/tensorflow/tensorflow/blob/v1.0.0/tensorflow/contrib/factorization/python/ops/factorization_ops.py#L53-L166">GitHub: factorization_ops.py#L53-L166</a> ]</p>
+
+<p>Documentação dos parâmetros do WALS:</p>
+
+<p>[ <a href="https://github.com/tensorflow/tensorflow/blob/v1.0.0/tensorflow/contrib/factorization/python/ops/factorization_ops.py#L181-L214">GitHub: factorization_ops.py#L181-L214</a> ]</p>
+
+<p>Código do teste da classe WALS:</p>
+
+<p>[ <a href="https://github.com/tensorflow/tensorflow/blob/v1.0.0/tensorflow/contrib/factorization/python/ops/factorization_ops_test.py#L534-L576">GitHub: factorization_ops_test.py#L534-L576</a> ]</p>
+
+<p>Código da loss function:</p>
+
+<p>[ <a href="https://github.com/tensorflow/tensorflow/blob/df5d3cd42335e31bccb6c796169d000d73c747d3/tensorflow/contrib/factorization/python/ops/factorization_ops_test.py#L105-L158">GitHub: factorization_ops_test.py#L105-L158</a> ]</p>
+
+<p>Rascunho do algoritmo:</p>
+
+<p><a href="http://nbviewer.jupyter.org/github/cirocavani/tensorflow-jupyter/blob/master/workspace/Recommendation/ALS%20draft.ipynb">Notebook</a></p>
+
+<p>&hellip;</p>
+
+<p>O algoritmo é implementado em duas classes:</p>
+
+<ol>
+<li><code>ALSRecommender</code>: classe responsável pelo treinamento (recebe um dataset com ratings, calcula os fatores dos usuários e vídeos com o ALS e retorna o modelo com esses fatores)</li>
+<li><code>ALSRecommenderModel</code>: classe responsável pela inferência (recebe um par usuário e vídeo e retorna a predição do rating ou recebe um usuário e retorna os vídeos com maior rating para esse usuário)</li>
+</ol>
+
+<p><strong>ALSRecommender</strong></p>
+
+<p>A classe <code>ALSRecommender</code> recebe três parâmetros:</p>
+
+<ul>
+<li><code>num_factors</code> (default 10): número de fatores em que cada usuário e vídeo devem ser representados (valor muito grande pode resultar em overfitting, muito pequeno em underfitting; custo computacional, tamanho da matriz de usuários e vídeos)</li>
+<li><code>num_iters</code> (default 10): número de repetições do método do ALS (a convergência normalmente é rápida, portando um número muito grande pode não ajudar muito; custo computacional)</li>
+<li><code>reg</code> (default 1e-1): fator de regularização (impacto na convergência, valor muito grande pode resultar em instabilidade e um valor muito pequeno pode resultar em overfitting)</li>
+</ul>
+
+<p>O treinamento é implementado no método <code>fit</code> e consiste em três passos: transformação dos dados em matriz esparsa, criação do ALS e execução do ALS.</p>
+
+<p>No final é retornanda uma instância do <code>ALSRecommenderModel</code> com a matriz de usuários e matriz de vídeos (itens).</p>
+
+<pre><code class="language-python">def fit(self, dataset, verbose=False):
+    with tf.Graph().as_default(), tf.Session() as sess:
+        input_matrix, mapping = self.sparse_input(dataset)
+        model = self.als_model(dataset)
+        self.train(model, input_matrix, verbose)
+        row_factor = model.row_factors[0].eval()
+        col_factor = model.col_factors[0].eval()
+        return ALSRecommenderModel(row_factor, col_factor, mapping)
+</code></pre>
+
+<p>O primeiro passo é a transformação de uma lista de ratings em uma matriz esparsa de usuários por vídeos, implementado no método <code>sparse_input</code>:</p>
+
+<pre><code class="language-python">def sparse_input(self, dataset):
+    mapping = new_mapping(dataset)
+
+    indices = [(mapping.users_to_idx[r.user_id],
+                mapping.items_to_idx[r.item_id])
+               for r in dataset.ratings]
+    values = [r.rating for r in dataset.ratings]
+    shape = (dataset.n_users, dataset.n_items)
+
+    return tf.SparseTensor(indices, values, shape), mapping
+</code></pre>
+
+<p>O segundo passo é a construção do ALS para calcular os fatores e &lsquo;completar&rsquo; os ratings, implementado no método <code>als_model</code>:</p>
+
+<pre><code class="language-python">def als_model(self, dataset):
+    return WALSModel(
+        dataset.n_users,
+        dataset.n_items,
+        self.num_factors,
+        regularization=self.regularization,
+        unobserved_weight=0)
+</code></pre>
+
+<p>O tercero passo é a execução do ALS em si, que consiste na repetição de dois passos: mantem a matriz de vídeos constante e altera a matriz de usuários; mantem a matriz de usuários constante e altera a matriz de vídeos. A cada passo, o erro entre os ratings do input e os ratings aproximados deve diminuir.</p>
+
+<p>Execução do ALS implementada no método <code>train</code>:</p>
+
+<pre><code class="language-python">def train(self, model, input_matrix, verbose=False):
+    rmse_op = self.rmse_op(model, input_matrix) if verbose else None
+
+    row_update_op = model.update_row_factors(sp_input=input_matrix)[1]
+    col_update_op = model.update_col_factors(sp_input=input_matrix)[1]
+
+    model.initialize_op.run()
+    model.worker_init.run()
+    for _ in range(self.num_iters):
+        # Update Users
+        model.row_update_prep_gramian_op.run()
+        model.initialize_row_update_op.run()
+        row_update_op.run()
+        # Update Items
+        model.col_update_prep_gramian_op.run()
+        model.initialize_col_update_op.run()
+        col_update_op.run()
+
+        if verbose:
+            print('RMSE: {:,.3f}'.format(rmse_op.eval()))
+</code></pre>
+
+<p><strong>ALSRecommenderModel</strong></p>
+
+<p>A classe <code>ALSRecommenderModel</code> recebe três parâmetros:</p>
+
+<ul>
+<li><code>user_factors</code>: matriz densa de usuários por número de fatores</li>
+<li><code>item_factors</code>: matriz densa de vídeos por número de fatores</li>
+<li><code>mapping</code>: objeto que converte <code>user_id</code> para / de índice em <code>user_factors</code>, <code>item_id</code> para / de índice em <code>item_factors</code> (vídeos)</li>
+</ul>
+
+<p>A classe <code>ALSRecommenderModel</code> implementa dois métodos:</p>
+
+<ul>
+<li><code>transform</code>: recebe uma lista de <code>(user_id, item_id)</code> e retorna a predição do rating</li>
+<li><code>recommend</code>: recebe um <code>user_id</code> e retorna a lista de <code>(item_id, rating)</code> ordenada com os maiores ratings primeiro</li>
+</ul>
+
+<p>O método <code>transform</code> é o produto dos fatores do usuário e do vídeo:</p>
+
+<pre><code class="language-python">def transform(self, x):
+    for user_id, item_id in x:
+        if user_id not in self.mapping.users_to_idx \
+            or item_id not in self.mapping.items_to_idx:
+            yield (user_id, item_id), 0.0
+            continue
+        i = self.mapping.users_to_idx[user_id]
+        j = self.mapping.items_to_idx[item_id]
+        u = self.user_factors[i]
+        v = self.item_factors[j]
+        r = np.dot(u, v)
+        yield (user_id, item_id), r
+</code></pre>
+
+<p>O método <code>recommend</code> é o produto da matriz de vídeos pelo vetor de fatores de um usuário:</p>
+
+<pre><code class="language-python">def recommend(self, user_id, num_items=10, items_exclude=set()):
+    i = self.mapping.users_to_idx[user_id]
+    u = self.user_factors[i]
+    V = self.item_factors
+    P = np.dot(V, u)
+    rank = sorted(enumerate(P), key=lambda p: p[1], reverse=True)
+
+    top = list()
+    k = 0
+    while k &lt; len(rank) and len(top) &lt; num_items:
+        j, r = rank[k]
+        k += 1
+
+        item_id = self.mapping.items_from_idx[j]
+        if item_id in items_exclude:
+            continue
+
+        top.append((item_id, r))
+
+    return top
+</code></pre>
+
+<p><strong>Execução</strong></p>
+
+<p>A execução consiste em instanciar a classe <code>ALSRecommender</code>, fazer o treinamento com o método <code>fit</code> e fazer inferências com a instância da classe <code>ALSRecommenderModel</code> retornada.</p>
+
+<p>Nesse exemplo, a inferência é executada para todos os ratings de avaliação como definido na Preparação de Dados. Com o rating da inferência, é calculado o RMSE de cada conjunto de avaliação.</p>
+
+<pre><code class="language-python">als = ALSRecommender(num_factors=10, num_iters=10, reg=0.1)
+print('Training...\n')
+als_model = als.fit(train_data, verbose=True)
+print('\nEvaluation...\n')
+eval_rmse(als_model)
+</code></pre>
+
+<p>Saída:</p>
+
+<pre><code class="language-html">Training...
+
+RMSE: 1.729
+RMSE: 0.765
+RMSE: 0.631
+RMSE: 0.588
+RMSE: 0.565
+RMSE: 0.550
+RMSE: 0.540
+RMSE: 0.532
+RMSE: 0.526
+RMSE: 0.521
+
+Evaluation...
+
+RMSE (train): 0.521
+RMSE (validation): 1.688
+RMSE for heavy: 2.444
+RMSE for moderate: 1.465
+RMSE for accidental: 1.926
+</code></pre>
+
+<h2 id="treinamento-com-spark">Treinamento com Spark</h2>
+
+<p>Documentação da implementação:</p>
+
+<p>[ <a href="http://spark.apache.org/docs/2.1.0/ml-collaborative-filtering.html">Manual</a> ]</p>
+
+<p>Documentação dos parâmetros do ALS:</p>
+
+<p>[ <a href="http://spark.apache.org/docs/2.1.0/api/python/pyspark.ml.html#module-pyspark.ml.recommendation">Python API</a> ]</p>
+
+<p>Exemplo do ALS:</p>
+
+<p>[ <a href="https://github.com/apache/spark/blob/v2.1.0/examples/src/main/python/ml/als_example.py">GitHub: als_example.py</a> ]</p>
+
+<p>&hellip;</p>
+
+<p>A execução consiste em instanciar a classe <code>ALS</code>, fazer o treinamento com o método <code>fit</code> e fazer inferências com a instância da classe <code>ALSModel</code> retornada.</p>
+
+<p>Nesse exemplo, a inferência é executada para todos os ratings de avaliação como definido na Preparação de Dados. Com o rating da inferência, é calculado o RMSE de cada conjunto de avaliação.</p>
+
+<pre><code class="language-python">from pyspark.ml.recommendation import ALS as SparkALS
+
+spark_als = SparkALS(rank=10, maxIter=10, regParam=0.1)
+spark_model = spark_als.fit(train_df)
+eval_rmse_spark(spark_model)
+</code></pre>
+
+<p>Saída:</p>
+
+<pre><code class="language-html">RMSE (train): 0.601
+RMSE (validation): 1.018
+RMSE for heavy: 1.128
+RMSE for moderate: 0.974
+RMSE for accidental: 1.327
+</code></pre>
+
+<h2 id="seleção-de-parâmetros">Seleção de Parâmetros</h2>
+
+<p>A Seleção de Parâmetros consiste em uma busca executando todas as combinações de valores dos parâmetros. Para limitar a busca, é pré-selecionado um conjunto de valores que faz mais sentido.</p>
+
+<p>Nessa análise, foi usada uma seleção de valores ainda menor, visando agilizar o processo.</p>
+
+<pre><code class="language-python">default_params = dict(num_factors=[5, 10, 20, 50, 100, 200],
+                      num_iters=[5, 10, 25],
+                      reg = [1e-5, 1e-3, 1e-1, 0.0, 1])
+
+small_params = dict(num_factors=[5, 10, 20],
+                    num_iters=[5],
+                    reg = [1e-3, 1e-1, 1])
+
+def grid_search(eval_func, params=default_params, verbose=False):
+    best_rmse = None
+    best_params = None
+    for reg in params['reg']:
+        for num_iters in params['num_iters']:
+            for num_factors in params['num_factors']:
+                if verbose:
+                    print('\nParams:', num_factors, num_iters, reg)
+                try:
+                    rmse = eval_func(num_factors, num_iters, reg)
+                except:
+                    rmse = None
+                if verbose:
+                    print('RMSE:',
+                          '{:,.3f}'.format(rmse) if rmse is not None else '-')
+                if rmse is not None and (best_rmse is None or rmse &lt; best_rmse):
+                    if verbose:
+                        print('best update!')
+                    best_rmse = rmse
+                    best_params = (num_factors, num_iters, reg)
+    return best_params, best_rmse
+</code></pre>
+
+<p>&hellip;</p>
+
+<p><strong>TensorFlow ALS</strong></p>
+
+<pre><code class="language-python">def tf_eval(num_factors, num_iters, reg):
+    als = ALSRecommender(num_factors=num_factors, num_iters=num_iters, reg=reg)
+    model = als.fit(train_data)
+    return _rmse(model, valid_eval)
+
+tf_params, tf_score = grid_search(tf_eval, params=small_params, verbose=True)
+print()
+print('Best Params:\n\nn_factors={}, n_iters={}, reg={}, RMSE={:.3f}' \
+        .format(*tf_params, tf_score))
+</code></pre>
+
+<p>Saída:</p>
+
+<pre><code class="language-html">Params: 5 5 0.001
+RMSE: 1.146
+best update!
+
+Params: 10 5 0.001
+RMSE: 1.309
+
+Params: 20 5 0.001
+RMSE: 2.870
+
+Params: 5 5 0.1
+RMSE: 1.355
+
+Params: 10 5 0.1
+RMSE: 1.438
+
+Params: 20 5 0.1
+RMSE: 1.636
+
+Params: 5 5 1
+RMSE: 1.487
+
+Params: 10 5 1
+RMSE: 1.941
+
+Params: 20 5 1
+RMSE: 1.933
+
+Best Params:
+
+n_factors=5, n_iters=5, reg=0.001, RMSE=1.146
+</code></pre>
+
+<p>&hellip;</p>
+
+<p><strong>Spark ALS</strong></p>
+
+<pre><code class="language-python">def spark_eval(num_factors, num_iters, reg):
+    als = SparkALS(rank=num_factors, maxIter=num_iters, regParam=reg)
+    model = als.fit(train_df)
+    return _rmse_spark(model, valid_df)
+
+spark_params, spark_score = grid_search(spark_eval, params=small_params, verbose=True)
+print()
+print('Best Params:\n\nn_factors={}, n_iters={}, reg={}, RMSE={:.3f}' \
+        .format(*spark_params, spark_score))
+</code></pre>
+
+<p>Saída:</p>
+
+<pre><code class="language-html">Params: 5 5 0.001
+RMSE: 1.300
+best update!
+
+Params: 10 5 0.001
+RMSE: 1.418
+
+Params: 20 5 0.001
+RMSE: 1.615
+
+Params: 5 5 0.1
+RMSE: 0.981
+best update!
+
+Params: 10 5 0.1
+RMSE: 1.003
+
+Params: 20 5 0.1
+RMSE: 1.033
+
+Params: 5 5 1
+RMSE: 1.258
+
+Params: 10 5 1
+RMSE: 1.258
+
+Params: 20 5 1
+RMSE: 1.258
+
+Best Params:
+
+n_factors=5, n_iters=5, reg=0.1, RMSE=0.981
+</code></pre>
+
+<h2 id="comparação">Comparação</h2>
+
+<p>Para a comparação das implementações, a medida de performance é o RMSE dos ratings de avaliação do dataset de Teste com os os melhores parâmetros selecionados na busca.</p>
+
+<p>O TensorFlow ALS com 5 fatores, 5 iterações e 0.001 de regularização tem RMSE de 1,183 no Teste.</p>
+
+<p>O Spark ALS com 5 fatores, 5 iterações e 0.1 de regularização tem RMSE de 1,086 no Teste.</p>
+
+<p>Esse resultado mostra que o Spark tem performance melhor que o TensorFlow no erro final.</p>
+
+<p><strong>TensorFlow ALS</strong></p>
+
+<pre><code class="language-python">als = ALSRecommender(*tf_params)
+model = als.fit(train_data)
+rmse = _rmse(model, test_eval)
+print('TensorFlow RMSE for test: {:,.3f}'.format(rmse))
+</code></pre>
+
+<p>Saída:</p>
+
+<pre><code class="language-html">TensorFlow RMSE for test: 1.183
+</code></pre>
+
+<p><strong>Spark ALS</strong></p>
+
+<pre><code class="language-python">num_factors, num_iters, reg = spark_params
+als = SparkALS(rank=num_factors, maxIter=num_iters, regParam=reg)
+model = als.fit(train_df)
+rmse = _rmse_spark(model, test_df)
+print('Spark RMSE for test: {:,.3f}'.format(rmse))
+</code></pre>
+
+<p>Saída:</p>
+
+<pre><code class="language-html">Spark RMSE for test: 1.086
+</code></pre>
+
+<h2 id="conclusão">Conclusão</h2>
+
+<p>Apesar do resultado dessa análise ser consistente (várias execuções, pouca variação), não é definitivo. Seria necessário fazer a análise com datasets maiores e verificar se há realmente diferença significativa de performance entre essas implementação.</p>
+
+<p>Para trabalhos futuros, a ideia completar o trabalho com os passos necessários para colocar esse algoritmo &lsquo;em produção&rsquo;, ou seja, que um sistema de recomendação possa fazer inferência com o modelo treinado com o ALS do TensorFlow. Uma forma de fazer isso é transformar a classe <code>ALSRecommenderModel</code> em um grafo do TensorFlow que possa ser carregado e executado pelo TensorFlow Serving. Esse pode ser o tema de um próximo artigo.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://cirocavani.github.io/post/tensorflow-no-jupyter-com-notebooks/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://cirocavani.github.io/post/tensorflow-no-jupyter-com-notebooks/">TensorFlow no Jupyter (com notebooks)</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'cirocavani';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="http://cirocavani.github.io/js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-38960920-4', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
+

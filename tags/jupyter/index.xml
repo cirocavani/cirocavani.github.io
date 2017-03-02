@@ -2,12 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jupyter on Ciro Cavani</title>
-    <link>http://cirocavani.github.io/tags/jupyter/</link>
+    <link>http://cirocavani.github.io/tags/jupyter/index.xml</link>
     <description>Recent content in Jupyter on Ciro Cavani</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
-    <lastBuildDate>Tue, 13 Sep 2016 21:13:26 -0300</lastBuildDate>
     <atom:link href="http://cirocavani.github.io/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
     
     <item>

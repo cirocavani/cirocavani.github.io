@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.19" />
 
-  <title>Sistema De Recomendação &middot; Ciro Cavani</title>
+  <title>Globo.Com &middot; Ciro Cavani</title>
 
   
   
@@ -37,7 +37,7 @@
 
   
   
-  <link rel="alternate" type="application/rss+xml" title="Ciro Cavani" href="http://cirocavani.github.io/tags/sistema-de-recomenda%C3%A7%C3%A3o/index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Ciro Cavani" href="http://cirocavani.github.io/tags/globo.com/index.xml" />
   
 
   
@@ -138,7 +138,7 @@ MathJax.Hub.Config({
 
     
     <li class="pure-menu-item">
-      <a class="pure-menu-link" href="http://cirocavani.github.io/tags/sistema-de-recomenda%C3%A7%C3%A3o/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      <a class="pure-menu-link" href="http://cirocavani.github.io/tags/globo.com/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
     </li>
     
 
@@ -251,20 +251,20 @@ MathJax.Hub.Config({
 
 
 <div class="header">
-  <h1>Sistema De Recomendação</h1>
+  <h1>Globo.Com</h1>
 </div>
 
 <div class="content">
   
     <article>
   <header>
-    <h2><a href="http://cirocavani.github.io/post/tensorflow-recomendacao-com-als-collaborative-filtering/">TensorFlow: Recomendação com ALS (Collaborative Filtering)</a></h2>
+    <h2><a href="http://cirocavani.github.io/post/bigdata-na-globocom/">BigData na Globo.com</a></h2>
 
     <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>01 Mar 2017, 11:31</time>
+    <time>27 Aug 2015, 06:00</time>
   </div>
 
   
@@ -277,66 +277,17 @@ MathJax.Hub.Config({
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tensorflow">TensorFlow</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/globo.com">Globo.com</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/spark">Spark</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/bigdata">BigData</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/sistema-de-recomenda%C3%A7%C3%A3o">Sistema de Recomendação</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/hadoop">Hadoop</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/algoritmos">Algoritmos</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/hbase">HBase</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tutorial">Tutorial</a>
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/kafka">Kafka</a>&nbsp;&#47;
     
-  </div>
-  
-  
-
-</div>
-
-  </header>
-
-  <p>
-  Esse artigo é sobre a análise do ALS implementado no TensorFlow. O ALS é um método para fatoração de matriz usado como algoritmo de Collaborative Filtering em Sistemas de Recomendação. A análise consiste no treinamento e tuning desse algoritmo e a avaliação do erro final. Para comparação, o mesmo algoritmo é implementado com o Spark. A metodologia usada tem características peculiares de como a Recomendação e o ALS funcionam. O resultado mostra que o Spark tem performance melhor que o TensorFlow no erro final.
-  </p>
-
-  
-  <footer>
-    <a href="http://cirocavani.github.io/post/tensorflow-recomendacao-com-als-collaborative-filtering/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="http://cirocavani.github.io/post/otimizacao-dos-parametros-do-spark-als-collaborative-filtering-usando-moe/">Otimização dos parâmetros do Spark ALS (Collaborative Filtering) usando MOE</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>24 Sep 2015, 19:44</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/otimiza%C3%A7%C3%A3o">Otimização</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/sistema-de-recomenda%C3%A7%C3%A3o">Sistema de Recomendação</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/algoritmos">Algoritmos</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/spark">Spark</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tutorial">Tutorial</a>
+      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/spark">Spark</a>
     
   </div>
   
@@ -347,12 +298,13 @@ MathJax.Hub.Config({
   </header>
 
   <p>
-  Esse tutorial é sobre otimização de parâmetros em modelos de machine learning. Para esse tutorial, a ferramenta utilizada é o MOE, Metric Optimization Engine, desenvolvido pelo Yelp que implementa o algoritmo de busca usando Gaussian Process. O algoritmo escolhido para ter os parâmetros otimizados é o Collaborative Filtering baseado na fatoração da matriz de preferências. De forma genérica, esse é um processo que pode ser facilmente adaptado para outros algoritmos e permite sistematizar a árdua tarefa de escolher os melhores parâmetros para um modelo.
+  A proposta desse artigo é fundamentar alguns conceitos de BigData e explorar a dinâmica de como tratar um grande volume de dados para extrair valor. A ideia é apresentar a solução de dados na Plataforma de BigData da Globo.com usada pelo Sistema de Recomendação e comentar a experiência do seu desenvolvimento.
+Esse artigo é uma atualização e expansão da palestra realizada no Rio BigData Meetup em 21 de Outubro de 2014.
   </p>
 
   
   <footer>
-    <a href="http://cirocavani.github.io/post/otimizacao-dos-parametros-do-spark-als-collaborative-filtering-usando-moe/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+    <a href="http://cirocavani.github.io/post/bigdata-na-globocom/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>
