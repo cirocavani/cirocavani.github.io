@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Algoritmos on Ciro Cavani</title>
-    <link>http://cirocavani.github.io/tags/algoritmos/</link>
+    <link>https://cirocavani.github.io/tags/algoritmos/</link>
     <description>Recent content in Algoritmos on Ciro Cavani</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
     <lastBuildDate>Wed, 01 Mar 2017 11:31:34 -0300</lastBuildDate>
     
-	<atom:link href="http://cirocavani.github.io/tags/algoritmos/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cirocavani.github.io/tags/algoritmos/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>TensorFlow: Recomendação com ALS (Collaborative Filtering)</title>
-      <link>http://cirocavani.github.io/post/tensorflow-recomendacao-com-als-collaborative-filtering/</link>
+      <link>https://cirocavani.github.io/post/tensorflow-recomendacao-com-als-collaborative-filtering/</link>
       <pubDate>Wed, 01 Mar 2017 11:31:34 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/post/tensorflow-recomendacao-com-als-collaborative-filtering/</guid>
+      <guid>https://cirocavani.github.io/post/tensorflow-recomendacao-com-als-collaborative-filtering/</guid>
       <description>Esse artigo é sobre a análise do ALS implementado no TensorFlow. O ALS é um método para fatoração de matriz usado como algoritmo de Collaborative Filtering em Sistemas de Recomendação. A análise consiste no treinamento e tuning desse algoritmo e a avaliação do erro final. Para comparação, o mesmo algoritmo é implementado com o Spark. A metodologia usada tem características peculiares de como a Recomendação e o ALS funcionam. O resultado mostra que o Spark tem performance melhor que o TensorFlow no erro final.</description>
     </item>
     
     <item>
       <title>Otimização dos parâmetros do Spark ALS (Collaborative Filtering) usando MOE</title>
-      <link>http://cirocavani.github.io/post/otimizacao-dos-parametros-do-spark-als-collaborative-filtering-usando-moe/</link>
+      <link>https://cirocavani.github.io/post/otimizacao-dos-parametros-do-spark-als-collaborative-filtering-usando-moe/</link>
       <pubDate>Thu, 24 Sep 2015 19:44:08 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/post/otimizacao-dos-parametros-do-spark-als-collaborative-filtering-usando-moe/</guid>
+      <guid>https://cirocavani.github.io/post/otimizacao-dos-parametros-do-spark-als-collaborative-filtering-usando-moe/</guid>
       <description>Esse tutorial é sobre otimização de parâmetros em modelos de machine learning. Para esse tutorial, a ferramenta utilizada é o MOE, Metric Optimization Engine, desenvolvido pelo Yelp que implementa o algoritmo de busca usando Gaussian Process. O algoritmo escolhido para ter os parâmetros otimizados é o Collaborative Filtering baseado na fatoração da matriz de preferências. De forma genérica, esse é um processo que pode ser facilmente adaptado para outros algoritmos e permite sistematizar a árdua tarefa de escolher os melhores parâmetros para um modelo.</description>
     </item>
     

@@ -2,49 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tensorflow on Ciro Cavani</title>
-    <link>http://cirocavani.github.io/tags/tensorflow/</link>
+    <link>https://cirocavani.github.io/tags/tensorflow/</link>
     <description>Recent content in Tensorflow on Ciro Cavani</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
     <lastBuildDate>Wed, 01 Mar 2017 11:31:34 -0300</lastBuildDate>
     
-	<atom:link href="http://cirocavani.github.io/tags/tensorflow/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cirocavani.github.io/tags/tensorflow/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>TensorFlow: Recomendação com ALS (Collaborative Filtering)</title>
-      <link>http://cirocavani.github.io/post/tensorflow-recomendacao-com-als-collaborative-filtering/</link>
+      <link>https://cirocavani.github.io/post/tensorflow-recomendacao-com-als-collaborative-filtering/</link>
       <pubDate>Wed, 01 Mar 2017 11:31:34 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/post/tensorflow-recomendacao-com-als-collaborative-filtering/</guid>
+      <guid>https://cirocavani.github.io/post/tensorflow-recomendacao-com-als-collaborative-filtering/</guid>
       <description>Esse artigo é sobre a análise do ALS implementado no TensorFlow. O ALS é um método para fatoração de matriz usado como algoritmo de Collaborative Filtering em Sistemas de Recomendação. A análise consiste no treinamento e tuning desse algoritmo e a avaliação do erro final. Para comparação, o mesmo algoritmo é implementado com o Spark. A metodologia usada tem características peculiares de como a Recomendação e o ALS funcionam. O resultado mostra que o Spark tem performance melhor que o TensorFlow no erro final.</description>
     </item>
     
     <item>
       <title>TensorFlow no Jupyter (com notebooks)</title>
-      <link>http://cirocavani.github.io/post/tensorflow-no-jupyter-com-notebooks/</link>
+      <link>https://cirocavani.github.io/post/tensorflow-no-jupyter-com-notebooks/</link>
       <pubDate>Tue, 13 Sep 2016 21:13:26 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/post/tensorflow-no-jupyter-com-notebooks/</guid>
+      <guid>https://cirocavani.github.io/post/tensorflow-no-jupyter-com-notebooks/</guid>
       <description>Esse tutorial é sobre o TensorFlow no Jupyter. A princípio, esse projeto pode ser usado para instalar automaticamente o Jupyter Notebook configurado com TensorFlow 0.10 e alguns notebooks de exemplo (tutoriais do TensorFlow). Outro objetivo é servir como base para criação de configurações customizadas isoladas (exemplo um ambiente extra para testar com TensorFlow GPU Python 3 com CUDA 8). O Jupyter é uma ferramenta excelente para testar ideias e prototipar rapidamente com TensorFlow.</description>
     </item>
     
     <item>
       <title>Compilação do TensorFlow 0.10 para Linux (com GPU)</title>
-      <link>http://cirocavani.github.io/post/compilacao-do-tensorflow-0.10-para-linux-com-gpu/</link>
+      <link>https://cirocavani.github.io/post/compilacao-do-tensorflow-0.10-para-linux-com-gpu/</link>
       <pubDate>Thu, 08 Sep 2016 22:06:49 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/post/compilacao-do-tensorflow-0.10-para-linux-com-gpu/</guid>
+      <guid>https://cirocavani.github.io/post/compilacao-do-tensorflow-0.10-para-linux-com-gpu/</guid>
       <description>Esse tutorial é sobre a construção do pacote do TensorFlow 0.10 para Linux com suporte a GPU. Para esse procedimento é usado o Docker com uma imagem do Ubuntu 16.04, GCC 5.4, Python 2.7, Cuda 8.0 (RC) e cuDNN 5.1. A motivação desse trabalho é usar o TensorFlow com as novas gerações de GPUs da Nvidia (Pascal). Um segundo objetivo é a criação de um pacote do TensorFlow com capacidades específicas (por exemplo, um &amp;ldquo;Compute Capability&amp;rdquo; específico).</description>
     </item>
     
     <item>
       <title>TensorFlow: Integração com BigData</title>
-      <link>http://cirocavani.github.io/post/tensorflow-integracao-bigdata/</link>
+      <link>https://cirocavani.github.io/post/tensorflow-integracao-bigdata/</link>
       <pubDate>Mon, 22 Aug 2016 22:00:00 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/post/tensorflow-integracao-bigdata/</guid>
+      <guid>https://cirocavani.github.io/post/tensorflow-integracao-bigdata/</guid>
       <description>Esse artigo é sobre a criação de uma Aplicação com TensorFlow em que o treinamento é feito no YARN (Hadoop), o servidor de inferência é hospedado no Tsuru e as requisições são feitas por Aplicações Java/Scala. Esses são os desafios para colocar em produção na Globo.com aplicações de Inteligência Artificial. Nesse trabalho foram desenvolvidos projetos que são Provas de Conceito de como fazer essa Aplicação TensorFlow integrada com BigData (o código está disponível no GitHub).</description>
     </item>
     

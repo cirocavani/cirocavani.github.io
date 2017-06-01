@@ -2,157 +2,157 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Ciro Cavani</title>
-    <link>http://cirocavani.github.io/tags/</link>
+    <link>https://cirocavani.github.io/tags/</link>
     <description>Recent content in Tags on Ciro Cavani</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
     <lastBuildDate>Wed, 01 Mar 2017 11:31:34 -0300</lastBuildDate>
     
-	<atom:link href="http://cirocavani.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cirocavani.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Algoritmos</title>
-      <link>http://cirocavani.github.io/tags/algoritmos/</link>
+      <link>https://cirocavani.github.io/tags/algoritmos/</link>
       <pubDate>Wed, 01 Mar 2017 11:31:34 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/tags/algoritmos/</guid>
+      <guid>https://cirocavani.github.io/tags/algoritmos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Bigdata</title>
-      <link>http://cirocavani.github.io/tags/bigdata/</link>
+      <link>https://cirocavani.github.io/tags/bigdata/</link>
       <pubDate>Mon, 22 Aug 2016 22:00:00 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/tags/bigdata/</guid>
+      <guid>https://cirocavani.github.io/tags/bigdata/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Centos6</title>
-      <link>http://cirocavani.github.io/tags/centos6/</link>
+      <link>https://cirocavani.github.io/tags/centos6/</link>
       <pubDate>Mon, 31 Aug 2015 22:45:23 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/tags/centos6/</guid>
+      <guid>https://cirocavani.github.io/tags/centos6/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Docker</title>
-      <link>http://cirocavani.github.io/tags/docker/</link>
+      <link>https://cirocavani.github.io/tags/docker/</link>
       <pubDate>Thu, 08 Sep 2016 22:06:49 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/tags/docker/</guid>
+      <guid>https://cirocavani.github.io/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Globo.Com</title>
-      <link>http://cirocavani.github.io/tags/globo.com/</link>
+      <link>https://cirocavani.github.io/tags/globo.com/</link>
       <pubDate>Thu, 27 Aug 2015 06:00:00 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/tags/globo.com/</guid>
+      <guid>https://cirocavani.github.io/tags/globo.com/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hadoop</title>
-      <link>http://cirocavani.github.io/tags/hadoop/</link>
+      <link>https://cirocavani.github.io/tags/hadoop/</link>
       <pubDate>Mon, 22 Aug 2016 22:00:00 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/tags/hadoop/</guid>
+      <guid>https://cirocavani.github.io/tags/hadoop/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hbase</title>
-      <link>http://cirocavani.github.io/tags/hbase/</link>
+      <link>https://cirocavani.github.io/tags/hbase/</link>
       <pubDate>Wed, 16 Sep 2015 23:26:07 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/tags/hbase/</guid>
+      <guid>https://cirocavani.github.io/tags/hbase/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Jupyter</title>
-      <link>http://cirocavani.github.io/tags/jupyter/</link>
+      <link>https://cirocavani.github.io/tags/jupyter/</link>
       <pubDate>Tue, 13 Sep 2016 21:13:26 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/tags/jupyter/</guid>
+      <guid>https://cirocavani.github.io/tags/jupyter/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kafka</title>
-      <link>http://cirocavani.github.io/tags/kafka/</link>
+      <link>https://cirocavani.github.io/tags/kafka/</link>
       <pubDate>Wed, 16 Sep 2015 23:26:07 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/tags/kafka/</guid>
+      <guid>https://cirocavani.github.io/tags/kafka/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Otimização</title>
-      <link>http://cirocavani.github.io/tags/otimiza%C3%A7%C3%A3o/</link>
+      <link>https://cirocavani.github.io/tags/otimiza%C3%A7%C3%A3o/</link>
       <pubDate>Thu, 24 Sep 2015 19:44:08 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/tags/otimiza%C3%A7%C3%A3o/</guid>
+      <guid>https://cirocavani.github.io/tags/otimiza%C3%A7%C3%A3o/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Rhel6</title>
-      <link>http://cirocavani.github.io/tags/rhel6/</link>
+      <link>https://cirocavani.github.io/tags/rhel6/</link>
       <pubDate>Mon, 31 Aug 2015 22:45:23 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/tags/rhel6/</guid>
+      <guid>https://cirocavani.github.io/tags/rhel6/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Sistema De Recomendação</title>
-      <link>http://cirocavani.github.io/tags/sistema-de-recomenda%C3%A7%C3%A3o/</link>
+      <link>https://cirocavani.github.io/tags/sistema-de-recomenda%C3%A7%C3%A3o/</link>
       <pubDate>Wed, 01 Mar 2017 11:31:34 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/tags/sistema-de-recomenda%C3%A7%C3%A3o/</guid>
+      <guid>https://cirocavani.github.io/tags/sistema-de-recomenda%C3%A7%C3%A3o/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Spark</title>
-      <link>http://cirocavani.github.io/tags/spark/</link>
+      <link>https://cirocavani.github.io/tags/spark/</link>
       <pubDate>Wed, 01 Mar 2017 11:31:34 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/tags/spark/</guid>
+      <guid>https://cirocavani.github.io/tags/spark/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tensorflow</title>
-      <link>http://cirocavani.github.io/tags/tensorflow/</link>
+      <link>https://cirocavani.github.io/tags/tensorflow/</link>
       <pubDate>Wed, 01 Mar 2017 11:31:34 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/tags/tensorflow/</guid>
+      <guid>https://cirocavani.github.io/tags/tensorflow/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tutorial</title>
-      <link>http://cirocavani.github.io/tags/tutorial/</link>
+      <link>https://cirocavani.github.io/tags/tutorial/</link>
       <pubDate>Wed, 01 Mar 2017 11:31:34 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/tags/tutorial/</guid>
+      <guid>https://cirocavani.github.io/tags/tutorial/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ubuntu</title>
-      <link>http://cirocavani.github.io/tags/ubuntu/</link>
+      <link>https://cirocavani.github.io/tags/ubuntu/</link>
       <pubDate>Thu, 08 Sep 2016 22:06:49 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/tags/ubuntu/</guid>
+      <guid>https://cirocavani.github.io/tags/ubuntu/</guid>
       <description></description>
     </item>
     

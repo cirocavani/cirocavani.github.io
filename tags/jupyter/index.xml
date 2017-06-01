@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jupyter on Ciro Cavani</title>
-    <link>http://cirocavani.github.io/tags/jupyter/</link>
+    <link>https://cirocavani.github.io/tags/jupyter/</link>
     <description>Recent content in Jupyter on Ciro Cavani</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
     <lastBuildDate>Tue, 13 Sep 2016 21:13:26 -0300</lastBuildDate>
     
-	<atom:link href="http://cirocavani.github.io/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cirocavani.github.io/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>TensorFlow no Jupyter (com notebooks)</title>
-      <link>http://cirocavani.github.io/post/tensorflow-no-jupyter-com-notebooks/</link>
+      <link>https://cirocavani.github.io/post/tensorflow-no-jupyter-com-notebooks/</link>
       <pubDate>Tue, 13 Sep 2016 21:13:26 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/post/tensorflow-no-jupyter-com-notebooks/</guid>
+      <guid>https://cirocavani.github.io/post/tensorflow-no-jupyter-com-notebooks/</guid>
       <description>Esse tutorial é sobre o TensorFlow no Jupyter. A princípio, esse projeto pode ser usado para instalar automaticamente o Jupyter Notebook configurado com TensorFlow 0.10 e alguns notebooks de exemplo (tutoriais do TensorFlow). Outro objetivo é servir como base para criação de configurações customizadas isoladas (exemplo um ambiente extra para testar com TensorFlow GPU Python 3 com CUDA 8). O Jupyter é uma ferramenta excelente para testar ideias e prototipar rapidamente com TensorFlow.</description>
     </item>
     

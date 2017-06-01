@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Otimização on Ciro Cavani</title>
-    <link>http://cirocavani.github.io/tags/otimiza%C3%A7%C3%A3o/</link>
+    <link>https://cirocavani.github.io/tags/otimiza%C3%A7%C3%A3o/</link>
     <description>Recent content in Otimização on Ciro Cavani</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
     <lastBuildDate>Thu, 24 Sep 2015 19:44:08 -0300</lastBuildDate>
     
-	<atom:link href="http://cirocavani.github.io/tags/otimiza%C3%A7%C3%A3o/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cirocavani.github.io/tags/otimiza%C3%A7%C3%A3o/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Otimização dos parâmetros do Spark ALS (Collaborative Filtering) usando MOE</title>
-      <link>http://cirocavani.github.io/post/otimizacao-dos-parametros-do-spark-als-collaborative-filtering-usando-moe/</link>
+      <link>https://cirocavani.github.io/post/otimizacao-dos-parametros-do-spark-als-collaborative-filtering-usando-moe/</link>
       <pubDate>Thu, 24 Sep 2015 19:44:08 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/post/otimizacao-dos-parametros-do-spark-als-collaborative-filtering-usando-moe/</guid>
+      <guid>https://cirocavani.github.io/post/otimizacao-dos-parametros-do-spark-als-collaborative-filtering-usando-moe/</guid>
       <description>Esse tutorial é sobre otimização de parâmetros em modelos de machine learning. Para esse tutorial, a ferramenta utilizada é o MOE, Metric Optimization Engine, desenvolvido pelo Yelp que implementa o algoritmo de busca usando Gaussian Process. O algoritmo escolhido para ter os parâmetros otimizados é o Collaborative Filtering baseado na fatoração da matriz de preferências. De forma genérica, esse é um processo que pode ser facilmente adaptado para outros algoritmos e permite sistematizar a árdua tarefa de escolher os melhores parâmetros para um modelo.</description>
     </item>
     

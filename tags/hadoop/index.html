@@ -5,48 +5,48 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.20.7" />
+  <meta name="generator" content="Hugo 0.21" />
 
   <title>Hadoop &middot; Ciro Cavani</title>
 
   
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.2/pure-min.css">
 
   <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.2/grids-responsive-old-ie-min.css">
   <![endif]-->
   <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.2/grids-responsive-min.css">
   <!--<![endif]-->
 
   <!--[if lte IE 8]>
-  <link rel="stylesheet" href="http://cirocavani.github.io/css/side-menu-old-ie.css">
+  <link rel="stylesheet" href="https://cirocavani.github.io/css/side-menu-old-ie.css">
   <![endif]-->
   <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="http://cirocavani.github.io/css/side-menu.css">
+  <link rel="stylesheet" href="https://cirocavani.github.io/css/side-menu.css">
   <!--<![endif]-->
 
-  <link rel="stylesheet" href="http://cirocavani.github.io/css/blackburn.css">
+  <link rel="stylesheet" href="https://cirocavani.github.io/css/blackburn.css">
 
   
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
 
   
   
-  <link rel="alternate" type="application/rss+xml" title="Ciro Cavani" href="http://cirocavani.github.io/tags/hadoop/index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Ciro Cavani" href="https://cirocavani.github.io/tags/hadoop/index.xml" />
   
 
   
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/androidstudio.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   
 
-  <link rel="shortcut icon" href="http://cirocavani.github.io/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="https://cirocavani.github.io/img/favicon.ico" type="image/x-icon" />
 
   
   
@@ -60,10 +60,6 @@ code.has-jax {
     color: #777;
 }
 </style>
-
-<script type="text/javascript"
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -80,15 +76,19 @@ MathJax.Hub.Config({
 </script>
 
 <script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    // Fix <code> tags after MathJax finishes running. This is a
-    // hack to overcome a shortcoming of Markdown. Discussion at
-    // https://github.com/mojombo/jekyll/issues/199
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i &lt; all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
+MathJax.Hub.Queue(function() {
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  var all = MathJax.Hub.getAllJax();
+  for (jax in all) {
+    jax.SourceElement().parentNode.className += ' has-jax';
+  }
 });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 
@@ -106,7 +106,7 @@ MathJax.Hub.Config({
 <div id="menu">
 
   
-  <a class="pure-menu-heading brand" href="http://cirocavani.github.io/">Ciro Cavani</a>
+  <a class="pure-menu-heading brand" href="https://cirocavani.github.io/">Ciro Cavani</a>
 
 
   <div class="pure-menu">
@@ -114,19 +114,19 @@ MathJax.Hub.Config({
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://cirocavani.github.io/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+          <a class="pure-menu-link" href="https://cirocavani.github.io/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
       
         </li>
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://cirocavani.github.io/about/"><i class='fa fa-user fa-fw'></i>Sobre Mim</a>
+          <a class="pure-menu-link" href="https://cirocavani.github.io/about/"><i class='fa fa-user fa-fw'></i>Sobre Mim</a>
       
         </li>
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://cirocavani.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
+          <a class="pure-menu-link" href="https://cirocavani.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
       
         </li>
       
@@ -138,7 +138,7 @@ MathJax.Hub.Config({
 
     
     <li class="pure-menu-item">
-      <a class="pure-menu-link" href="http://cirocavani.github.io/tags/hadoop/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      <a class="pure-menu-link" href="https://cirocavani.github.io/tags/hadoop/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
     </li>
     
 
@@ -170,6 +170,8 @@ MathJax.Hub.Config({
     <li class="pure-menu-item">
       <a class="pure-menu-link" href="https://instagram.com/ciro.cavani" target="_blank"><i class="fa fa-instagram fa-fw"></i>Instagram</a>
     </li>
+    
+
     
 
     
@@ -230,6 +232,8 @@ MathJax.Hub.Config({
 
     
 
+    
+
   </ul>
 </div>
 
@@ -258,7 +262,7 @@ MathJax.Hub.Config({
   
     <article>
   <header>
-    <h2><a href="http://cirocavani.github.io/post/tensorflow-integracao-bigdata/">TensorFlow: Integração com BigData</a></h2>
+    <h2><a href="https://cirocavani.github.io/post/tensorflow-integracao-bigdata/">TensorFlow: Integração com BigData</a></h2>
 
     <div class="post-meta">
 
@@ -277,11 +281,11 @@ MathJax.Hub.Config({
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tensorflow">TensorFlow</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://cirocavani.github.io/tags/tensorflow">TensorFlow</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/bigdata">BigData</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://cirocavani.github.io/tags/bigdata">BigData</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/hadoop">Hadoop</a>
+      <a class="post-taxonomy-tag" href="https://cirocavani.github.io/tags/hadoop">Hadoop</a>
     
   </div>
   
@@ -297,7 +301,7 @@ MathJax.Hub.Config({
 
   
   <footer>
-    <a href="http://cirocavani.github.io/post/tensorflow-integracao-bigdata/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+    <a href="https://cirocavani.github.io/post/tensorflow-integracao-bigdata/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>
@@ -305,7 +309,7 @@ MathJax.Hub.Config({
   
     <article>
   <header>
-    <h2><a href="http://cirocavani.github.io/post/configuracao-do-hadoop-hbase-e-kafka-na-maquina-local-com-docker/">Configuração do Hadoop, HBase e Kafka na Máquina Local com Docker</a></h2>
+    <h2><a href="https://cirocavani.github.io/post/configuracao-do-hadoop-hbase-e-kafka-na-maquina-local-com-docker/">Configuração do Hadoop, HBase e Kafka na Máquina Local com Docker</a></h2>
 
     <div class="post-meta">
 
@@ -324,15 +328,15 @@ MathJax.Hub.Config({
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/hadoop">Hadoop</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://cirocavani.github.io/tags/hadoop">Hadoop</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/hbase">HBase</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://cirocavani.github.io/tags/hbase">HBase</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/kafka">Kafka</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://cirocavani.github.io/tags/kafka">Kafka</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/docker">Docker</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://cirocavani.github.io/tags/docker">Docker</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tutorial">Tutorial</a>
+      <a class="post-taxonomy-tag" href="https://cirocavani.github.io/tags/tutorial">Tutorial</a>
     
   </div>
   
@@ -348,7 +352,7 @@ MathJax.Hub.Config({
 
   
   <footer>
-    <a href="http://cirocavani.github.io/post/configuracao-do-hadoop-hbase-e-kafka-na-maquina-local-com-docker/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+    <a href="https://cirocavani.github.io/post/configuracao-do-hadoop-hbase-e-kafka-na-maquina-local-com-docker/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>
@@ -356,7 +360,7 @@ MathJax.Hub.Config({
   
     <article>
   <header>
-    <h2><a href="http://cirocavani.github.io/post/compilacao-do-hadoop-para-centos6-rhel6-usando-docker/">Compilação do Hadoop para CentOS6 / RHEL6 usando Docker</a></h2>
+    <h2><a href="https://cirocavani.github.io/post/compilacao-do-hadoop-para-centos6-rhel6-usando-docker/">Compilação do Hadoop para CentOS6 / RHEL6 usando Docker</a></h2>
 
     <div class="post-meta">
 
@@ -375,15 +379,15 @@ MathJax.Hub.Config({
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/hadoop">Hadoop</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://cirocavani.github.io/tags/hadoop">Hadoop</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/centos6">CentOS6</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://cirocavani.github.io/tags/centos6">CentOS6</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/rhel6">RHEL6</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://cirocavani.github.io/tags/rhel6">RHEL6</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/docker">Docker</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://cirocavani.github.io/tags/docker">Docker</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/tutorial">Tutorial</a>
+      <a class="post-taxonomy-tag" href="https://cirocavani.github.io/tags/tutorial">Tutorial</a>
     
   </div>
   
@@ -399,7 +403,7 @@ MathJax.Hub.Config({
 
   
   <footer>
-    <a href="http://cirocavani.github.io/post/compilacao-do-hadoop-para-centos6-rhel6-usando-docker/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+    <a href="https://cirocavani.github.io/post/compilacao-do-hadoop-para-centos6-rhel6-usando-docker/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>
@@ -407,7 +411,7 @@ MathJax.Hub.Config({
   
     <article>
   <header>
-    <h2><a href="http://cirocavani.github.io/post/bigdata-na-globocom/">BigData na Globo.com</a></h2>
+    <h2><a href="https://cirocavani.github.io/post/bigdata-na-globocom/">BigData na Globo.com</a></h2>
 
     <div class="post-meta">
 
@@ -426,17 +430,17 @@ MathJax.Hub.Config({
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/globo.com">Globo.com</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://cirocavani.github.io/tags/globo.com">Globo.com</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/bigdata">BigData</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://cirocavani.github.io/tags/bigdata">BigData</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/hadoop">Hadoop</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://cirocavani.github.io/tags/hadoop">Hadoop</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/hbase">HBase</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://cirocavani.github.io/tags/hbase">HBase</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/kafka">Kafka</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://cirocavani.github.io/tags/kafka">Kafka</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://cirocavani.github.io/tags/spark">Spark</a>
+      <a class="post-taxonomy-tag" href="https://cirocavani.github.io/tags/spark">Spark</a>
     
   </div>
   
@@ -453,7 +457,7 @@ Esse artigo é uma atualização e expansão da palestra realizada no Rio BigDat
 
   
   <footer>
-    <a href="http://cirocavani.github.io/post/bigdata-na-globocom/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+    <a href="https://cirocavani.github.io/post/bigdata-na-globocom/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>
@@ -463,7 +467,7 @@ Esse artigo é uma atualização e expansão da palestra realizada no Rio BigDat
 
 </div>
 </div>
-<script src="http://cirocavani.github.io/js/ui.js"></script>
+<script src="https://cirocavani.github.io/js/ui.js"></script>
 
 
 <script>

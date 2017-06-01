@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bigdata on Ciro Cavani</title>
-    <link>http://cirocavani.github.io/tags/bigdata/</link>
+    <link>https://cirocavani.github.io/tags/bigdata/</link>
     <description>Recent content in Bigdata on Ciro Cavani</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
     <lastBuildDate>Mon, 22 Aug 2016 22:00:00 -0300</lastBuildDate>
     
-	<atom:link href="http://cirocavani.github.io/tags/bigdata/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cirocavani.github.io/tags/bigdata/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>TensorFlow: Integração com BigData</title>
-      <link>http://cirocavani.github.io/post/tensorflow-integracao-bigdata/</link>
+      <link>https://cirocavani.github.io/post/tensorflow-integracao-bigdata/</link>
       <pubDate>Mon, 22 Aug 2016 22:00:00 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/post/tensorflow-integracao-bigdata/</guid>
+      <guid>https://cirocavani.github.io/post/tensorflow-integracao-bigdata/</guid>
       <description>Esse artigo é sobre a criação de uma Aplicação com TensorFlow em que o treinamento é feito no YARN (Hadoop), o servidor de inferência é hospedado no Tsuru e as requisições são feitas por Aplicações Java/Scala. Esses são os desafios para colocar em produção na Globo.com aplicações de Inteligência Artificial. Nesse trabalho foram desenvolvidos projetos que são Provas de Conceito de como fazer essa Aplicação TensorFlow integrada com BigData (o código está disponível no GitHub).</description>
     </item>
     
     <item>
       <title>BigData na Globo.com</title>
-      <link>http://cirocavani.github.io/post/bigdata-na-globocom/</link>
+      <link>https://cirocavani.github.io/post/bigdata-na-globocom/</link>
       <pubDate>Thu, 27 Aug 2015 06:00:00 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/post/bigdata-na-globocom/</guid>
+      <guid>https://cirocavani.github.io/post/bigdata-na-globocom/</guid>
       <description>A proposta desse artigo é fundamentar alguns conceitos de BigData e explorar a dinâmica de como tratar um grande volume de dados para extrair valor. A ideia é apresentar a solução de dados na Plataforma de BigData da Globo.com usada pelo Sistema de Recomendação e comentar a experiência do seu desenvolvimento.
 Esse artigo é uma atualização e expansão da palestra realizada no Rio BigData Meetup em 21 de Outubro de 2014.</description>
     </item>

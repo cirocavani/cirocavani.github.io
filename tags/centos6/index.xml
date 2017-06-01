@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Centos6 on Ciro Cavani</title>
-    <link>http://cirocavani.github.io/tags/centos6/</link>
+    <link>https://cirocavani.github.io/tags/centos6/</link>
     <description>Recent content in Centos6 on Ciro Cavani</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
     <lastBuildDate>Mon, 31 Aug 2015 22:45:23 -0300</lastBuildDate>
     
-	<atom:link href="http://cirocavani.github.io/tags/centos6/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cirocavani.github.io/tags/centos6/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Compilação do Hadoop para CentOS6 / RHEL6 usando Docker</title>
-      <link>http://cirocavani.github.io/post/compilacao-do-hadoop-para-centos6-rhel6-usando-docker/</link>
+      <link>https://cirocavani.github.io/post/compilacao-do-hadoop-para-centos6-rhel6-usando-docker/</link>
       <pubDate>Mon, 31 Aug 2015 22:45:23 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/post/compilacao-do-hadoop-para-centos6-rhel6-usando-docker/</guid>
+      <guid>https://cirocavani.github.io/post/compilacao-do-hadoop-para-centos6-rhel6-usando-docker/</guid>
       <description>Esse tutorial é sobre a construção do pacote do Hadoop 2.7.1 para o CentOS6 / RHEL6 usando Docker. Esse procedimento é necessário para gerar as bibliotecas nativas compatíveis. O principal objetivo que motivou esse trabalho foi configurar o FairScheduler do YARN usando CGroups rodando no Red Hat Enterprise Linux 6 (RHEL6). O pacote Hadoop distribuído pela Apache tem executável binário que não é compatível com a Glibc que faz parte do CentOS6/RHEL6.</description>
     </item>
     

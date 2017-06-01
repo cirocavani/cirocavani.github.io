@@ -2,49 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hadoop on Ciro Cavani</title>
-    <link>http://cirocavani.github.io/tags/hadoop/</link>
+    <link>https://cirocavani.github.io/tags/hadoop/</link>
     <description>Recent content in Hadoop on Ciro Cavani</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
     <lastBuildDate>Mon, 22 Aug 2016 22:00:00 -0300</lastBuildDate>
     
-	<atom:link href="http://cirocavani.github.io/tags/hadoop/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cirocavani.github.io/tags/hadoop/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>TensorFlow: Integração com BigData</title>
-      <link>http://cirocavani.github.io/post/tensorflow-integracao-bigdata/</link>
+      <link>https://cirocavani.github.io/post/tensorflow-integracao-bigdata/</link>
       <pubDate>Mon, 22 Aug 2016 22:00:00 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/post/tensorflow-integracao-bigdata/</guid>
+      <guid>https://cirocavani.github.io/post/tensorflow-integracao-bigdata/</guid>
       <description>Esse artigo é sobre a criação de uma Aplicação com TensorFlow em que o treinamento é feito no YARN (Hadoop), o servidor de inferência é hospedado no Tsuru e as requisições são feitas por Aplicações Java/Scala. Esses são os desafios para colocar em produção na Globo.com aplicações de Inteligência Artificial. Nesse trabalho foram desenvolvidos projetos que são Provas de Conceito de como fazer essa Aplicação TensorFlow integrada com BigData (o código está disponível no GitHub).</description>
     </item>
     
     <item>
       <title>Configuração do Hadoop, HBase e Kafka na Máquina Local com Docker</title>
-      <link>http://cirocavani.github.io/post/configuracao-do-hadoop-hbase-e-kafka-na-maquina-local-com-docker/</link>
+      <link>https://cirocavani.github.io/post/configuracao-do-hadoop-hbase-e-kafka-na-maquina-local-com-docker/</link>
       <pubDate>Wed, 16 Sep 2015 23:26:07 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/post/configuracao-do-hadoop-hbase-e-kafka-na-maquina-local-com-docker/</guid>
+      <guid>https://cirocavani.github.io/post/configuracao-do-hadoop-hbase-e-kafka-na-maquina-local-com-docker/</guid>
       <description>Esse tutorial é sobre a criação de uma imagem do Docker com a configuração local do Hadoop, HBase e Kafka. Nesse procedimento, o Hadoop é configurado no modo pseudo-distribuído com cada serviço rodando em uma instância própria da JVM, mas todas na mesma máquina. O HBase e o Kafka também rodam em modo &amp;lsquo;distribuído&amp;rsquo; compartilhando uma instância separada do ZooKeeper. Esse procedimento é muito útil para testar funcionalidades desses serviços e aprendizado, mas não é uma solução completa para uso em produção.</description>
     </item>
     
     <item>
       <title>Compilação do Hadoop para CentOS6 / RHEL6 usando Docker</title>
-      <link>http://cirocavani.github.io/post/compilacao-do-hadoop-para-centos6-rhel6-usando-docker/</link>
+      <link>https://cirocavani.github.io/post/compilacao-do-hadoop-para-centos6-rhel6-usando-docker/</link>
       <pubDate>Mon, 31 Aug 2015 22:45:23 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/post/compilacao-do-hadoop-para-centos6-rhel6-usando-docker/</guid>
+      <guid>https://cirocavani.github.io/post/compilacao-do-hadoop-para-centos6-rhel6-usando-docker/</guid>
       <description>Esse tutorial é sobre a construção do pacote do Hadoop 2.7.1 para o CentOS6 / RHEL6 usando Docker. Esse procedimento é necessário para gerar as bibliotecas nativas compatíveis. O principal objetivo que motivou esse trabalho foi configurar o FairScheduler do YARN usando CGroups rodando no Red Hat Enterprise Linux 6 (RHEL6). O pacote Hadoop distribuído pela Apache tem executável binário que não é compatível com a Glibc que faz parte do CentOS6/RHEL6.</description>
     </item>
     
     <item>
       <title>BigData na Globo.com</title>
-      <link>http://cirocavani.github.io/post/bigdata-na-globocom/</link>
+      <link>https://cirocavani.github.io/post/bigdata-na-globocom/</link>
       <pubDate>Thu, 27 Aug 2015 06:00:00 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/post/bigdata-na-globocom/</guid>
+      <guid>https://cirocavani.github.io/post/bigdata-na-globocom/</guid>
       <description>A proposta desse artigo é fundamentar alguns conceitos de BigData e explorar a dinâmica de como tratar um grande volume de dados para extrair valor. A ideia é apresentar a solução de dados na Plataforma de BigData da Globo.com usada pelo Sistema de Recomendação e comentar a experiência do seu desenvolvimento.
 Esse artigo é uma atualização e expansão da palestra realizada no Rio BigData Meetup em 21 de Outubro de 2014.</description>
     </item>

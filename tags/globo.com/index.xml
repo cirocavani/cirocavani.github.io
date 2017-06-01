@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Globo.Com on Ciro Cavani</title>
-    <link>http://cirocavani.github.io/tags/globo.com/</link>
+    <link>https://cirocavani.github.io/tags/globo.com/</link>
     <description>Recent content in Globo.Com on Ciro Cavani</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
     <lastBuildDate>Thu, 27 Aug 2015 06:00:00 -0300</lastBuildDate>
     
-	<atom:link href="http://cirocavani.github.io/tags/globo.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cirocavani.github.io/tags/globo.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>BigData na Globo.com</title>
-      <link>http://cirocavani.github.io/post/bigdata-na-globocom/</link>
+      <link>https://cirocavani.github.io/post/bigdata-na-globocom/</link>
       <pubDate>Thu, 27 Aug 2015 06:00:00 -0300</pubDate>
       
-      <guid>http://cirocavani.github.io/post/bigdata-na-globocom/</guid>
+      <guid>https://cirocavani.github.io/post/bigdata-na-globocom/</guid>
       <description>A proposta desse artigo é fundamentar alguns conceitos de BigData e explorar a dinâmica de como tratar um grande volume de dados para extrair valor. A ideia é apresentar a solução de dados na Plataforma de BigData da Globo.com usada pelo Sistema de Recomendação e comentar a experiência do seu desenvolvimento.
 Esse artigo é uma atualização e expansão da palestra realizada no Rio BigData Meetup em 21 de Outubro de 2014.</description>
     </item>
