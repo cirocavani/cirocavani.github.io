@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
-    <lastBuildDate>Wed, 01 Mar 2017 11:31:34 -0300</lastBuildDate>
+    <lastBuildDate>Wed, 26 Jul 2017 15:03:04 -0300</lastBuildDate>
     
 	<atom:link href="https://cirocavani.github.io/tags/algoritmos/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>TensorFlow: Word Embedding com Word2vec</title>
+      <link>https://cirocavani.github.io/post/tensorflow-word-embedding-com-word2vec/</link>
+      <pubDate>Wed, 26 Jul 2017 15:03:04 -0300</pubDate>
+      
+      <guid>https://cirocavani.github.io/post/tensorflow-word-embedding-com-word2vec/</guid>
+      <description>Esse artigo é sobre a implementação do Word2vec no TensorFlow. Word2vec é um par de modelos de aprendizado não supervisionado para criação de uma representação vetorial de palavras presentes em textos que usam linguagem natural. A representação é condicionada à distribuição do texto e apresenta características semânticas. Palavras com significado similar tem vetores próximos e operações aritméticas formam expressões que fazem sentido. Nesse artigo, o Word2vec é usado em uma aplicação para consulta de palavras similares.</description>
+    </item>
     
     <item>
       <title>TensorFlow: Recomendação com ALS (Collaborative Filtering)</title>

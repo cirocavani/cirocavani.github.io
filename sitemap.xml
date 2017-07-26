@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://cirocavani.github.io/post/tensorflow-word-embedding-com-word2vec/</loc>
+    <lastmod>2017-07-26T15:03:04-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://cirocavani.github.io/about/</loc>
     <lastmod>2017-05-23T00:00:00+00:00</lastmod>
   </url>
@@ -54,7 +59,7 @@
   
   <url>
     <loc>https://cirocavani.github.io/tags/algoritmos/</loc>
-    <lastmod>2017-03-01T11:31:34-03:00</lastmod>
+    <lastmod>2017-07-26T15:03:04-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -72,7 +77,7 @@
   
   <url>
     <loc>https://cirocavani.github.io/</loc>
-    <lastmod>2017-05-23T00:00:00+00:00</lastmod>
+    <lastmod>2017-07-26T15:03:04-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -113,6 +118,12 @@
   </url>
   
   <url>
+    <loc>https://cirocavani.github.io/tags/nlp/</loc>
+    <lastmod>2017-07-26T15:03:04-03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://cirocavani.github.io/tags/otimiza%C3%A7%C3%A3o/</loc>
     <lastmod>2015-09-24T19:44:08-03:00</lastmod>
     <priority>0</priority>
@@ -120,7 +131,7 @@
   
   <url>
     <loc>https://cirocavani.github.io/post/</loc>
-    <lastmod>2017-03-01T11:31:34-03:00</lastmod>
+    <lastmod>2017-07-26T15:03:04-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -144,13 +155,13 @@
   
   <url>
     <loc>https://cirocavani.github.io/tags/</loc>
-    <lastmod>2017-03-01T11:31:34-03:00</lastmod>
+    <lastmod>2017-07-26T15:03:04-03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://cirocavani.github.io/tags/tensorflow/</loc>
-    <lastmod>2017-03-01T11:31:34-03:00</lastmod>
+    <lastmod>2017-07-26T15:03:04-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -161,7 +172,7 @@
   
   <url>
     <loc>https://cirocavani.github.io/tags/tutorial/</loc>
-    <lastmod>2017-03-01T11:31:34-03:00</lastmod>
+    <lastmod>2017-07-26T15:03:04-03:00</lastmod>
     <priority>0</priority>
   </url>
   
