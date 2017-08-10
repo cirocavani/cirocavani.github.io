@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.25.1" />
+  <meta name="generator" content="Hugo 0.26" />
 
   <title>TensorFlow: Word Embedding com Word2vec &middot; Ciro Cavani</title>
 
@@ -1005,7 +1005,7 @@ with tf.Graph().as_default() as graph, \
 <p>Ao final do procedimento descrito nesse tópico, 2 resultados são produzidos:</p>
 
 <ul>
-<li><strong><code>input_cbow(data: List[int], batch_size: int, window_size: int) -&gt; Generator[ndarray, ndarray]</code></strong> - função que percorre os dados criando lotes (<em>batches</em>) de entrada e saída esperada (essa função é um <em><a href="https://docs.python.org/3/glossary.html#term-generator">generator</a></em>)</li>
+<li><strong><code>input_cbow(data: List[int], batch_size: int, window_size: int) -&gt; Iterable[Tutple[ndarray, ndarray]]</code></strong> - função que percorre os dados criando lotes (<em>batches</em>) de entrada e saída esperada (essa função é um <em><a href="https://docs.python.org/3/glossary.html#term-generator">generator</a></em>)</li>
 <li><strong><code>model_cbow(vocabulary_size: int, embedding_size: int, num_sampled: int) -&gt; Tuple[Tensor, Tensor, Tensor, Tensor]</code></strong> - função que define o fluxo de transformações dos dados para cálculo do erro de predição usada no aprendizado da representação vetorial com TensorFlow</li>
 </ul>
 
@@ -1081,7 +1081,7 @@ with tf.Graph().as_default() as graph, \
 
 <li><p>Número de lotes por época é (no código, <strong><code>num_batches</code></strong>):</p>
 
-<p><code>$ t = \lfloor p * s / m \rfloor $</code></p>
+<p><code>$ t = \lfloor p \cdot s / m \rfloor $</code></p>
 
 <p>(cada janela tem <code>$s$</code> exemplos, até <code>$m-1$</code> exemplos do final podem não fazer parte de um batch)</p></li>
 
@@ -1502,7 +1502,7 @@ with tf.Graph().as_default() as graph, \
 <p>Ao final do procedimento descrito nesse tópico, 2 resultados são produzidos:</p>
 
 <ul>
-<li><strong><code>input_skip_gram(data: List[int], batch_size: int, window_size: int, num_skips: int) -&gt; Generator[ndarray, ndarray]</code></strong> - função que percorre os dados criando lotes (<em>batches</em>) de entrada e saída esperada (essa função é um <em><a href="https://docs.python.org/3/glossary.html#term-generator">generator</a></em>)</li>
+<li><strong><code>input_skip_gram(data: List[int], batch_size: int, window_size: int, num_skips: int) -&gt; Iterable[Tuple[ndarray, ndarray]]</code></strong> - função que percorre os dados criando lotes (<em>batches</em>) de entrada e saída esperada (essa função é um <em><a href="https://docs.python.org/3/glossary.html#term-generator">generator</a></em>)</li>
 <li><strong><code>model_skip_gram(vocabulary_size: int, embedding_size: int, num_sampled: int) -&gt; Tuple[Tensor, Tensor, Tensor, Tensor]</code></strong> - função que define o fluxo de transformações dos dados para cálculo do erro de predição usada no aprendizado da representação vetorial com TensorFlow</li>
 </ul>
 
@@ -1765,7 +1765,7 @@ e: c (0.620), a (0.345)
 <li><strong><code>NearestWordsQuery(word_from_id: Dict[int, str], words: List[int], k:int)</code></strong> - classe que lista palavras similares às palavras em <strong><code>words</code></strong> usando similaridade por Cosseno.</li>
 </ul>
 
-<p>Na sequencia, é mostrado os experimentos com ambos os modelos do Word2vec e a aplicação de palavras similares.</p>
+<p>Na sequencia, são mostrados os experimentos com ambos os modelos do Word2vec e a aplicação de palavras similares.</p>
 
 <h2 id="experimentos">Experimentos</h2>
 
@@ -2020,7 +2020,7 @@ CPU times: user 21min 27s, sys: 56.2 s, total: 22min 23s
 Wall time: 14min 7s
 </code></pre>
 
-<p>Em ambos os modelos, os resultados interessantes, como a palavra <strong><code>writer</code></strong> próxima de <strong><code>author</code></strong> e <strong><code>poet</code></strong> e a palavra <strong><code>seven</code></strong> próxima de <strong><code>five</code></strong> e <strong><code>eight</code></strong>. O erro médio é decrescente que é o esperado (contudo, não é possível avaliar). Existe uma diferença significativa entre os tempos de execução, mas isso ocorre porque em ambos os casos, o treinamento é feito para uma época completa e a época do Skip-gram tem o dobro de exemplos da época do CBOW (o primeiro tem <code>num_windows * num_skips</code> e o segundo só <code>num_windows</code>, onde <code>num_windows</code> é igual e <code>num_skips</code> é 2).</p>
+<p>Em ambos os modelos, os resultados são interessantes, como a palavra <strong><code>writer</code></strong> próxima de <strong><code>author</code></strong> e <strong><code>poet</code></strong> e a palavra <strong><code>seven</code></strong> próxima de <strong><code>five</code></strong> e <strong><code>eight</code></strong>. O erro médio é decrescente que é o esperado (contudo, não é possível avaliar). Existe uma diferença significativa entre os tempos de execução, mas isso ocorre porque em ambos os casos, o treinamento é feito para uma época completa e a época do Skip-gram tem o dobro de exemplos da época do CBOW (o primeiro tem <code>num_windows * num_skips</code> e o segundo só <code>num_windows</code>, onde <code>num_windows</code> é igual e <code>num_skips</code> é 2).</p>
 
 <p>Na prática, seria necessário definir métricas qualitativas mensuráveis e um plano de treinamento mais elaborado para orientar o <em>tuning</em> dos parâmetros do modelo (como o <strong><code>embedding_size</code></strong>), fazer análise de <em>overfitting</em> e introduzir regularização. Esse é o trabalho mais importante da aplicação de Machine Learning em uma tarefa real, contudo, vai além da proposta desse trabalho (implementação do modelo com TensorFlow). Para o uso real do Word2vec, é necessário tratar essa &lsquo;omissão&rsquo;.</p>
 
@@ -2036,11 +2036,11 @@ Wall time: 14min 7s
 
 <p>Durante o treinamento, o objeto <a href="https://www.tensorflow.org/versions/r1.2/api_docs/python/tf/train/MonitoredTrainingSession">MonitoredTrainingSession</a> já faz o trabalho de agregar todas as operações de monitoramento e salvar junto com o <em>checkpoint</em> das variáveis do  modelo. O intervalo é configurável e por <em>default</em> ocorre a cada 100 passos (definido pela variável do grafo <strong><code>global_step</code></strong>).</p>
 
-<p>Ao usar a função <a href="https://www.tensorflow.org/versions/r1.2/api_docs/python/tf/contrib/layers/optimize_loss">tf.contrib.layers.optimize_loss</a>, já é adicionado o monitoramento do valor escalar do erro (&lsquo;loss&rsquo;) que pode ser visualizado no TensorBoard.</p>
+<p>Ao usar a função <a href="https://www.tensorflow.org/versions/r1.2/api_docs/python/tf/contrib/layers/optimize_loss">tf.contrib.layers.optimize_loss</a>, já é adicionado o monitoramento do valor escalar do erro (<strong><code>OptimizeLoss/loss</code></strong>) que pode ser visualizado no TensorBoard.</p>
 
 <p>Ao salvar os resultados do monitoramento, a <a href="https://www.tensorflow.org/versions/r1.2/get_started/graph_viz">visualização do grafo</a> também fica disponível no TensorBoard.</p>
 
-<p>Com o checkpoint do modelo e os metadados do grafo, é possível usar a <a href="https://www.tensorflow.org/versions/r1.2/get_started/embedding_viz">visualização de embeddings</a> do TensorBoard usando redução de dimensão com PCA ou t-SNE.</p>
+<p>Com o <em>checkpoint</em> do modelo e os metadados do grafo, é possível usar a <a href="https://www.tensorflow.org/versions/r1.2/get_started/embedding_viz">visualização de embeddings</a> do TensorBoard usando redução de dimensão com PCA ou t-SNE.</p>
 
 <p>Para usar o TensorBoard é necessário executar o servidor no console e acessar pelo navegador:</p>
 
@@ -2073,7 +2073,7 @@ Wall time: 14min 7s
 
 <p>No menu superior, selecionando-se a opção <strong><code>GRAPHS</code></strong> é possível visualizar a representação visual do modelo de treinamento. No lado esquerdo, parte superior tem um seletor <strong><code>Run</code></strong> para escolher qual grafo visualizar. Essa visualização é interativa, permitindo visualizar parâmetros, fazer zoom, visualizar dentro dos blocos; vale a pena explorar.</p>
 
-<p>Segue a imagem gerada pela comando <strong><code>Download PNG</code></strong> selecionando-se um treinamento por vez.</p>
+<p>Segue a imagem gerada pelo comando <strong><code>Download PNG</code></strong> selecionando-se um treinamento por vez.</p>
 
 <p>Grafo do treinamento do CBOW:</p>
 
@@ -2085,7 +2085,7 @@ Wall time: 14min 7s
 
 <p>No menu superior, selecionando-se a opção <strong><code>EMBEDDINGS</code></strong> é possível visualizar a representação vetorial aprendida pelo modelo. No lado esquerdo, parte superior tem dois seletores, o primeiro permite a escolha do treinamento e o segundo a escolha do tensor a ser visualizado. Abaixo dos seletores, tem o comando <strong><code>Load data</code></strong> que pode ser usado para carregar o aquivo <strong><code>vocabulary.txt</code></strong> gerado na <a href="#preparação-dos-dados">Preparação dos Dados</a>. Essa visualização é interativa, permitindo visualizar as palavras mais próximas, separar uma região, fazer zoom; vale a pena explorar.</p>
 
-<p>A primeira imagem é a captura da tela com a seleção do treinamento do CBOW e do tensor <strong><code>embeddings</code></strong>, com os carregamento dos dados do arquivo <strong><code>vocabulary.txt</code></strong> e selecionando a palavra <strong><code>societies</code></strong> no seletor da direita, parte superior.</p>
+<p>A primeira imagem é a captura da tela com a seleção do treinamento do CBOW e do tensor <strong><code>embeddings</code></strong>, com o carregamento dos dados do arquivo <strong><code>vocabulary.txt</code></strong> e buscando a palavra <strong><code>societies</code></strong> no seletor da direita, parte superior.</p>
 
 <p>A segunda imagem é a mesma configuração com o treinamento do Skip-gram.</p>
 
@@ -2103,7 +2103,7 @@ Wall time: 14min 7s
 
 <ul>
 <li><strong><code>word2vec/{cbow.txt,skip_gram.txt}</code>`</strong> - um arquivo por modelo com a representação vetorial das palavras (formato texto de fácil leitura independente de linguagem ou framework)</li>
-<li><strong><code>word2vec/{cbow,skip_gram}</code></strong> - uma pasta por modelo do *checkpoint** com os resultados do treinamento, podem ser usados para análises e novas iterações do treinamento</li>
+<li><strong><code>word2vec/{cbow,skip_gram}</code></strong> - uma pasta por modelo do <em>checkpoint</em> com os resultados do treinamento, podem ser usados para análises e novas iterações do treinamento</li>
 </ul>
 
 <p>Esse é o resultado final desse trabalho.</p>
@@ -2171,8 +2171,14 @@ Wall time: 14min 7s
   </div>
   <div class="pure-u-10-24">
     
+    <nav class="next">
+      <a href="https://cirocavani.github.io/post/tensorflow-text-embedding-com-paragraph2vec/">TensorFlow: Text Embedding com Paragraph2vec</a>
+    </nav>
+    
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://cirocavani.github.io/post/tensorflow-text-embedding-com-paragraph2vec/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>

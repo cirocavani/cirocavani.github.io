@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.25.1" />
+  <meta name="generator" content="Hugo 0.26" />
 
   <title>TensorFlow: Recomendação com ALS (Collaborative Filtering) &middot; Ciro Cavani</title>
 
@@ -368,7 +368,7 @@ MathJax.Hub.Queue(function() {
 <p>Diferente desse dataset, em que o número de usuários é bem menor que o número de itens (menor que <sup>1</sup>&frasl;<sub>10</sub>), na recomendação da Globo.com normalmente a proporção é inversa, ou seja, muito mais usuários do que itens - nas nossas próprias análises, essa é uma característica relevante.</p>
 </blockquote>
 
-<p>Esse dataset é bastante pequeno e serve ao propósito de desenvolvido da análise e não para encontrar &lsquo;grandes verdades&rsquo;.</p>
+<p>Esse dataset é bastante pequeno e serve ao propósito de desenvolvimento da análise e não para encontrar &lsquo;grandes verdades&rsquo;.</p>
 
 <p>A estratégia é dividir esses dados para treinamento, validação e teste. O dataset de treinamento será usado como os dados que o algoritmo conhece do usuário (e deve aprender sobre). O dataset de validação é para ser usado durante o treinamento para medir a performance do algoritmo, verificar overfitting (ou under) e fazer tuning de parâmetros. O dataset de teste será usado uma única vez para medir o desempenho final do algoritmo com os melhores parâmetros.</p>
 

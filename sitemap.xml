@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://cirocavani.github.io/post/tensorflow-text-embedding-com-paragraph2vec/</loc>
+    <lastmod>2017-08-09T21:03:04-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://cirocavani.github.io/post/tensorflow-word-embedding-com-word2vec/</loc>
     <lastmod>2017-07-26T15:03:04-03:00</lastmod>
   </url>
@@ -59,7 +64,7 @@
   
   <url>
     <loc>https://cirocavani.github.io/tags/algoritmos/</loc>
-    <lastmod>2017-07-26T15:03:04-03:00</lastmod>
+    <lastmod>2017-08-09T21:03:04-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -77,7 +82,7 @@
   
   <url>
     <loc>https://cirocavani.github.io/</loc>
-    <lastmod>2017-07-26T15:03:04-03:00</lastmod>
+    <lastmod>2017-08-09T21:03:04-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -119,7 +124,7 @@
   
   <url>
     <loc>https://cirocavani.github.io/tags/nlp/</loc>
-    <lastmod>2017-07-26T15:03:04-03:00</lastmod>
+    <lastmod>2017-08-09T21:03:04-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -131,7 +136,7 @@
   
   <url>
     <loc>https://cirocavani.github.io/post/</loc>
-    <lastmod>2017-07-26T15:03:04-03:00</lastmod>
+    <lastmod>2017-08-09T21:03:04-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -155,13 +160,13 @@
   
   <url>
     <loc>https://cirocavani.github.io/tags/</loc>
-    <lastmod>2017-07-26T15:03:04-03:00</lastmod>
+    <lastmod>2017-08-09T21:03:04-03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://cirocavani.github.io/tags/tensorflow/</loc>
-    <lastmod>2017-07-26T15:03:04-03:00</lastmod>
+    <lastmod>2017-08-09T21:03:04-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -172,7 +177,7 @@
   
   <url>
     <loc>https://cirocavani.github.io/tags/tutorial/</loc>
-    <lastmod>2017-07-26T15:03:04-03:00</lastmod>
+    <lastmod>2017-08-09T21:03:04-03:00</lastmod>
     <priority>0</priority>
   </url>
   
